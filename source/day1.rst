@@ -95,12 +95,18 @@ One of the trystack admins will approve your access in a short time. Once your l
 |image2|
 
 After you have successfully logged in, you are now free to use OpenStack dashboard!. The OpenStack dashboard is commonly known as 'horizon'. 
+
+
 Horizon is a component of OpenStack which is developed in python (as other OpenStack components) and provides a GUI (graphical user interface) whick makes OpenStack administration a lot more easier!
+
+
 All the administrative actions including provisioning can be handled using the dashboard.
 
 The overview page of horizon dashboard should display something similar to below image:
 
 |image3|
+
+
 In this image the 'Overivew' page displays a summary of resource usage. It includes number of instances created by you, number of vCPUs used out of available vCPUs, number of disk volumes used and so on..
 
 2. Creating A Network Segment
