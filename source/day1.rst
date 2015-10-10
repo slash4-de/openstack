@@ -1,4 +1,4 @@
-﻿LEARN OpenStack in 4 Hours
+﻿Learn OpenStack in 4 Hours
 _____________________________
 
 DAY-1: Your First Dive into OpenStack
@@ -77,54 +77,69 @@ It’s time to get started now!
 1. Login To OpenStack Dashboard Online
 
 Remember we had told you that we have a solution to access an OpenStack
-environment online? Below is the link to access TryStack online :
+environment online? 
+TryStack provides an online OpenStack environment for learners, developers and researchers. You can create a VM instance of your own in this environment which will be available for 24 hours. 
+Since many people want to access this online platform hence resources provided with a set limit. It is prefered that you free your resources including VM instances after your learning session. 
+To manage the resources, any VM instance that is up for more than 24 hours will automatically be removed by trystack. 
+Below is the link to access TryStack online :
 
 http://trystack.openstack.org/
 
-You will need to join the TryStack Facebook Group in order to get
-registered which is pretty easy!! Just click on the button as displayed
+Before you can use trystack, you need to join the TryStack Facebook Group. Registration is pretty simple!! Just click on the button as displayed
 in the below screenshot:
 
 |image1|
 
-Once your login has been approved, you can access the dashboard as below:
+One of the trystack admins will approve your access in a short time. Once your login has been approved, you can access the dashboard as below:
 
 |image2|
 
-After you have successfully logged in, you are now free to use OpenStack dashboard!. It will look something like below:
+After you have successfully logged in, you are now free to use OpenStack dashboard!. The OpenStack dashboard is commonly known as 'horizon'. 
+Horizon is a component of OpenStack which is developed in python (as other OpenStack components) and provides a GUI (graphical user interface) whick makes OpenStack administration a lot more easier!
+All the administrative actions including provisioning can be handled using the dashboard.
+
+The overview page of horizon dashboard should display something similar to below image:
 
 |image3|
+In this image the 'Overivew' page displays a summary of resource usage. It includes number of instances created by you, number of vCPUs used out of available vCPUs, number of disk volumes used and so on..
 
 2. Creating A Network Segment
 
-Before we could create a new virtual machine instance we need to create a network first. To do that let’s follow these steps:
+Before we could create a new virtual machine instance we need to create a network first. A VM instance will be part of this network . Remember that this is a private network and is not accessible to users other than you. 
+This means that all your VM instances will be part of this network and will be isolated from networks created by other users. 
+You can infact create more than one private network depending upon your requirements.
+You need to take following steps in order to create a new network:
 
-	a. Under Network on the left menu bar, go to Networks and select create Network
+	a. Under Network on the left menu bar, go to Networks and select create Network as it is depicted in the image below:
 
 |image4|
 
-	b. Under the Network tab, fill in the Network Name and click Next.
+	b. Now you need to provide a meaningful name to your network. Under the Network tab, fill in the Network Name and click Next.
 
 |image5|
 
-	c. Under Subnet tab, enter the subnet address in CIDR notation, we will use 192.168.1.0/24 for example. Set IP version as IPv4 and click Next
+	c. Under Subnet tab, enter the subnet address in CIDR (Classless Inter Domain Routing) notation.
+	    The private IP addresses will be assigned to our VM instances from this subnet. In this example will use 192.168.1.0/24 . 
+	     As this is an IPv4 address therefore we will set IP version as IPv4 and click Next
 
 |image6|
 
 	d. Under Subnet Details tab, set the DNS name server as 8.8.4.4 and 8.8.8.8 on two separate lines respectively and click Create.
+	    These DNS addresses belong to google and can be used as public DNS addresses. The steps are also shown in this image:
 
 |image7|
 
 3.  Creating A New VM Instance Using Ubuntu Image. 
-Now we are ready to create our own first VM instance in OpenStack. Let’s go to Compute menu on the menu on the left and then select Instances.
+So we made some progress so far! We created a network with our private/internal subnet. This makes us able to proceed towards adding a new virtual machine instance.
+Let’s go to Compute menu on the menu on the left and then select Instances.
 
 |image8|
 
-	a. A popup window will appear. Under the details section fill out the instance details as below:
+	a. A popup window will appear. Under the details section let's fill out the instance details as below:
 
--  The availability zone should be nova.
+-  The availability zone should be nova. This is the default setting.
 
--  Provide an instance name
+-  Provide a meaningful instance name 
 
 -  Select an appropriate flavor from the list. For this example we are using ‘m1.medium’
 
