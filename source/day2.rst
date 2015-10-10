@@ -35,13 +35,10 @@ Below are the learning objectives for today:
 
 |image4|
 
-|image5|
 
-|image6|
 
 .. |image1| image:: media/d2_image1.png
 .. |image2| image:: media/d2_image2.png
 .. |image3| image:: media/d2_image3.png
 .. |image4| image:: media/d2_image4.png
-.. |image5| image:: media/d2_image5.png
-.. |image6| image:: media/d2_image6.png
+
