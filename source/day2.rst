@@ -7,8 +7,10 @@ DAY-2: More OpenStack Magic !
 In your previous interaction with OpenStack, you learned how to create a new virtual machine instance and associate it with a network.
 We hope you enjoyed this! 
 
+Today you will see OpenStack in more action. So let's get started 
 
-Today you will see OpenStack in more action. Below are the learning objectives for today:
+
+Below are the learning objectives for today:
 
 1. 	Creating an empty disk volume
 
