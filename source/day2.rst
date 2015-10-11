@@ -51,7 +51,7 @@ A popup menu will appear where you need to fillout the details for the new volum
 
 	4. Select no volume type.
 
-	5. Set the size of the volume in Gb
+	5. Set the size of the volume in GB
 
 	6. Select availability zone as 'Nova'
 
@@ -61,6 +61,8 @@ This is depicted in the image below too:
 
 
 |image3|
+
+After creation of the volume, the newly created volume will be displayed on the volumes page.It may look like somthing below:
 
 |image4|
 
