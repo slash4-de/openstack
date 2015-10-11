@@ -132,8 +132,11 @@ This means that all your VM instances will be part of this network and will be i
 You can infact create more than one private network depending upon your requirements.
 
 Let's explain the important terms used to define a network segment:
+
 	--	Network :  It is the name of the network segment that you want to create. For example you can call it 'Internal' if it is an internal network. 
+
 	--	Subnet   :  It is a block of IP addresses ( IPv4  or IPv6) which will be used to assign IP addresses to the connecting instances.
+
 	--	Port        :  A port is the interface of a VM instance or a virtual router which will be used to connect to this network. It is just like the NIC on a PC.
 
 Now let's proceed towards actually creating a new network. You need to take following steps in order to create a new network:
@@ -162,9 +165,12 @@ Now let's proceed towards actually creating a new network. You need to take foll
 
 So you have made great progress so far! You created a network with a private/internal subnet. This has made you able to proceed towards adding a new virtual machine instance.
 But before we act to create the instance, here is some valuable information that you need to know:
+
 You can create an instance either from a pre-created machine image, a disk volume or  a snapshot that you may have from another disk volume. OpenStack provides several pre-built images for several operating systems including Windows and Linux.
 In case of Linux, you can also choose your favourite flavor. This could be CentOS, Ubuntu, SuSe or any other. 
+
 You can also select the size of an instance that you want to create. It includes number of vCPUs, RAM and disk space.
+
 Now is the action time! Let’s go to Compute menu on the menu on the left and then select Instances.
 
 |image8|
