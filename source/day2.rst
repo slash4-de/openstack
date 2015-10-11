@@ -12,13 +12,13 @@ Today you will see OpenStack in more action. So let's get started
 
 Below are the learning objectives for today:
 
-1. 	Creating an empty disk volume
+1. 	Creating an empty disk volume	
 
-2.	 Attaching the empty disk volume to an instance
+2.	 Creating a snapshot of a disk volume
 
-3.	 Creating a snapshot of a disk volume
+3. 	 Attaching the empty disk volume to an instance
 
-4. 	Deleting a snapshot
+4.	Deleting a snapshot
 
 5. 	Detaching a disk volume from a VM instance
 
@@ -73,13 +73,20 @@ In this image, you can see that this volume is not attached to any instance and 
 
 So let's attach this volume to an instance.
 
-2. Attach a Volume To an Instance
-========================
+2.  Create a Snapshot of a Volume
+=========================
 
+	1. Click on the drop down menu under 'Actions' field in the row where the newly created volume is displayed.
+	2. Select 'Create Snapshot' 
+
+|image4|
+
+3. Attach a Volume To an Instance
+=========================
 
 
 .. |image1| image:: media/d2_image1.png
 .. |image2| image:: media/d2_image2.png
 .. |image3| image:: media/d2_image3.png
 .. |image4| image:: media/d2_image4.png
-
+.. |image5| image:: media/d2_image5.png
