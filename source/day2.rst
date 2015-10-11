@@ -42,7 +42,22 @@ Let's create a new disk volume.
 
 |image2|
 
+A popup menu will appear where you need to fillout the details for the new volume. 
+	1. Set a meaningful volume name.
 
+	2. Set a volume description
+
+	3. Select 'No volume source , empty volume'  as we want to create an empty volume here.
+
+	4. Select no volume type.
+
+	5. Set the size of the volume in Gb
+
+	6. Select availability zone as 'Nova'
+
+	7. Click on 'Create Volume'
+
+This is depicted in the image below too:
 
 
 |image3|
