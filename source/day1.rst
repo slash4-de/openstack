@@ -145,18 +145,32 @@ Now let's proceed towards actually creating a new network. You need to take foll
 
 |image4|
 
-	b. Now you need to provide a meaningful name to your network. Under the Network tab, fill in the Network Name and click Next.
+	b. Now you need to provide a meaningful name to your network. Under the Network tab, fill in the Network Name. Make sure that the 'Admin State' is up. Click Next.
 
 |image5|
+
+As explained earlier, each network must have at least one subnet associated to it. A subnet is a block of IP addresses which will be assigned to the instances which are part of this network.
+
+Next, you need to mention the subnet information.
 
 	c. Under Subnet tab, enter the subnet address in CIDR (Classless Inter Domain Routing) notation.
 	    The private IP addresses will be assigned to our VM instances from this subnet. In this example will use 192.168.1.0/24 . 
 	     As this is an IPv4 address therefore we will set IP version as IPv4 and click Next
 
+A gateway IP is required so that all the instances on this network with use this IP to send for sending traffic that is destined towards outside world. In other words you can say this gateway IP is the IP address assigned on the router.
 |image6|
 
-	d. Under Subnet Details tab, set the DNS name server as 8.8.4.4 and 8.8.8.8 on two separate lines respectively and click Create.
-	    These DNS addresses belong to google and can be used as public DNS addresses. The steps are also shown in this image:
+
+Next, you need to add some more detailed information about the subnet.
+	d. Under Subnet Details tab, make sure that the 'Enable DHCP' option is on. 
+
+Under 'Allocation Pools' mention the starting IP address and the ending IP address separated by a comma.  Instances will be assigned IP addresses within this range.
+
+Set the DNS name server addresses as 8.8.4.4 and 8.8.8.8 on two separate lines respectively and click Create.
+
+Leave the 'Host routes' option as empty.
+
+These DNS addresses belong to google and can be used as public DNS addresses. The steps are also shown in this image:
 
 |image7|
 
