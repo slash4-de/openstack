@@ -79,7 +79,7 @@ So let's attach this volume to an instance.
 	1. Click on the drop down menu under 'Actions' field in the row where the newly created volume is displayed.
 	2. Select 'Create Snapshot' 
 
-|image4|
+|image5|
 
 3. Attach a Volume To an Instance
 =========================
