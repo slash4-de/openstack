@@ -221,7 +221,7 @@ Once the new instance has been launched, a message like below will be displayed:
 
 4. Creating A Router For Your Network Segment
 
-You must be knowing how a router works. It connects one than one networks. It routes packets between two or more networks. For your newly created network you need at least one router.
+You must know how a router works. It connects more than one networks. It routes packets between two or more networks. For your newly created network you need at least one router.
 This will make sure that your instances can talk to the outside world. Therefore you need a router that has interfaces connected to your network and external networks. 
 
 To create a new router let's follow below steps:
