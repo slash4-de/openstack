@@ -97,7 +97,7 @@ One of the trystack admins will approve your access in a short time. Once your l
 After you have successfully logged in, you are now free to use OpenStack dashboard!. The OpenStack dashboard is commonly known as 'horizon'. 
 In the top right corner, you will see your username. Additionally you can see settings option and an option to sign out.
 
-Horizon is a component of OpenStack which is developed in python and provides a GUI (graphical user interface) whick makes OpenStack administration a lot more easier!
+Horizon is a component of OpenStack which is developed in python and provides a GUI (graphical user interface) which makes OpenStack administration a lot more easier!
 
 All the administrative actions including provisioning can be handled using the dashboard.
 
@@ -118,17 +118,25 @@ Using the 'Access and Security' tab, you can create, list, add delete security g
 
 The 'Keypairs' tab is one of the most important tabs which is used to create secure keys. You need these keys to access your instance remotely on SSH from your PC. If you loose your keys or forget to download and save the keys to your PC, you can face issues with accessing the VM instance.
 
-Using 'Floating IPS' tab you can associate a floating IP address ( which is a public IP address) to your VM instance.  This IP is usually accessible over the Internet which makes it possible for you to access your VM instance remotely.
+Using 'Floating IPs' tab you can associate a floating IP address ( which is a public IP address) to your VM instance.  This IP is usually accessible over the Internet which makes it possible for you to access your VM instance remotely.
 The SSH port (  22 by default) must be allowed under 'Access and Security' tab. You can do this by adding a new rule so that SSH traffic for your VM instance can pass through. This rule is not already present in the default security group.
 
 Using 'API Access' tab OpenStack API endpoints can be created.
 
 2. Creating A Network Segment
 
-Before we could create a new virtual machine instance we need to create a network first. A VM instance will be part of this network . Remember that this is a private network and is not accessible to users other than you. 
+Any virtual machine instance that you create in the OpenStack environment, needs to be part of at least one network segment. A network segment resembles a VLAN in the real world networking field.
+Therefore before jumping into creating a new VM instance, you will create a network segment which you will be able to associate your VM instance with.
+Your VM instance will be part of this network like a VLAN. Remember that this is a private network and is not accessible to users other than you. 
 This means that all your VM instances will be part of this network and will be isolated from networks created by other users. 
 You can infact create more than one private network depending upon your requirements.
-You need to take following steps in order to create a new network:
+
+Let's explain the important terms used to define a network segment:
+	--	Network :  It is the name of the network segment that you want to create. For example you can call it 'Internal' if it is an internal network. 
+	--	Subnet   :  It is a block of IP addresses ( IPv4  or IPv6) which will be used to assign IP addresses to the connecting instances.
+	--	Port        :  A port is the interface of a VM instance or a virtual router which will be used to connect to this network. It is just like the NIC on a PC.
+
+Now let's proceed towards actually creating a new network. You need to take following steps in order to create a new network:
 
 	a. Under Network on the left menu bar, go to Networks and select create Network as it is depicted in the image below:
 
@@ -152,8 +160,12 @@ You need to take following steps in order to create a new network:
 3.  Creating A New VM Instance Using Ubuntu Image. 
 
 
-So we made some progress so far! We created a network with our private/internal subnet. This makes us able to proceed towards adding a new virtual machine instance.
-Let’s go to Compute menu on the menu on the left and then select Instances.
+So you have made great progress so far! You created a network with a private/internal subnet. This has made you able to proceed towards adding a new virtual machine instance.
+But before we act to create the instance, here is some valuable information that you need to know:
+You can create an instance either from a pre-created machine image, a disk volume or  a snapshot that you may have from another disk volume. OpenStack provides several pre-built images for several operating systems including Windows and Linux.
+In case of Linux, you can also choose your favourite flavor. This could be CentOS, Ubuntu, SuSe or any other. 
+You can also select the size of an instance that you want to create. It includes number of vCPUs, RAM and disk space.
+Now is the action time! Let’s go to Compute menu on the menu on the left and then select Instances.
 
 |image8|
 
@@ -180,6 +192,12 @@ This is also shown in the image below:
 |image10|
 	
 	c. A new popup window will appear. Enter a name for the key and paste the contents of the public key. You can create the new key according to the instructions on the right.
+	   You can import your exiting public keys from your personal machine as well. If you have a linux PC then you can use the following command:
+
+		ssh-keygen -t rsa  <YourKeyName>    # ( Replace <YourKeyName> with your new key name)
+
+	  If you are using a windows based PC, you can use the  PUTTYGEN software utility to create  a public key.
+
 
 |image11|
 
@@ -197,7 +215,10 @@ Once the new instance has been launched, a message like below will be displayed:
 
 4. Creating A Router For Your Network Segment
 
-To connect our newly created network with the outside world we need a router wich has interfaces connected to internal and external networks. We need to follow below steps to create a router and add interfaces to it:
+You must be knowing how a router works. It connects one than one networks. It routes packets between two or more networks. For your newly created network you need at least one router.
+This will make sure that your instances can talk to the outside world. Therefore you need a router that has interfaces connected to your network and external networks. 
+
+To create a new router let's follow below steps:
 
 	a. Goto 'Network' on the left menu under 'Project' and select 'Routers'. The same is depicted in the image below:
 
