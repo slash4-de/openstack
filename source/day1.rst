@@ -164,13 +164,13 @@ A gateway IP is required so that all the instances on this network with use this
 Next, you need to add some more detailed information about the subnet.
 	d. Under Subnet Details tab, make sure that the 'Enable DHCP' option is on. 
 
-Under 'Allocation Pools' mention the starting IP address and the ending IP address separated by a comma.  Instances will be assigned IP addresses within this range.
+		4.1	Under 'Allocation Pools', mention the starting IP address and the ending IP address separated by a comma.  Instances will be assigned IP addresses within this range.
 
-Set the DNS name server addresses as 8.8.4.4 and 8.8.8.8 on two separate lines respectively and click Create.
+		4.2	Set the DNS name server addresses as 8.8.4.4 and 8.8.8.8 on two separate lines respectively and click Create.
 
-Leave the 'Host routes' option as empty.
+		4.3	Leave the 'Host routes' option as empty.
 
-These DNS addresses belong to google and can be used as public DNS addresses. The steps are also shown in this image:
+		4.4	These DNS addresses belong to google and can be used as public DNS addresses. The steps are also shown in this image:
 
 |image7|
 
@@ -180,12 +180,13 @@ These DNS addresses belong to google and can be used as public DNS addresses. Th
 So you have made great progress so far! You created a network with a private/internal subnet. This has made you able to proceed towards adding a new virtual machine instance.
 But before we act to create the instance, here is some valuable information that you need to know:
 
-You can create an instance either from a pre-created machine image, a disk volume or  a snapshot that you may have from another disk volume. OpenStack provides several pre-built images for several operating systems including Windows and Linux.
-In case of Linux, you can also choose your favourite flavor. This could be CentOS, Ubuntu, SuSe or any other. 
+You can create an instance either from a pre-created machine image, a disk volume or  a snapshot that you may taken have from another disk volume.
+OpenStack provides several pre-built images for several operating systems including Windows and Linux.
+In case of Linux, you can also choose your favorite flavor. This could be CentOS, Ubuntu, SuSe or any other. 
 
 You can also select the size of an instance that you want to create. It includes number of vCPUs, RAM and disk space.
 
-Now is the action time! Let’s go to Compute menu on the menu on the left and then select Instances.
+Now is the action time! Let’s go to Compute menu on the menu on the left and then select 'Launch Instances'.
 
 |image8|
 
@@ -207,7 +208,13 @@ This is also shown in the image below:
 
 |image9|
 
-	b. Under ‘Access & Security’, select the default security group. We need to add key pairs in order to be able to login to our new instance after it is created. To create and add a key pair, click on the + button near to ‘Key Pair’ field.
+A security group is infact a combintion of rules which are applicable to similar instances.  You can also create a security group of your own. 
+For example, you have a group of web servers and you want to allow http, https, ssh and ping traffic to these web servers from outside. You can create a security group called 'web-servers-group' and a rule for each traffic type.
+But today let's use the default security group that is already defined in OpenStack.
+
+	b. Under ‘Access & Security’, select the 'default' security group. 
+We need to add key pairs in order to be able to login to our new instance after it is created. To create and add a key pair, click on the + button near to ‘Key Pair’ field.
+
 
 |image10|
 	
