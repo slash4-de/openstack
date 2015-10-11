@@ -1,8 +1,8 @@
 ﻿Learn OpenStack in 4 Hours
-_____________________________
+============================
 
 DAY-1: Your First Dive into OpenStack
---------------------------------------------------
+============================
 
 You will create your first ever instance in OpenStack on this first day
 of your fast track course. If you have no hardware to install OpenStack,
@@ -51,7 +51,7 @@ For this tutorial we are using:
 -  No other dependencies …….!
 
 SUMMARY OF DAY-1
------------------------------
+================
 
 
 Here are the learning objectives for today’s course:
@@ -75,6 +75,7 @@ Here are the learning objectives for today’s course:
 It’s time to get started now!
 
 1. Login To OpenStack Dashboard Online
+================================
 
 Remember we had told you that we have a solution to access an OpenStack
 environment online? 
@@ -124,6 +125,8 @@ The SSH port (  22 by default) must be allowed under 'Access and Security' tab. 
 Using 'API Access' tab OpenStack API endpoints can be created.
 
 2. Creating A Network Segment
+=======================
+
 
 Any virtual machine instance that you create in the OpenStack environment, needs to be part of at least one network segment. A network segment resembles a VLAN in the real world networking field.
 Therefore before jumping into creating a new VM instance, you will create a network segment which you will be able to associate your VM instance with.
@@ -175,6 +178,7 @@ Next, you need to add some more detailed information about the subnet.
 |image7|
 
 3.  Creating A New VM Instance Using Ubuntu Image. 
+======================================
 
 
 So you have made great progress so far! You created a network with a private/internal subnet. This has made you able to proceed towards adding a new virtual machine instance.
@@ -241,6 +245,8 @@ Once the new instance has been launched, a message like below will be displayed:
 |image14|
 
 4. Creating A Router For Your Network Segment
+===================================
+
 
 You must know how a router works. It connects more than one networks. It routes packets between two or more networks. For your newly created network you need at least one router.
 This will make sure that your instances can talk to the outside world. Therefore you need a router that has interfaces connected to your network and external networks. 
@@ -289,6 +295,9 @@ Now to confirm the interface addition, we can view it under network topology. To
 |image22|
 
 5. Assign a floating IP Address
+=======================
+
+
 
 A floating IP Address is required to access the VM instance remotely using pubic Internet. Floating IPs are ussually public IP Addresses which are routable using Internet.
 To assign a flaoting IP, we need to follow below steps:
@@ -314,6 +323,7 @@ Select the pool and click on 'Allocate IP' . This will allocate a pulic IP to th
 |image26|
 
 6.  Setup Security Policies to Secure the Access
+===================================
 
 Security policies are required to allow or deny access to the VM instances from outside world. It is used to control the incomming and outgoing traffic to and from the VM instances.
 This can be done from 'Access and Security' option under 'Compute' menu option on the left. Following steps need to be followed to accomplish this:
