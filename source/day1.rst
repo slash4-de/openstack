@@ -95,19 +95,33 @@ One of the trystack admins will approve your access in a short time. Once your l
 |image2|
 
 After you have successfully logged in, you are now free to use OpenStack dashboard!. The OpenStack dashboard is commonly known as 'horizon'. 
+In the top right corner, you will see your username. Additionally you can see settings option and an option to sign out.
 
-
-Horizon is a component of OpenStack which is developed in python (as other OpenStack components) and provides a GUI (graphical user interface) whick makes OpenStack administration a lot more easier!
-
+Horizon is a component of OpenStack which is developed in python and provides a GUI (graphical user interface) whick makes OpenStack administration a lot more easier!
 
 All the administrative actions including provisioning can be handled using the dashboard.
 
-The overview page of horizon dashboard should display something similar to below image:
+On the left side there is another menu with several tabs expanding vertically. The project tab shows those projects which you are a member of.
+
+The overview page of horizon dashboard shows a summary and overview of the OpenStack cloud resources and displays something similar to below image:
 
 |image3|
 
 
-In this image the 'Overivew' page displays a summary of resource usage. It includes number of instances created by you, number of vCPUs used out of available vCPUs, number of disk volumes used and so on..
+In this image the 'Overivew' page displays a summary of information including  number of instances created by you, number of vCPUs used out of available vCPUs, number of disk volumes used and so on..
+
+The 'Instances' tab shows the list of instances created by you for this project. You can create, start, stop or terminate an instance using this tab.
+
+The 'Volumes' tab shows the list of disk volumes created by you for this project. You can create , attach, detach or delete a volume using this tab.
+
+Using the 'Access and Security' tab, you can create, list, add delete security groups, add/edit/delete rules for security groups.
+
+The 'Keypairs' tab is one of the most important tabs which is used to create secure keys. You need these keys to access your instance remotely on SSH from your PC. If you loose your keys or forget to download and save the keys to your PC, you can face issues with accessing the VM instance.
+
+Using 'Floating IPS' tab you can associate a floating IP address ( which is a public IP address) to your VM instance.  This IP is usually accessible over the Internet which makes it possible for you to access your VM instance remotely.
+The SSH port (  22 by default) must be allowed under 'Access and Security' tab. You can do this by adding a new rule so that SSH traffic for your VM instance can pass through. This rule is not already present in the default security group.
+
+Using 'API Access' tab OpenStack API endpoints can be created.
 
 2. Creating A Network Segment
 
@@ -136,6 +150,8 @@ You need to take following steps in order to create a new network:
 |image7|
 
 3.  Creating A New VM Instance Using Ubuntu Image. 
+
+
 So we made some progress so far! We created a network with our private/internal subnet. This makes us able to proceed towards adding a new virtual machine instance.
 Let’s go to Compute menu on the menu on the left and then select Instances.
 
