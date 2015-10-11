@@ -342,6 +342,9 @@ c. Click on 'Add Rule' and select 'HTTP'
 
 |image29|
 
+7. Access Your VM Instance Remotely
+===========================
+
 Now you can open your faviourite SSH client on your PC/laptop to access your first VM instance remotely.
 It will ask for accepting the server's key for the first time as shown in the image below:
 
