@@ -27,6 +27,9 @@ Below are the learning objectives for today:
 7. 	Terminating a VM instance
 
 
+1. Creating an Empty Volume
+======================
+
 A disk volume is a block storage device that you can connect to an instance as a persistant storage. Disk volumes can be attached to instances while the instance is running.
 Similarly they can be detached in the same manner. 
 
@@ -62,9 +65,16 @@ This is depicted in the image below too:
 
 |image3|
 
-After creation of the volume, the newly created volume will be displayed on the volumes page.It may look like somthing below:
+After creation of the volume, the newly created volume will be displayed on the volumes page.It may look like somthing below: 
+
+In this image, you can see that this volume is not attached to any instance and therfore the field 'Attached To' is empty. 
 
 |image4|
+
+So let's attach this volume to an instance.
+
+2. Attach a Volume To an Instance
+========================
 
 
 
