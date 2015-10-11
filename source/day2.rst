@@ -27,9 +27,23 @@ Below are the learning objectives for today:
 7. 	Terminating a VM instance
 
 
+A disk volume is a block storage device that you can connect to an instance as a persistant storage. Disk volumes can be attached to instances while the instance is running.
+Similarly they can be detached in the same manner. 
+
+A disk volume resembles a physical hard disk in practical life.  You can attach and format it as you format a physical disk. You can create a filesystem over it , mount it on a mount point and store data on it.
+
+You can have the disk volume even if you distroy the instance and its root disk.  This make it possible to keep data on a volume even if you no longer need to keep the VM instance.
+
+Let's create a new disk volume.
+
+	1. Goto  'Project'  and then 'Compute' and 'Volumes'
 |image1|
+	2. Next select 'Create Volume'  on the right top of the page.
 
 |image2|
+
+
+
 
 |image3|
 
