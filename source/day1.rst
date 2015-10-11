@@ -24,7 +24,7 @@ After this course you will know the most important features provided by
 OpenStack, what kind of cloud features can it provide, how it can be
 used and above all, you will see that how easy it is to be used!
 
-You will feel yourself that OpenStack is really a power full framework.
+You will feel yourself that OpenStack is really a powerfull framework.
 This is not all about OpenStack!!!. OpenStack can also be used for:
 
 -  Creating and managing virtual machine instances using different operating systems (Linux, Windows.. )
@@ -154,10 +154,10 @@ As explained earlier, each network must have at least one subnet associated to i
 Next, you need to mention the subnet information.
 
 	c. Under Subnet tab, enter the subnet address in CIDR (Classless Inter Domain Routing) notation.
-	    The private IP addresses will be assigned to our VM instances from this subnet. In this example will use 192.168.1.0/24 . 
+	    The private IP addresses will be assigned to our VM instances from this subnet. In this example you will use 192.168.1.0/24 . 
 	     As this is an IPv4 address therefore we will set IP version as IPv4 and click Next
 
-A gateway IP is required so that all the instances on this network with use this IP to send for sending traffic that is destined towards outside world. In other words you can say this gateway IP is the IP address assigned on the router.
+A gateway IP is required so that all the instances on this network with use this IP for sending traffic that is destined towards outside world. In other words you can say this gateway IP is the IP address assigned on the router.
 |image6|
 
 
@@ -186,7 +186,7 @@ In case of Linux, you can also choose your favorite flavor. This could be CentOS
 
 You can also select the size of an instance that you want to create. It includes number of vCPUs, RAM and disk space.
 
-Now is the action time! Let’s go to Compute menu on the menu on the left and then select 'Launch Instances'.
+Now is the action time! Let’s go to Compute menu on the left and then select 'Launch Instances'.
 
 |image8|
 
@@ -219,7 +219,7 @@ We need to add key pairs in order to be able to login to our new instance after 
 |image10|
 	
 	c. A new popup window will appear. Enter a name for the key and paste the contents of the public key. You can create the new key according to the instructions on the right.
-	   You can import your exiting public keys from your personal machine as well. If you have a linux PC then you can use the following command:
+	   You can import your existing public keys from your personal machine as well. If you have a linux PC then you can use the following command:
 
 		ssh-keygen -t rsa  <YourKeyName>    # ( Replace <YourKeyName> with your new key name)
 
@@ -255,18 +255,28 @@ Click on 'Create Router' on the right as shown in the image below:
 
 |image16|
 
+Set a meaningful router name
+Set the 'Admin state' to up
+Select the external public network
+Click on 'Create Router'
 Once the router is created, a message like below will be displayed:
 
 |image17|
 
-Once the router is created, we need to add its interfaces. To acheive this we need to follow below steps:
+This newly created needs a gateway IP so that it can forwar all the default traffic to it.
+ 
+ Follow below steps to acheive this:
 		a. Goto the router details page on the newly created router and click on 'Set Gateway'
 |image18|
 	
 		b. Select the external network and click 'Set Gateway'
 |image19|
 
-Now we need an interface to connect with the subnet that we created earlier. To do this, click on 'Add Interface' option under 'Interfaces' tab on router details page. This is shown in the image below:
+So far the router is created and gateway has been set but it is not connected to your private network.
+
+Hence you need to add an interface to the router and connect that interface to the private network.
+
+To do this, click on 'Add Interface' option under 'Interfaces' tab on router details page. This is shown in the image below:
 
 |image20|
 
@@ -280,13 +290,16 @@ Now to confirm the interface addition, we can view it under network topology. To
 
 5. Assign a floating IP Address
 
-A floating IP Address is required to access the VM instance remotely using pubic Ineternet. Floating IPs are ussually public IP Addresses which are routable using Internet.
+A floating IP Address is required to access the VM instance remotely using pubic Internet. Floating IPs are ussually public IP Addresses which are routable using Internet.
 To assign a flaoting IP, we need to follow below steps:
 	a. Under 'Compute', go to 'Instances' and select the instance.
 
 |image23|
 
-After selecting the instance, goto 'More Actions'
+After selecting the instance, select the drop down menu under 'Actions' column.
+
+From this drop down menu, select 'Associate floating IP' option.
+
 
 |image24|
 
