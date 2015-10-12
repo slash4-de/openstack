@@ -184,6 +184,12 @@ The steps are also shown in the image below:
 
 |image8|
 
+Now you may see the the volume has been attached to your instance.  You will notice it under  'Attached To' column as highlighted in the next image:
+
+
+|image9|
+
+
 .. |image1| image:: media/d2_image1.png
 .. |image2| image:: media/d2_image2.png
 .. |image3| image:: media/d2_image3.png
