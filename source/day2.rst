@@ -129,7 +129,7 @@ Let's understand a few conceptual things about Snapshots before we actually crea
 
 	1.	A snapshot is also a block storage that is persistant like a volume and can be created from a volume. 
 
-	2.	In fact, it is a read-only image or copy of volume that is taken in a specific point in time. 
+	2.	In fact, it is a read-only image or copy of a volume that is taken in a specific point in time. 
 
 	3.	A snapshot can be created from a volume that is available otherwise it is also possible to create a snapshot that is in use ( this is called forceful creation)
 
@@ -147,9 +147,13 @@ Action time ! Let's create a volume !
 3. Attach a Volume To an Instance
 -------------------------------------------
 
+|image6|
+
+
 
 .. |image1| image:: media/d2_image1.png
 .. |image2| image:: media/d2_image2.png
 .. |image3| image:: media/d2_image3.png
 .. |image4| image:: media/d2_image4.png
 .. |image5| image:: media/d2_image5.png
+.. |image6| image:: media/d2_image6.png
