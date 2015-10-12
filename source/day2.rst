@@ -157,6 +157,24 @@ A popup window will appear. You will need to fill out the details about the snap
 
 3. Attach a Volume To an Instance
 -------------------------------------------
+As you may remember that you had created a volume earlier but that volume is not being used by any instance. 
+
+So let's make use of it and attach it with our Ubuntu instance that we created at the first day.
+
+Normally attached volumes act as secondary storage for the VM instances but they can also be used as primary storage in a few cases.
+
+To attach a volume to your Ubuntu instance, see you need to taking follwoing steps:
+
+	1.	At the volumes page, go to the row for the Ubuntu instance.
+
+	2.	Click at the drop down menu under 'Actions' field 
+
+	3. 	Select 'Manage Attachments'
+
+
+
+|image7|
+
 
 .. |image1| image:: media/d2_image1.png
 .. |image2| image:: media/d2_image2.png
@@ -164,3 +182,11 @@ A popup window will appear. You will need to fill out the details about the snap
 .. |image4| image:: media/d2_image4.png
 .. |image5| image:: media/d2_image5.png
 .. |image6| image:: media/d2_image6.png
+.. |image7| image:: media/d2_image7.png
+.. |image8| image:: media/d2_image8.png
+.. |image9| image:: media/d2_image9.png
+.. |image10| image:: media/d2_image10.png
+.. |image11| image:: media/d2_image11.png
+.. |image12| image:: media/d2_image12.png
+.. |image13| image:: media/d2_image13.png
+.. |image14| image:: media/d2_image14.png
