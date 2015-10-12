@@ -143,13 +143,20 @@ Action time ! Let's create a volume !
 
 |image5|
 
+A popup window will appear. You will need to fill out the details about the snapshopt as below:
 
-3. Attach a Volume To an Instance
--------------------------------------------
+	1.	A meaningful name for the snapshot
+
+	2.	A description for the snapshot
+
+	3.	Click on 'Create Volume Snapshot'
+
 
 |image6|
 
 
+3. Attach a Volume To an Instance
+-------------------------------------------
 
 .. |image1| image:: media/d2_image1.png
 .. |image2| image:: media/d2_image2.png
