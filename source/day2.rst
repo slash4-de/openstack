@@ -165,16 +165,24 @@ Normally attached volumes act as secondary storage for the VM instances but they
 
 To attach a volume to your Ubuntu instance, see you need to taking follwoing steps:
 
-	1.	At the volumes page, go to the row for the Ubuntu instance.
+	1.	At the volumes page, go to the row for the volume you created earlier.
 
 	2.	Click at the drop down menu under 'Actions' field 
 
 	3. 	Select 'Manage Attachments'
 
 
+This is also depicted in the image below:
 
 |image7|
 
+Now you will see a popup window asking for details.  Here you need to click on the drop down menu next to 'Attach to Instance' and then select the Ubuntu instance that you created before.
+
+Next, click on 'Attach Volume'
+
+The steps are also shown in the image below:
+
+|image8|
 
 .. |image1| image:: media/d2_image1.png
 .. |image2| image:: media/d2_image2.png
