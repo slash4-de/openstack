@@ -26,9 +26,8 @@ Below are the learning objectives for today:
 
 7. 	Terminating a VM instance
 
-
 1. Creating an Empty Volume
-======================
+--------------------------------------
 
 
 Before you get your hands dirty with creating disk volumes, you should first understand what a volume is .
@@ -44,7 +43,7 @@ You must know that OpenStack offers mainly two categories of block storage:
 	2.  Persistent volumes 
 
 Ephemeral Storage
--------------------------
+==============
 
 The life of instance guarentees the life of ephermeral storage. This means when the VM instance is deleted/terminated, the ephermeral storage will be deleted too. 
 
@@ -63,7 +62,7 @@ Below are few important facts you must remember about ephermeral storage:
 	6.	A few flavors provide more than one ephermeral storage disks with varying sizes. This is used by the guest operating system for creating filesystems and storing data.
 
 Persistant Volume Storage
------------------------------------
+===================
 
 Now you know what is an ephermeral disk storage in OpenStack terminology. Let' talk about a disk volume next.
 
@@ -125,17 +124,18 @@ In this image, you can see that this volume is not attached to any instance and 
 
 
 2.  Create a Snapshot of a Volume
-=========================
+---------------------------------------------
 
 
 	1. Click on the drop down menu under 'Actions' field in the row where the newly created volume is displayed.
+
 	2. Select 'Create Snapshot' 
 
 |image5|
 
 
 3. Attach a Volume To an Instance
-=========================
+-------------------------------------------
 
 
 .. |image1| image:: media/d2_image1.png
