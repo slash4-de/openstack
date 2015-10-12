@@ -50,7 +50,7 @@ The life of instance guarentees the life of ephermeral storage. This means when 
 
 Below are few important facts you must remember about ephermeral storage:
 
-	1.	Alghough ephermeral storage does not persist across deletions/terminations of VM instances however they persist across the reboots by the VM instance or the guiest operating system.
+	1.	Alghough ephermeral storage does not persist across deletions/terminations of VM instances however they persist across the reboots of the VM instance or the guiest operating system.
 
 	2. 	Every instance must have some ephermeral storage.
 
@@ -60,7 +60,7 @@ Below are few important facts you must remember about ephermeral storage:
 	
 	5.	Typically the root filesystem for a VM instance is created on ephermeral storage.
 
-	6.	A few flavours provide more than one ephermeral storage disks with varying sizes. This is used by the guest operating system for creating filesystems and storing data.
+	6.	A few flavors provide more than one ephermeral storage disks with varying sizes. This is used by the guest operating system for creating filesystems and storing data.
 
 Persistant Volume Storage
 -----------------------------------
@@ -118,13 +118,15 @@ This is depicted in the image below too:
 
 After creation of the volume, the newly created volume will be displayed on the volumes page.It may look like somthing below: 
 
+|image4|
+
 In this image, you can see that this volume is not attached to any instance and therfore the field 'Attached To' is empty. 
 
-|image4|
 
 
 2.  Create a Snapshot of a Volume
 =========================
+
 
 	1. Click on the drop down menu under 'Actions' field in the row where the newly created volume is displayed.
 	2. Select 'Create Snapshot' 
