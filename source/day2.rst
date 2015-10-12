@@ -125,7 +125,17 @@ In this image, you can see that this volume is not attached to any instance and 
 
 2.  Create a Snapshot of a Volume
 ---------------------------------------------
+Let's understand a few conceptual things about Snapshots before we actually create one.
 
+	1.	A snapshot is also a block storage that is persistant like a volume and can be created from a volume. 
+
+	2.	In fact, it is a read-only image or copy of volume that is taken in a specific point in time. 
+
+	3.	A snapshot can be created from a volume that is available otherwise it is also possible to create a snapshot that is in use ( this is called forceful creation)
+
+	4.	A new volume can be created using a snapshot as well.
+
+Action time ! Let's create a volume !
 
 	1. Click on the drop down menu under 'Actions' field in the row where the newly created volume is displayed.
 
