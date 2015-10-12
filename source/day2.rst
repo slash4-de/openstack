@@ -184,10 +184,36 @@ The steps are also shown in the image below:
 
 |image8|
 
-Now you may see the the volume has been attached to your instance.  You will notice it under  'Attached To' column as highlighted in the next image:
+Now you may see that the volume has been attached to your instance.  You will notice it under  'Attached To' column as highlighted in the next image:
 
 
 |image9|
+
+Congratulations! You attached a new volume to your instance. Now what next? You need to create a filesystem on this raw block device  and then mount this volume on a mount point 
+
+Only after that you can see it as a regular disk and use it for storing data.
+
+The mkfs command is what you need here to create a filesystem on this disk.  You may create an ext3 filessytem.  Ok let's talk about Linux filesystems here.
+
+Introduction to File systems
+====================
+
+File systems are one of the things any newcomer to linux must become acquainted with. In the world of Microsoft you never really have to worry about it, the default being NTFS. Linux however, being built on a world of open source and differing opinions, is not limited in this way and so the user should have an understanding of what a file system is, and how it affects the computer.
+
+At the core of a computer, it's all 1s and 0s, but the organization of that data is not quite as simple. A bit is a 1 or a 0, a byte is composed of 8 bits, a kilobyte is 1024 (i.e. 2^10) bytes, a megabyte is 1024 kilobytes and so on and so forth. All these bits and bytes are permanently stored on a Hard Drive. A hard drive stores all your data, any time you save a file, you're writing thousands of 1s and 0s to a metallic disc, changing the magnetic properties that can later be read as 1 or 0. There is so much data on a hard drive that there has to be some way to organize it, like a library of books and the old card drawers that indexed all of them, without that index, we'd be lost. Libraries, for the most part, use the Dewey Decimal System to organize their books, but there exist other systems to do so, none of which have attained the same fame as Mr. Dewey's invention. File systems are the same way. The ones most users are aware of are the ones Windows uses, the vFat or the NTFS systems, these are the Windows default file systems.
+
+There are several different attributes which are necessary in defining file systems, these include their max file size, max partition size, whether they journal or not.
+
+Journaling
+=======
+
+A journaling file system is more reliable when it comes to data storage. Journaling file systems do not necessarily prevent corruption, but they do prevent inconsistency and are much faster at file system checks than non-journaled file systems. If a power failure happens while you are saving a file, the save will not complete and you end up with corrupted data and an inconsistent file system. Instead of actually writing directly to the part of the disk where the file is stored, a journaling file system first writes it to another part of the hard drive and notes the necessary changes to a log, then in the background it goes through each entry to the journal and begins to complete the task, and when the task is complete, it checks it off on the list. Thus the file system is always in a consistent state (the file got saved, the journal reports it as not completely saved, or the journal is inconsistent (but can be rebuilt from the file system)). Some journaling file systems can prevent corruption as well by writing data twice.
+
+You can use the 'mkdir' command to create a new directory that you will use as a mount point for this volume.
+
+
+		mkdir /mydiskvolume
+		mount /dev/vdb  /mydiskvolume
 
 
 .. |image1| image:: media/d2_image1.png
