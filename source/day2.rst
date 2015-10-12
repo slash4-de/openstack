@@ -30,90 +30,73 @@ Below are the learning objectives for today:
 1. Creating an Empty Volume
 ======================
 
+
 Before you get your hands dirty with creating disk volumes, you should first understand what a volume is .
 
-Openstack provides several storage types  and 'Volume Storage' is one of them.
+Openstack provides several block storage types  and 'Volume Storage' is one of them.
 
-Let's explain this in a bit more depth.
+Let's explain OpenStack storage types in a bit more depth.
 
+You must know that OpenStack offers mainly two categories of block storage:
 
-OpenStack Block Storage
-----------------------------------
+	1.  Ephemeral  storage
 
-
-OpenStack provides two classes of block storage, "ephemeral" storage and persistent "volumes". 
+	2.  Persistent volumes 
 
 Ephemeral Storage
+-------------------------
 
-Ephemeral storage exists only for the life of an instance, it will persist across reboots of the guest operating system but when the instance is deleted so is the associated storage.
- All instances have some ephemeral storage. 
-Ephemeral storage is associated with a single unique instance. Its size is defined by the flavor of the instance.
-Data on ephemeral storage ceases to exist when the instance it is associated with is terminated. 
-Rebooting the VM or restarting the host server, however, will not destroy ephemeral data.
- In the typical use case an instance's root filesystem is stored on ephemeral storage. 
-This is often an unpleasant surprise for people unfamiliar with the cloud model of computing.
+The life of instance guarentees the life of ephermeral storage. This means when the VM instance is deleted/terminated, the ephermeral storage will be deleted too. 
 
-In addition to the ephemeral root volume all flavors except the smallest, m1.tiny, provide an additional ephemeral block device varying from 20G for the m1.small through 160G for the m1.xlarge by default - these sizes are configurable. 
-This is presented as a raw block device with no partition table or filesystem. 
-Cloud aware operating system images may discover, format, and mount this device. 
-For example the cloud-init package included in Ubuntu's stock cloud images will format this space as an ext3 filesystem and mount it on /mnt. 
-It is important to note this a feature of the guest operating system. 
-OpenStack only provisions the raw storage.
+Below are few important facts you must remember about ephermeral storage:
 
-Volume Storage
+	1.	Alghough ephermeral storage does not persist across deletions/terminations of VM instances however they persist across the reboots by the VM instance or the guiest operating system.
+
+	2. 	Every instance must have some ephermeral storage.
+
+	3.	The association of an emphermeral storage is unique. It can only be associated with a single instance at a time.
+	
+	4.	The size of ephermeral storage varies with the flavor of the instance.
+	
+	5.	Typically the root filesystem for a VM instance is created on ephermeral storage.
+
+	6.	A few flavours provide more than one ephermeral storage disks with varying sizes. This is used by the guest operating system for creating filesystems and storing data.
+
+Persistant Volume Storage
+-----------------------------------
+
+Now you know what is an ephermeral disk storage in OpenStack terminology. Let' talk about a disk volume next.
+
+	1.	These are virtualized block devices which are by default independent of any VM instance.
+	
+	2.	Volumes can be attached to single instance at a time. This means concurrent access from two VM instances at the same time is not possible. 
+		However it is possible to detach a volume from one instance and attach it to another running instance.
+
+ 	3.	Since the volumes are custom created by the user, therefore they can be of any size depending upon the avaialbe quota and limits.
+
+	4. 	By default, volumes are created with empty filesystems and as raw block devices.
+	
+	5.	Before formatting a volume or creating a filesystem on it, you need to attach it with an instance.
+
+	6.	Volumes can be used in a same manner as an external disk.
+ 
+	7.	You can have the disk volume even if you distroy the instance and its root disk.  
 
 
-Volumes are persistent virtualized block devices independent of any particular instance. 
-
-Volumes may be attached to a single instance at a time, but may be detached or reattached to a different instance while retaining all data, much like a USB drive.
-
-Volume storage is independent of any particular instance and is persistent. 
-
-Volumes are user created and within quota and availability limits may be of any arbitrary size.
-
-When first created volumes are raw block devices with no partition table and no filesystem. 
-
-They must be attached to an instance to be partitioned and/or formatted. 
-
-Once this is done they may be used much like an external disk drive. 
-
-Volumes may attached to only one instance at a time, but may be detached and reattached to either the same or different instances.
-
-It is possible to configure a volume so that it is bootable and provides a persistent virtual instance similar to traditional non-cloud based virtualization systems. 
-
-In this use case the resulting instance may still have ephemeral storage depending on the flavor selected, but the root filesystem (and possibly others) will be on the persistent volume and thus state will be maintained even if the instance is shutdown. 
-
-Volumes do not provide concurrent access from multiple instances. 
-
-For that you need either a traditional network filesystem like NFS or CIFS or a cluster filesystem such as GlusterFS. 
-
-These may be built within an OpenStack cluster or provisioned outside of it, but are not features provided by the OpenStack software.
-
-A disk volume is a block storage device that you can connect to an instance as a persistant storage. 
-
-Disk volumes can be attached to instances while the instance is running.
-
-Similarly they can be detached in the same manner. 
-
-A disk volume resembles a physical hard disk in practical life.  
-
-You can attach and format it as you format a physical disk. 
-
-You can create a filesystem over it , mount it on a mount point and store data on it.
-
-You can have the disk volume even if you distroy the instance and its root disk.  
-
-This make it possible to keep data on a volume even if you no longer need to keep the VM instance.
-
-Let's create a new disk volume.
+Ok. so far so good! Let's create a new disk volume.
 
 	1. Goto  'Project'  and then 'Compute' and 'Volumes'
+
 |image1|
+
 	2. Next select 'Create Volume'  on the right top of the page.
+
 
 |image2|
 
+
 A popup menu will appear where you need to fillout the details for the new volume. 
+
 	1. Set a meaningful volume name.
 
 	2. Set a volume description
@@ -139,7 +122,6 @@ In this image, you can see that this volume is not attached to any instance and 
 
 |image4|
 
-So let's attach this volume to an instance.
 
 2.  Create a Snapshot of a Volume
 =========================
@@ -148,6 +130,7 @@ So let's attach this volume to an instance.
 	2. Select 'Create Snapshot' 
 
 |image5|
+
 
 3. Attach a Volume To an Instance
 =========================
