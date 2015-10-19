@@ -102,9 +102,7 @@ VHDX is an upgraded version of VHD that can support larger disk size and also pr
 OVF
 ===
 
-Distributed Management Task Force (DMTF) devised the Open Virtualization Format (OVF).  OpenStack Compute does not directly support OVF packages. You need to convert it to qcow2 or raw format to be able to use it with OpenStack.
-
-OpenStack Compute does not currently have support for OVF packages, so you will need to extract the image file(s) from an OVF package if you wish to use it with OpenStack.
+Distributed Management Task Force (DMTF) devised the Open Virtualization Format (OVF).  OpenStack Compute does not directly support OVF packages. You will need to  extract the image file(s) from an OVF package to be able to use it with OpenStack.
 
 ISO
 ===
@@ -112,7 +110,10 @@ ISO
 It is the image file format most commonly used for CDs and DVDs. But since an ISO contains a bootable filesystem along with an operating system, it can be used as a virtual machine image.
 
 
-Upload an image
+	1.1	Upload An Image
+		_________________________________
+
+Now let's get back to some practical work and upload an image to our OpenStack cloud.
 
 Follow this procedure to upload an image to a project:
 
@@ -128,20 +129,37 @@ The Create An Image dialog box appears.
 
 Enter the following values:
 
-Name	Enter a name for the image.
-Description	Enter a brief description of the image.
-Image Source	Choose the image source from the dropdown list. Your choices are Image Location and Image File.
-Image File or Image Location	Based on your selection for Image Source, you either enter the location URL of the image in the Image Location field, or browse for the image file on your file system and add it.
-Format	Select the image format (for example, QCOW2) for the image.
-Architecture	Specify the architecture. For example, i386 for a 32-bit architecture or x86_64 for a 64-bit architecture.
-Minimum Disk (GB) and Minimum RAM (MB)	Leave these fields empty.
-Copy Data	Specify this option to copy image data to the Image service.
-Public	Select this check box to make the image public to all users with access to the current project.
-Protected	Select this check box to ensure that only users with permissions can delete the image.
+	a.	Name	Enter a name for the image.
+
+	b.	Description	Enter a brief description of the image.
+
+	c.	Image Source	Choose the image source from the dropdown list. Your choices are Image Location and Image File.
+	
+	d.	Image File or Image Location	Based on your selection for Image Source, you either enter the location URL of the image in the Image Location field, or browse for the image file on your file system and add it.
+	
+	e.	Format	Select the image format (for example, QCOW2) for the image.
+
+Below screenshot depicts the steps:
+
+|image1|
+
+
+	f.	Architecture	Specify the architecture. For example, i386 for a 32-bit architecture or x86_64 for a 64-bit architecture.
+	
+	g.	Minimum Disk (GB) and Minimum RAM (MB)	Leave these fields empty.
+	
+	h.	Copy Data	Specify this option to copy image data to the Image service.
+	
+	i.	Public	Select this check box to make the image public to all users with access to the current project.
+	
+	j.	Protected	Select this check box to ensure that only users with permissions can delete the image.
 
 Click Create Image.
 
 The image is queued to be uploaded. It might take some time before the status changes from Queued to Active
+
+
+
 Update an image¶
 
 Follow this procedure to update an existing image.
@@ -169,21 +187,7 @@ In the Confirm Delete Images dialog box, click Delete Images to confirm the dele
 
 
 
-[Note]	Note
 
-The Image service and other OpenStack projects do not currently support the container format. It is safe to specify bare as the container format if you are unsure.
-
-You can set the container format for your image to one of the following values:
-
-bare. The image does not have a container or metadata envelope.
-
-ovf. The OVF container format.
-
-aki. An Amazon kernel image.
-
-ari. An Amazon ramdisk image.
-
-ami. An Amazon machine image.
 
 Image metadata
 ============
@@ -228,7 +232,6 @@ The simplest way to obtain a virtual machine image that works with OpenStack is 
 ----------------------------------------------
 
 
-|image1|
 
 
 
