@@ -191,27 +191,6 @@ In the Confirm Delete Images dialog box, click Delete Images to confirm the dele
 
 
 
-Image metadata
-============
-
-
-Image metadata can help end users determine the nature of an image, and is used by associated OpenStack components and drivers which interface with the Image service.
-
-Metadata can also determine the scheduling of hosts. If the property option is set on an image, and Compute is configured so that the ImagePropertiesFilter scheduler filter is enabled (default), then the scheduler only considers compute hosts that satisfy that property.
-
-
-
-Compute's ImagePropertiesFilter value is specified in the scheduler_default_filter value in the /etc/nova/nova.conf file.
-
-You can add metadata to Image service images by using the --property key=value parameter with the glance image-create or glance image-update command. More than one property can be specified.
-
-Common image properties are also specified in the /etc/glance/schema-image.json file.
-All associated properties for an image can be displayed using the glance image-show command.
-
-Volume-from-Image properties
-When creating Block Storage volumes from images, also consider your configured image properties. If you alter the core image properties, you should also update your Block Storage configuration. Amend glance_core_properties in the /etc/cinder/cinder.conf file on all controller nodes to match the core properties you have set in the Image service.
-
-
 
 
 2.	Creating Network Shared Folders
