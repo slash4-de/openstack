@@ -4,8 +4,41 @@ ___________________________
 DAY-3: More Funny Things Ahead .................! 
 ---------------------------------------------------------------------------------------------
 
-In your previous interaction with OpenStack, you learned how to create a new virtual machine instance and associate it with a network.
-We hope you enjoyed this! 
+In the earlier session, you worked with disk volumes and snapshots. I hoped you gained some useful information from that session.
+
+Today we will take you to another advanced level of OpenStack operation. This session will focus on :
+
+
+	1.	Working with Images
+
+	2.	Creating Network Shared Folders
+
+	3.	Tightening Your Security
+
+	4.	Working With Containers
+
+
+1.	Working with Images
+-----------------------------------------
+
+
+
+
+
+2.	Creating Network Shared Folders
+---------------------------------------------------------
+
+
+
+
+
+3.	Tightening Your Security
+---------------------------------------------
+
+
+
+4.	Working With Containers
+----------------------------------------------
 
 
 |image1|
