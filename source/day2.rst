@@ -121,11 +121,15 @@ After creation of the volume, the newly created volume will be displayed on the 
 
 In this image, you can see that this volume is not attached to any instance and therfore the field 'Attached To' is empty. 
 
+Remember that you can attach this volume to one isntance at a time. It is just like attaching an additional hard drive to your machine. 
+You can however attach more than one volumes (hard drives) to your VM instance at the same time.
+
+ Let's leave this new volume here and we will come back  laters and will attach it with one of our instances. 
 
 
 2.  Create a Snapshot of a Volume
 ---------------------------------------------
-Let's understand a few conceptual things about Snapshots before we actually create one.
+Let's understand a few conceptual facts about Snapshots before we actually create one.
 
 	1.	A snapshot is also a block storage that is persistant like a volume and can be created from a volume. 
 
@@ -133,9 +137,11 @@ Let's understand a few conceptual things about Snapshots before we actually crea
 
 	3.	A snapshot can be created from a volume that is available otherwise it is also possible to create a snapshot that is in use ( this is called forceful creation)
 
-	4.	A new volume can be created using a snapshot as well.
+	4.	It is possible to create a new volume from a snapshot.
 
-Action time ! Let's create a volume !
+
+Ready? Let's go and create a new snapshot for our new volume that we just created.
+
 
 	1. Click on the drop down menu under 'Actions' field in the row where the newly created volume is displayed.
 
@@ -157,13 +163,13 @@ A popup window will appear. You will need to fill out the details about the snap
 
 3. Attach a Volume To an Instance
 -------------------------------------------
-As you may remember that you had created a volume earlier but that volume is not being used by any instance. 
+Let's now come back to the volume that we had created but did not attach to any instance. 
 
-So let's make use of it and attach it with our Ubuntu instance that we created at the first day.
+So let's make use of it and attach it with our VM instance that we created at the first day.
 
 Normally attached volumes act as secondary storage for the VM instances but they can also be used as primary storage in a few cases.
 
-To attach a volume to your Ubuntu instance, see you need to taking follwoing steps:
+To attach a volume to your VM instance, you need to take the follwoing steps:
 
 	1.	At the volumes page, go to the row for the volume you created earlier.
 
@@ -184,7 +190,7 @@ The steps are also shown in the image below:
 
 |image8|
 
-Now you may see that the volume has been attached to your instance.  You will notice it under  'Attached To' column as highlighted in the next image:
+Thats it !. Now you may see that the volume has been attached to your instance.  You will notice it under  'Attached To' column as highlighted in the next image:
 
 
 |image9|
@@ -193,27 +199,121 @@ Congratulations! You attached a new volume to your instance. Now what next? You 
 
 Only after that you can see it as a regular disk and use it for storing data.
 
-The mkfs command is what you need here to create a filesystem on this disk.  You may create an ext3 filessytem.  Ok let's talk about Linux filesystems here.
+Login to your VM instance and run the following command :
+
+$ fdisk -l
+
+The newly attached volume will be displayed in addition to the existing disk volumes.  In some cases it will be attached as  /dev/vdb
+
+You need to create a new partition on this volume and a filesystem before mounting it as a regular directory.
+
+The mkfs command is what you need here to create a filesystem on this disk.  You may create an ext3 filessytem.  Let us talk about Linux filesystems here.
 
 Introduction to File systems
 ====================
 
-File systems are one of the things any newcomer to linux must become acquainted with. In the world of Microsoft you never really have to worry about it, the default being NTFS. Linux however, being built on a world of open source and differing opinions, is not limited in this way and so the user should have an understanding of what a file system is, and how it affects the computer.
+One of the basic concepts about Operating Systems is the filesystem. It is mechanism that is used by the Operating Systems to store data and files on the bare metal hardware. 
 
-At the core of a computer, it's all 1s and 0s, but the organization of that data is not quite as simple. A bit is a 1 or a 0, a byte is composed of 8 bits, a kilobyte is 1024 (i.e. 2^10) bytes, a megabyte is 1024 kilobytes and so on and so forth. All these bits and bytes are permanently stored on a Hard Drive. A hard drive stores all your data, any time you save a file, you're writing thousands of 1s and 0s to a metallic disc, changing the magnetic properties that can later be read as 1 or 0. There is so much data on a hard drive that there has to be some way to organize it, like a library of books and the old card drawers that indexed all of them, without that index, we'd be lost. Libraries, for the most part, use the Dewey Decimal System to organize their books, but there exist other systems to do so, none of which have attained the same fame as Mr. Dewey's invention. File systems are the same way. The ones most users are aware of are the ones Windows uses, the vFat or the NTFS systems, these are the Windows default file systems.
+Just like windows uses FAT32 and NTFS, Linux on the other hand supports a variety of filesystems. In this regard, 'extended filesystem' EXT3 and EXT4 are most commonly used.
 
-There are several different attributes which are necessary in defining file systems, these include their max file size, max partition size, whether they journal or not.
+Computer understands machine code that is a combination of 1s and 0s . Each 1 or 0 is a bit and 8 bits are called a byte. Similarly a kilo byte is composed of  1024 bytes. 
+
+A megabyte is 1024 kilobytes and a gigabyte is 1024 megabytes and so on. A  disk volume ( otherwise a hard drive) stores all these bytes and bits permenantly.  Each time you save a file to disk you are in fact writing several thousand 1s and 0s to the disk.
+
+This combination of 1s and 0s which comprises large sized data, needs to be stored in an organized way so it can be accessed without any problem whenever required. This is just like a book system in a library which uses Dewey Decimal System to organize books.
+
+The same goes to the filesystems on a disk volume. Windows uses NTFS and vFAT. Linux uses ext2, ext3, ext4, HPFS, and many more.
 
 Journaling
 =======
 
-A journaling file system is more reliable when it comes to data storage. Journaling file systems do not necessarily prevent corruption, but they do prevent inconsistency and are much faster at file system checks than non-journaled file systems. If a power failure happens while you are saving a file, the save will not complete and you end up with corrupted data and an inconsistent file system. Instead of actually writing directly to the part of the disk where the file is stored, a journaling file system first writes it to another part of the hard drive and notes the necessary changes to a log, then in the background it goes through each entry to the journal and begins to complete the task, and when the task is complete, it checks it off on the list. Thus the file system is always in a consistent state (the file got saved, the journal reports it as not completely saved, or the journal is inconsistent (but can be rebuilt from the file system)). Some journaling file systems can prevent corruption as well by writing data twice.
+A journaling filesystem adds more reliability in the context of data storage on a disk volume. Although they do not prevent corruption however they have a few preventive measures to avoid inconsistencies and deploy a few mechanisms to perform file system checks.
+
+For example when a system crashes due to a power failure, the files those were already opened by system applications will not be saved properly to the disck. This will result into data corruption and inconsistent filesystem.
+
+Using a jouranl, the operating system creates an index of the data stored on the disk. when a file is being modified, the operating system does not just overwrite it in the same place however it saves it in another place and logs the changes into a file.
+
+When the task is complete, it just commits the changes in the actual file and removes the log entry. Therefore the system is always in a consistent state.
+
+Fragmentation
+==========
+
+Windows requires the disk to be fragmented once in a while so that the used blocks be shifted to one continuous region of the hard disk. This is not needed in case of Linux because it is designed this way.
+Linux EXT3 filesystem was designed to keep the used blocks of files together or at least very close to each other. In EXT4 there are a few tools available for defragmenting the file system.
+
+When ext3 was developed, it was coded so that it would keep blocks of files together or at least near each other.
+
+No true defragmenting tools exist for the ext3 file system, but tools for defragmenting will be included with the ext4 file system.
+
+Having said all this theoraticall story about filesystems, let's create a new ext3 filesystem on the new volume you created earlier.
+
+Suppose your new volume is shown as /dev/vdb  under  'fdisk -l' command.
+
+Let us create a new partition  /dev/vdb1  on it.
+
+Run the command:  "sudo fdisk  /dev/vdb"
+
+Next prompt will be displayed. Type  'p'  to print the partition table.
+
+Next  type 'm'  for getting help.  Now type 'n' to create a new partition table. 
+
+To set the default type (primary), type 'p' and press enter. Next,  set a prtition number.  Let's put 1 in this case. Press enter.
+
+Next,  set the partition starting blocks. Leave it as default and press enter. Next, set the partition ending blocks. Remember that we want our partition to occupy all free space hence the ending blocks should include the complete disk.
+
+Press enter. To save the changes,  press 'w'  and press enter. This will bring you back to the shell command prompt.
+
+You need to create  a filesystem on this new partition.  To do so,  type the command :  'sudo mkfs  -t ext3  /dev/vdb1' .  This will create a new filesystem of type ext3 on this partition.
+
+Now you need to create a folder as mounting point for this partition.
 
 You can use the 'mkdir' command to create a new directory that you will use as a mount point for this volume.
 
 
-		mkdir /mydiskvolume
-		mount /dev/vdb  /mydiskvolume
+		$ sudo mkdir /mydiskvolume
+		$ sudo mount /dev/vdb  /mydiskvolume
+
+To verfiy that the disk has been mounted properly, run the below command:
+
+		$ df -h
+
+You can make the changes permenant by adding  a new line to the /etc/fstab file. The line should be something like below:
+
+
+/dev/vdb1		/mydiskvolume	ext3	rw	0	0
+
+Thats it!. You have successfully attached a new volume to your instance and also created a filesystem and then mounted on the system.
+
+
+4.	Deleting a Snapshot
+---------------------------------------
+Why on earth someone needs to delete a snapshot? Well there are times when you have created several snapshots in different points in time. You may want to keep the latest snapshots and want to delete those which were taken a few months back.
+
+So how to do it? Let's see it now.  
+	
+	a.	First of all go to the dashboard as always you do. Then goto compute --> Volumes  --> Volume Snapshots
+	b. 	Click on  'Delete Volume Snapshot' on the right. A confirmation window will apear, select delete snapshot again.
+
+The same procedure is depicted in the image below:
+
+
+|image11|
+
+5. 	Detaching a Disk Volume from a VM Instance
+-----------------------------------------------------------------------
+
+
+
+6. 	Deleting a disk volume
+-------------------------------------------
+
+
+
+
+7. 	Terminating a VM instance
+-----------------------------------------------
+
+
 
 
 .. |image1| image:: media/d2_image1.png
