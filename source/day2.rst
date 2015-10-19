@@ -238,7 +238,7 @@ When the task is complete, it just commits the changes in the actual file and re
 Fragmentation
 ==========
 
-Windows requires the disk to be fragmented once in a while so that the used blocks be shifted to one continuous region of the hard disk. This is not needed in case of Linux because it is designed this way.
+Windows requires the disk to be defragmented once in a while so that the used blocks be shifted to one continuous region of the hard disk. This is not needed in case of Linux because it is designed this way.
 Linux EXT3 filesystem was designed to keep the used blocks of files together or at least very close to each other. In EXT4 there are a few tools available for defragmenting the file system.
 
 When ext3 was developed, it was coded so that it would keep blocks of files together or at least near each other.
