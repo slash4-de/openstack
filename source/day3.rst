@@ -123,6 +123,11 @@ From the CURRENT PROJECT on the Project tab, select the appropriate project.
 
 On the Project tab, open the Compute tab and click Images category.
 
+A page shown in below sceenshot will be displayed:
+
+|image1|
+
+
 Click Create Image.
 
 The Create An Image dialog box appears.
@@ -141,7 +146,7 @@ Enter the following values:
 
 Below screenshot depicts the steps:
 
-|image1|
+
 
 
 	f.	Architecture	Specify the architecture. For example, i386 for a 32-bit architecture or x86_64 for a 64-bit architecture.
