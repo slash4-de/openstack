@@ -110,8 +110,9 @@ ISO
 It is the image file format most commonly used for CDs and DVDs. But since an ISO contains a bootable filesystem along with an operating system, it can be used as a virtual machine image.
 
 
-	Upload An Image
-	
+	1.1	Upload An Image
+	-------------------------------------
+
 Now let's get back to some practical work and upload an image to our OpenStack cloud.
 
 Follow this procedure to upload an image to a project:
