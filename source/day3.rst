@@ -20,6 +20,69 @@ Today we will take you to another advanced level of OpenStack operation. This se
 
 1.	Working with Images
 -----------------------------------------
+A virtual machine image, referred to in this document simply as an image, is a single file that contains a virtual disk that has a bootable operating system installed on it. Images are used to create virtual machine instances within the cloud. For information about creating image files, see the OpenStack Virtual Machine Image Guide.
+
+Depending on your role, you may have permission to upload and manage virtual machine images. Operators might restrict the upload and management of images to cloud administrators or operators only. If you have the appropriate privileges, you can use the dashboard to upload and manage images in the admin project.
+
+ Note
+You can also use the glance and nova command-line clients or the Image service and Compute APIs to manage images.
+
+
+Upload an image
+
+Follow this procedure to upload an image to a project:
+
+Log in to the dashboard.
+
+From the CURRENT PROJECT on the Project tab, select the appropriate project.
+
+On the Project tab, open the Compute tab and click Images category.
+
+Click Create Image.
+
+The Create An Image dialog box appears.
+
+Enter the following values:
+
+Name	Enter a name for the image.
+Description	Enter a brief description of the image.
+Image Source	Choose the image source from the dropdown list. Your choices are Image Location and Image File.
+Image File or Image Location	Based on your selection for Image Source, you either enter the location URL of the image in the Image Location field, or browse for the image file on your file system and add it.
+Format	Select the image format (for example, QCOW2) for the image.
+Architecture	Specify the architecture. For example, i386 for a 32-bit architecture or x86_64 for a 64-bit architecture.
+Minimum Disk (GB) and Minimum RAM (MB)	Leave these fields empty.
+Copy Data	Specify this option to copy image data to the Image service.
+Public	Select this check box to make the image public to all users with access to the current project.
+Protected	Select this check box to ensure that only users with permissions can delete the image.
+
+Click Create Image.
+
+The image is queued to be uploaded. It might take some time before the status changes from Queued to Active
+Update an image¶
+
+Follow this procedure to update an existing image.
+
+Log in to the dashboard.
+From the CURRENT PROJECT on the Project tab, select the appropriate project.
+On the Project tab, open the Compute tab and click Images category.
+Select the image that you want to edit.
+In the Actions column, click More and then select Edit Image from the list.
+In the Update Image dialog box, you can perform the following actions:
+Change the name of the image.
+Select the Public check box to make the image public.
+Clear the Public check box to make the image private.
+Click Update Image.
+Delete an image¶
+
+Deletion of images is permanent and cannot be reversed. Only users with the appropriate permissions can delete images.
+
+Log in to the dashboard.
+From the CURRENT PROJECT on the Project tab, select the appropriate project.
+On the Project tab, open the Compute tab and click Images category.
+Select the images that you want to delete.
+Click Delete Images.
+In the Confirm Delete Images dialog box, click Delete Images to confirm the deletion.
+
 
 An OpenStack Compute cloud is not very useful unless you have virtual machine images (which some people call "virtual appliances"). This guide describes how to obtain, create, and modify virtual machine images that are compatible with OpenStack.
 
