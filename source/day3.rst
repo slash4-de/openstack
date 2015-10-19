@@ -146,6 +146,7 @@ Enter the following values:
 
 Below screenshot depicts the steps:
 
+|image2|
 
 
 
@@ -161,7 +162,13 @@ Below screenshot depicts the steps:
 
 Click Create Image.
 
+The steps are also depicted in the screenshot  below:
+
+|image3|
+
+
 The image is queued to be uploaded. It might take some time before the status changes from Queued to Active
+
 
 
 
