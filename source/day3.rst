@@ -22,17 +22,17 @@ Today we will take you to another advanced level of OpenStack operation. This se
 -----------------------------------------
 
 In the context of OpenStack, an image or otherwise a virtual machine image is nothing but a virtual disk file containing a bootable operating system. 
-OpenStack uses an image as a source to create a new virtual machine instace. As a cloud adminstrator or a user you may need to upload and maintain VM images for your cloud.
+OpenStack uses an image as a source to create a new virtual machine instance. As a cloud adminstrator or a user you may need to upload and maintain VM images for your cloud.
 Both OpenStack dashboard as well as command line tools can be used to manage images for the cloud.
 
-Please note that besides command line tools like 'glance' and 'nova; you can also use the necessary APIs to maintain images.
+Please note that, besides command line tools like 'glance' and 'nova; you can also use the necessary APIs to maintain images.
 
 Never confuse when you hear people saying , images or virtual machine images or virtual appliances. 
 They all simply mean a virtual machine image. For simplification we will use the term 'image' to refer to virtual machine image or a virtual appliance.
 
 In fact, without an image, the Openstack cloud is not very purposeful. So images have vital importance!
 
-Before actually using the methods to maintain images, you must know the types and formats of images used virtualized environments.
+Before actually using the methods to maintain images, you must know the types and formats of images used in virtualized environments.
 
 Images come in various formats because of the variety of hypervisors available today. Below are a few major image formats:
 
@@ -72,55 +72,44 @@ It was the first format that was supported by Amazon Elastic Compute Cloud (Amaz
 
 
 UEC tarball
-A UEC (Ubuntu Enterprise Cloud) tarball is a gzipped tarfile that contains an AMI file, AKI file, and ARI file.
+========
 
+Ubuntu Enterprise Cloud (UEC)  is the tar file which contains an AMI/AKI/ARI bundle, packaged and gzipped into a single tar file.
 
-
-Ubuntu Enterprise Cloud refers to a discontinued Eucalyptus-based Ubuntu cloud solution that has been replaced by the OpenStack-based Ubuntu Cloud Infrastructure.
+UEC was initially build using Ubuntu and Eucalyptus cloud framework which was later on replaced with OpenStack.
 
 VMDK
-VMware's ESXi hypervisor uses the VMDK (Virtual Machine Disk) format for images.
+=====
+
+Virtual Machine Disk (VMDK) format is used by VMWare's ESXi hypervisor.
 
 VDI
-VirtualBox uses the VDI (Virtual Disk Image) format for image files. None of the OpenStack Compute hypervisors support VDI directly, so you will need to convert these files to a different format to use them with OpenStack.
+====
+
+Virtual Disk Image is a format used by VirtualBox. OpenStack Compute hypervisors do not support it straight forward. You need to convert it to qcow2 or raw to be able to use it with OpenStack.
+
 
 VHD
-Microsoft Hyper-V uses the VHD (Virtual Hard Disk) format for images.
+====
+
+Virtual Hard Disk (VHD) format is used by Microsoft Hyper-V
 
 VHDX
-The version of Hyper-V that ships with Microsoft Server 2012 uses the newer VHDX format, which has some additional features over VHD such as support for larger disk sizes and protection against data corruption during power failures.
+====
+
+VHDX is an upgraded version of VHD that can support larger disk size and also provides features to guard against data corruption during power failures.
 
 OVF
-OVF (Open Virtualization Format) is a packaging format for virtual machines, defined by the Distributed Management Task Force (DMTF) standards group. An OVF package contains one or more image files, a .ovf XML metadata file that contains information about the virtual machine, and possibly other files as well.
+===
 
-An OVF package can be distributed in different ways. For example, it could be distributed as a set of discrete files, or as a tar archive file with an .ova (open virtual appliance/application) extension.
+Distributed Management Task Force (DMTF) devised the Open Virtualization Format (OVF).  OpenStack Compute does not directly support OVF packages. You need to convert it to qcow2 or raw format to be able to use it with OpenStack.
 
 OpenStack Compute does not currently have support for OVF packages, so you will need to extract the image file(s) from an OVF package if you wish to use it with OpenStack.
 
 ISO
-The ISO format is a disk image formatted with the read-only ISO 9660 (also known as ECMA-119) filesystem commonly used for CDs and DVDs. While we don't normally think of ISO as a virtual machine image format, since ISOs contain bootable filesystems with an installed operating system, you can treat them the same as you treat other virtual machine image files.
+===
 
-Disk and container formats for images
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+It is the image file format most commonly used for CDs and DVDs. But since an ISO contains a bootable filesystem along with an operating system, it can be used as a virtual machine image.
 
 
 Upload an image
@@ -180,39 +169,8 @@ In the Confirm Delete Images dialog box, click Delete Images to confirm the dele
 
 
 
-Disk formats
-Container formats
-When you add an image to the Image service, you can specify its disk and container formats.
-
- Disk formats
-
-The disk format of a virtual machine image is the format of the underlying disk image. Virtual appliance vendors have different formats for laying out the information contained in a virtual machine disk image.
-
-Set the disk format for your image to one of the following values:
-
-raw: An unstructured disk image format; if you have a file without an extension it is possibly a raw format.
-
-vhd: The VHD disk format, a common disk format used by virtual machine monitors from VMware, Xen, Microsoft, VirtualBox, and others.
-
-vmdk: Common disk format supported by many common virtual machine monitors.
-
-vdi: Supported by VirtualBox virtual machine monitor and the QEMU emulator.
-
-iso: An archive format for the data contents of an optical disc, such as CD-ROM.
-
-qcow2: Supported by the QEMU emulator that can expand dynamically and supports Copy on Write.
-
-aki: An Amazon kernel image.
-
-ari: An Amazon ramdisk image.
-
-ami: An Amazon machine image.
-
- Container formats
-
-The container format indicates whether the virtual machine image is in a file format that also contains metadata about the actual virtual machine.
-
 [Note]	Note
+
 The Image service and other OpenStack projects do not currently support the container format. It is safe to specify bare as the container format if you are unsure.
 
 You can set the container format for your image to one of the following values:
@@ -228,12 +186,15 @@ ari. An Amazon ramdisk image.
 ami. An Amazon machine image.
 
 Image metadata
+============
+
 
 Image metadata can help end users determine the nature of an image, and is used by associated OpenStack components and drivers which interface with the Image service.
 
 Metadata can also determine the scheduling of hosts. If the property option is set on an image, and Compute is configured so that the ImagePropertiesFilter scheduler filter is enabled (default), then the scheduler only considers compute hosts that satisfy that property.
 
 [Note]	Note
+
 Compute's ImagePropertiesFilter value is specified in the scheduler_default_filter value in the /etc/nova/nova.conf file.
 
 You can add metadata to Image service images by using the --property key=value parameter with the glance image-create or glance image-update command. More than one property can be specified.
