@@ -199,7 +199,7 @@ Image metadata can help end users determine the nature of an image, and is used 
 
 Metadata can also determine the scheduling of hosts. If the property option is set on an image, and Compute is configured so that the ImagePropertiesFilter scheduler filter is enabled (default), then the scheduler only considers compute hosts that satisfy that property.
 
-[Note]	Note
+
 
 Compute's ImagePropertiesFilter value is specified in the scheduler_default_filter value in the /etc/nova/nova.conf file.
 
@@ -211,10 +211,6 @@ All associated properties for an image can be displayed using the glance image-s
 Volume-from-Image properties
 When creating Block Storage volumes from images, also consider your configured image properties. If you alter the core image properties, you should also update your Block Storage configuration. Amend glance_core_properties in the /etc/cinder/cinder.conf file on all controller nodes to match the core properties you have set in the Image service.
 
-
- Get images
-
-The simplest way to obtain a virtual machine image that works with OpenStack is to download one that someone else has already created. Most of the images contain the cloud-init package to support SSH key pair and user data injection. Because many of the images disable SSH password authentication by default, boot the image with an injected key pair. You can SSH into the instance with the private key and default login account. See the OpenStack End User Guide for more information on how to create and inject key pairs with OpenStack.
 
 
 
