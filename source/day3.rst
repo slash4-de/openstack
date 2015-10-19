@@ -110,9 +110,8 @@ ISO
 It is the image file format most commonly used for CDs and DVDs. But since an ISO contains a bootable filesystem along with an operating system, it can be used as a virtual machine image.
 
 
-	1.1	Upload An Image
-		_________________________________
-
+	Upload An Image
+	
 Now let's get back to some practical work and upload an image to our OpenStack cloud.
 
 Follow this procedure to upload an image to a project:
@@ -160,7 +159,7 @@ The image is queued to be uploaded. It might take some time before the status ch
 
 
 
-Update an image¶
+Update an image
 
 Follow this procedure to update an existing image.
 
@@ -174,7 +173,7 @@ Change the name of the image.
 Select the Public check box to make the image public.
 Clear the Public check box to make the image private.
 Click Update Image.
-Delete an image¶
+Delete an image
 
 Deletion of images is permanent and cannot be reversed. Only users with the appropriate permissions can delete images.
 
