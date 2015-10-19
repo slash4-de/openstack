@@ -170,23 +170,8 @@ The steps are also depicted in the screenshot  below:
 The image is queued to be uploaded. It might take some time before the status changes from Queued to Active
 
 
-
-
-Update an image
-
-Follow this procedure to update an existing image.
-
-Log in to the dashboard.
-From the CURRENT PROJECT on the Project tab, select the appropriate project.
-On the Project tab, open the Compute tab and click Images category.
-Select the image that you want to edit.
-In the Actions column, click More and then select Edit Image from the list.
-In the Update Image dialog box, you can perform the following actions:
-Change the name of the image.
-Select the Public check box to make the image public.
-Clear the Public check box to make the image private.
-Click Update Image.
-Delete an image
+1.2	Delete an Image
+------------------------------------
 
 Deletion of images is permanent and cannot be reversed. Only users with the appropriate permissions can delete images.
 
@@ -195,6 +180,11 @@ From the CURRENT PROJECT on the Project tab, select the appropriate project.
 On the Project tab, open the Compute tab and click Images category.
 Select the images that you want to delete.
 Click Delete Images.
+
+The steps are shown in the below screenshot as well
+
+|image4|
+
 In the Confirm Delete Images dialog box, click Delete Images to confirm the deletion.
 
 
