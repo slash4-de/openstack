@@ -20,12 +20,107 @@ Today we will take you to another advanced level of OpenStack operation. This se
 
 1.	Working with Images
 -----------------------------------------
-A virtual machine image, referred to in this document simply as an image, is a single file that contains a virtual disk that has a bootable operating system installed on it. Images are used to create virtual machine instances within the cloud. For information about creating image files, see the OpenStack Virtual Machine Image Guide.
 
-Depending on your role, you may have permission to upload and manage virtual machine images. Operators might restrict the upload and management of images to cloud administrators or operators only. If you have the appropriate privileges, you can use the dashboard to upload and manage images in the admin project.
+In the context of OpenStack, an image or otherwise a virtual machine image is nothing but a virtual disk file containing a bootable operating system. 
+OpenStack uses an image as a source to create a new virtual machine instace. As a cloud adminstrator or a user you may need to upload and maintain VM images for your cloud.
+Both OpenStack dashboard as well as command line tools can be used to manage images for the cloud.
 
- Note
-You can also use the glance and nova command-line clients or the Image service and Compute APIs to manage images.
+Please note that besides command line tools like 'glance' and 'nova; you can also use the necessary APIs to maintain images.
+
+Never confuse when you hear people saying , images or virtual machine images or virtual appliances. 
+They all simply mean a virtual machine image. For simplification we will use the term 'image' to refer to virtual machine image or a virtual appliance.
+
+In fact, without an image, the Openstack cloud is not very purposeful. So images have vital importance!
+
+Before actually using the methods to maintain images, you must know the types and formats of images used virtualized environments.
+
+Images come in various formats because of the variety of hypervisors available today. Below are a few major image formats:
+
+Raw
+===
+
+As the name indicates, this is the most simplest form of an image. KVM and Xen hypervisors love it ( and ofcourse they support it!) 
+It is infact a block device file just like one created using the 'dd' command. 
+
+We do not ask you to always use dd comand to create a raw disk image as we will discuss laters on how to create a raw image. 
+
+qcow2
+=====
+
+QCOW2 stands for QEMU copy-on-write version 2. KVM hypervisor uses this format very commonly. There are some enhanced features provided by qcow2 over raw format which are:
+
+	a.	It uses sparse representation which results into a smaller image size.
+
+	b.	It supports creating disk snapshots
+
+	c.	Due to being smaller in size, it takes less time to upload.
+
+	d. 	OpenStack will automatically convert a raw image into qcow2 as it supports snapshots. (which is not the case with raw images)
+	
+
+AMI/AKI/ARI
+========
+
+It was the first format that was supported by Amazon Elastic Compute Cloud (Amazon EC2). The three files are:
+
+	a.	AMI (Amazon Machine Image) is the image in raw format.
+	
+	b.	AKI (Amazon Kernel Image) it is the kernel ( vmlinuz) file which is laoded by the linux kernel for booting.
+	
+	c.	ARI (Amazon Ramdisk Image) is the ramdisk (initrd) file optionally mounted at boot time. 
+
+
+
+UEC tarball
+A UEC (Ubuntu Enterprise Cloud) tarball is a gzipped tarfile that contains an AMI file, AKI file, and ARI file.
+
+
+
+Ubuntu Enterprise Cloud refers to a discontinued Eucalyptus-based Ubuntu cloud solution that has been replaced by the OpenStack-based Ubuntu Cloud Infrastructure.
+
+VMDK
+VMware's ESXi hypervisor uses the VMDK (Virtual Machine Disk) format for images.
+
+VDI
+VirtualBox uses the VDI (Virtual Disk Image) format for image files. None of the OpenStack Compute hypervisors support VDI directly, so you will need to convert these files to a different format to use them with OpenStack.
+
+VHD
+Microsoft Hyper-V uses the VHD (Virtual Hard Disk) format for images.
+
+VHDX
+The version of Hyper-V that ships with Microsoft Server 2012 uses the newer VHDX format, which has some additional features over VHD such as support for larger disk sizes and protection against data corruption during power failures.
+
+OVF
+OVF (Open Virtualization Format) is a packaging format for virtual machines, defined by the Distributed Management Task Force (DMTF) standards group. An OVF package contains one or more image files, a .ovf XML metadata file that contains information about the virtual machine, and possibly other files as well.
+
+An OVF package can be distributed in different ways. For example, it could be distributed as a set of discrete files, or as a tar archive file with an .ova (open virtual appliance/application) extension.
+
+OpenStack Compute does not currently have support for OVF packages, so you will need to extract the image file(s) from an OVF package if you wish to use it with OpenStack.
+
+ISO
+The ISO format is a disk image formatted with the read-only ISO 9660 (also known as ECMA-119) filesystem commonly used for CDs and DVDs. While we don't normally think of ISO as a virtual machine image format, since ISOs contain bootable filesystems with an installed operating system, you can treat them the same as you treat other virtual machine image files.
+
+Disk and container formats for images
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 Upload an image
@@ -84,75 +179,6 @@ Click Delete Images.
 In the Confirm Delete Images dialog box, click Delete Images to confirm the deletion.
 
 
-An OpenStack Compute cloud is not very useful unless you have virtual machine images (which some people call "virtual appliances"). This guide describes how to obtain, create, and modify virtual machine images that are compatible with OpenStack.
-
-To keep things brief, we'll sometimes use the term "image" instead of "virtual machine image".
-
-What is a virtual machine image?
-
-A virtual machine image is a single file which contains a virtual disk that has a bootable operating system installed on it.
-
-Virtual machine images come in different formats, some of which are described below.
-
-Raw
-The "raw" image format is the simplest one, and is natively supported by both KVM and Xen hypervisors. You can think of a raw image as being the bit-equivalent of a block device file, created as if somebody had copied, say, /dev/sda to a file using the dd command.
-
-We don't recommend creating raw images by dd'ing block device files, we discuss how to create raw images later.
-
-qcow2
-The qcow2 (QEMU copy-on-write version 2) format is commonly used with the KVM hypervisor. It has some additional features over the raw format, such as:
-
-Using sparse representation, so the image size is smaller.
-
-Support for snapshots.
-
-Because qcow2 is sparse, qcow2 images are typically smaller than raw images. Smaller images mean faster uploads, so it's often faster to convert a raw image to qcow2 for uploading instead of uploading the raw file directly.
-Because raw images don't support snapshots, OpenStack Compute will automatically convert raw image files to qcow2 as needed.
-AMI/AKI/ARI
-The AMI/AKI/ARI format was the initial image format supported by Amazon EC2. The image consists of three files:
-
-AMI (Amazon Machine Image):
-
-This is a virtual machine image in raw format, as described above.
-
-AKI (Amazon Kernel Image)
-
-A kernel file that the hypervisor will load initially to boot the image. For a Linux machine, this would be a vmlinuz file.
-
-ARI (Amazon Ramdisk Image)
-
-An optional ramdisk file mounted at boot time. For a Linux machine, this would be an initrd file.
-
-UEC tarball
-A UEC (Ubuntu Enterprise Cloud) tarball is a gzipped tarfile that contains an AMI file, AKI file, and ARI file.
-
-
-
-Ubuntu Enterprise Cloud refers to a discontinued Eucalyptus-based Ubuntu cloud solution that has been replaced by the OpenStack-based Ubuntu Cloud Infrastructure.
-
-VMDK
-VMware's ESXi hypervisor uses the VMDK (Virtual Machine Disk) format for images.
-
-VDI
-VirtualBox uses the VDI (Virtual Disk Image) format for image files. None of the OpenStack Compute hypervisors support VDI directly, so you will need to convert these files to a different format to use them with OpenStack.
-
-VHD
-Microsoft Hyper-V uses the VHD (Virtual Hard Disk) format for images.
-
-VHDX
-The version of Hyper-V that ships with Microsoft Server 2012 uses the newer VHDX format, which has some additional features over VHD such as support for larger disk sizes and protection against data corruption during power failures.
-
-OVF
-OVF (Open Virtualization Format) is a packaging format for virtual machines, defined by the Distributed Management Task Force (DMTF) standards group. An OVF package contains one or more image files, a .ovf XML metadata file that contains information about the virtual machine, and possibly other files as well.
-
-An OVF package can be distributed in different ways. For example, it could be distributed as a set of discrete files, or as a tar archive file with an .ova (open virtual appliance/application) extension.
-
-OpenStack Compute does not currently have support for OVF packages, so you will need to extract the image file(s) from an OVF package if you wish to use it with OpenStack.
-
-ISO
-The ISO format is a disk image formatted with the read-only ISO 9660 (also known as ECMA-119) filesystem commonly used for CDs and DVDs. While we don't normally think of ISO as a virtual machine image format, since ISOs contain bootable filesystems with an installed operating system, you can treat them the same as you treat other virtual machine image files.
-
-Disk and container formats for images
 
 Disk formats
 Container formats
