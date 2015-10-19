@@ -10,7 +10,8 @@ Many of you may have heard this famous quote:
 
 Let's have some more practical expereince with OpenStack.
 
-Understand how the magic happens.
+Below are the learning ojectives of day4:
+.
 
 
 |image1|
