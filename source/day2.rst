@@ -169,6 +169,8 @@ So let's make use of it and attach it with our VM instance that we created at th
 
 Normally attached volumes act as secondary storage for the VM instances but they can also be used as primary storage in a few cases.
 
+It is important to remember that volumes can not be attached to windows guests. In other words Hyper-V based VMs.
+
 To attach a volume to your VM instance, you need to take the follwoing steps:
 
 	1.	At the volumes page, go to the row for the volume you created earlier.
@@ -245,7 +247,7 @@ When ext3 was developed, it was coded so that it would keep blocks of files toge
 
 No true defragmenting tools exist for the ext3 file system, but tools for defragmenting will be included with the ext4 file system.
 
-Having said all this theoraticall story about filesystems, let's create a new ext3 filesystem on the new volume you created earlier.
+Having said all this theoratical story about filesystems, let's create a new ext3 filesystem on the new volume you created earlier.
 
 Suppose your new volume is shown as /dev/vdb  under  'fdisk -l' command.
 
@@ -292,7 +294,7 @@ Why on earth someone needs to delete a snapshot? Well there are times when you h
 So how to do it? Let's see it now.  
 	
 	a.	First of all go to the dashboard as always you do. Then goto compute --> Volumes  --> Volume Snapshots
-	b. 	Click on  'Delete Volume Snapshot' on the right. A confirmation window will apear, select delete snapshot again.
+	b. 	Click on  'Delete Volume Snapshot' on the right. A confirmation window will apear, select 'delete snapshot' again.
 
 The same procedure is depicted in the image below:
 
@@ -302,18 +304,53 @@ The same procedure is depicted in the image below:
 5. 	Detaching a Disk Volume from a VM Instance
 -----------------------------------------------------------------------
 
+Just as you can detach a physical hard drive from your machine, you can detach a disk volume from your VM. In case of a physical hard disk you need to make sure that the disk is un mounted first.
+
+Same is the as case with a disk volume attached to a VM instance. First of all you must unmount it from the instance usiing the below command:
+
+	$ sudo umount /dev/vdb      # (In this case /dev/vdb is the volume to be detached)
+
+Now you can go to the OpenStack dashboard and under projects, goto compute. Select Volumes and then goto 'Manage Volumes' on the right in the same row where your newly created volume is displayed.
+
+The same is depicted in the image below:
 
 
-6. 	Deleting a disk volume
+|image12|
+
+Next, a popup window will appear. Click on 'Detach Volume' .  This will detach the volume from the instance. Now you can delete this volume if you think it is no longer needed.
+
+Let's go to next section and see how to delte a disk volume.
+
+
+6. 	Deleting a Disk Volume
 -------------------------------------------
 
+One of the major responsibilities of a cloud administrator is to keep the environment clean and free up any unused resources. Small or unused disk volumes can be sometimes deleted to free up space for creating larger volumes.
 
+One of the advantages of a virtualized environment is that you can create volumes of different sizes. You can delete small volumes and free up some space and then combine all free space to create a new bigger volume.
 
+To delete a disk volume  goto dashboard, projects --> compute --> volumes  and select the volume that you wanted to delete. (Make sure that the volume is detached already!)
+
+Click on 'Delete Volumes' button on right top corner of the page. Then confirm deletion in the popup window. This will delete the disk volume.
+
+The same procedure is depicted in the image below:
+
+|image13|
 
 7. 	Terminating a VM instance
 -----------------------------------------------
 
+At times you may need to terminate an instance to permenantly detele it. This will destroy everything including the data stored on its primary disk. However the secondary disk volumes attached to it will not be deleted.
 
+	a.	You may terminate an instance using a similar procedure that you used to create it. Goto OpenStack dashboard then goto 'Compute' and then 'Instances'
+
+	b.	Select the instance you want to terminate.
+
+	c. 	Click on the button ' Terminate Instances'.  Click on 'Terminate Instances' again  in the confirmation window.
+
+The same procedure is depicted in the below image:
+
+|image14|
 
 
 .. |image1| image:: media/d2_image1.png
