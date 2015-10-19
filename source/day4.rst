@@ -10,6 +10,7 @@ So experience is something that we all need !  Let's have some more practical ex
 
 Below are the learning ojectives of day4:
 .
+
 1. 	 Understanding OpenStack Echosystem
 
 2.	 OpenStack Node Types
