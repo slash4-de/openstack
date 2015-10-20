@@ -11,11 +11,13 @@ Today we will take you to another advanced level of OpenStack operation. This se
 
 	1.	Working with Images
 
-	2.	Creating Network Shared Folders
+	2.	Working With Containers
 
 	3.	Tightening Your Security
 
-	4.	Working With Containers
+	4.	Working With Databases
+
+	
 
 
 1.	Working with Images
@@ -188,13 +190,81 @@ The steps are shown in the below screenshot as well
 In the Confirm Delete Images dialog box, click Delete Images to confirm the deletion.
 
 
-
-
-
-
-
-2.	Creating Network Shared Folders
+2.	Working With Containers
 ---------------------------------------------------------
+
+In OpenStack Object Storage, containers provide storage for objects in a manner similar to a Windows folder or Linux file directory, though they cannot be nested. 
+An object in OpenStack consists of the file to be stored in the container and any accompanying metadata.
+
+Create a container
+
+Log in to the dashboard.
+From the CURRENT PROJECT on the Project tab, select the appropriate project.
+On the Project tab, open the Object Store tab and click Containers category.
+Click Create Container.
+In the Create Container dialog box, enter a name for the container, and then click Create Container.
+You have successfully created a container.
+
+
+Upload an object
+
+Log in to the dashboard.
+
+From the CURRENT PROJECT on the Project tab, select the appropriate project.
+
+On the Project tab, open the Object Store tab and click Containers category.
+
+Select the container in which you want to store your object.
+
+Click Upload Object.
+
+The Upload Object To Container: <name> dialog box appears. ``<name>`` is the name of the container to which you are uploading the object.
+
+Enter a name for the object.
+
+Browse to and select the file that you want to upload.
+
+Click Upload Object.
+
+You have successfully uploaded an object to the container
+
+
+Manage an object
+
+To edit an object
+
+Log in to the dashboard.
+
+From the CURRENT PROJECT on the Project tab, select the appropriate project.
+
+On the Project tab, open the Object Store tab and click Containers category.
+
+Select the container in which you want to store your object.
+
+Click More and choose Edit from the dropdown list.
+
+The Edit Object dialog box is displayed.
+
+Browse to and select the file that you want to upload.
+
+Click Update Object.
+
+
+
+To copy an object from one container to another
+
+Log in to the dashboard.
+From the CURRENT PROJECT on the Project tab, select the appropriate project.
+On the Project tab, open the Object Store tab and click Containers category.
+Select the container in which you want to store your object.
+Click More and choose Copy from the dropdown list.
+In the Copy Object launch dialog box, enter the following values:
+Destination Container: Choose the destination container from the list.
+Path: Specify a path in which the new copy should be stored inside of the selected container.
+Destination object name: Enter a name for the object in the new container.
+Click Copy Object.
+
+
 
 
 
@@ -203,15 +273,100 @@ In the Confirm Delete Images dialog box, click Delete Images to confirm the dele
 3.	Tightening Your Security
 ---------------------------------------------
 
+Before you launch an instance, you should add security group rules to enable users to ping and use SSH to connect to the instance. Security groups are sets of IP filter rules that define networking access and are applied to all instances within a project. To do so, you either add rules to the default security group Add a rule to the default security group or add a new security group with rules.
+
+Key pairs are SSH credentials that are injected into an instance when it is launched. To use key pair injection, the image that the instance is based on must contain the cloud-init package. Each project should have at least one key pair. For more information, see the section Add a key pair.
+
+If you have generated a key pair with an external tool, you can import it into OpenStack. The key pair can be used for multiple instances that belong to a project. For more information, see the section Import a key pair.
+
+When an instance is created in OpenStack, it is automatically assigned a fixed IP address in the network to which the instance is assigned. This IP address is permanently associated with the instance until the instance is terminated. However, in addition to the fixed IP address, a floating IP address can also be attached to an instance. Unlike fixed IP addresses, floating IP addresses are able to have their associations modified at any time, regardless of the state of the instances involved.
+
+Add a rule to the default security group
+
+This procedure enables SSH and ICMP (ping) access to instances. The rules apply to all instances within a given project, and should be set for every project unless there is a reason to prohibit SSH or ICMP access to the instances.
+
+This procedure can be adjusted as necessary to add additional security group rules to a project, if your cloud requires them.
+
+Note
+When adding a rule, you must specify the protocol used with the destination port or source port.
+
+Log in to the dashboard.
+
+From the CURRENT PROJECT on the Project tab, select the appropriate project.
+
+On the Project tab, open the Compute tab and click Access & Security category. The Security Groups tab shows the security groups that are available for this project.
+
+Select the default security group and click Manage Rules.
+
+To allow SSH access, click Add Rule.
+
+In the Add Rule dialog box, enter the following values:
+
+Rule: SSH
+Remote: CIDR
+
+Note
+To accept requests from a particular range of IP addresses, specify the IP address block in the CIDR box.
+
+Click Add.
+
+Instances will now have SSH port 22 open for requests from any IP address.
+
+To add an ICMP rule, click Add Rule.
+
+In the Add Rule dialog box, enter the following values:
+
+Rule: All ICMP
+Remote: Ingress
+Click Add.
+
+Instances will now accept all incoming ICMP packets.
 
 
-4.	Working With Containers
-----------------------------------------------
+Add a key pair¶
+
+Create at least one key pair for each project.
+
+Log in to the dashboard.
+From the CURRENT PROJECT on the Project tab, select the appropriate project.
+On the Project tab, open the Compute tab and click Access & Security category.
+Click the Key Pairs tab, which shows the key pairs that are available for this project.
+Click Create Key Pair.
+In the Create Key Pair dialog box, enter a name for your key pair, and click Create Key Pair.
+Respond to the prompt to download the key pair.
+
+Import a key pair
+
+Log in to the dashboard.
+
+From the CURRENT PROJECT on the Project tab, select the appropriate project.
+
+On the Project tab, open the Compute tab and click Access & Security category.
+
+Click the Key Pairs tab, which shows the key pairs that are available for this project.
+
+Click Import Key Pair.
+
+In the Import Key Pair dialog box, enter the name of your key pair, copy the public key into the Public Key box, and then click Import Key Pair.
+
+Save the *.pem file locally.
+
+To change its permissions so that only you can read and write to the file, run the following command:
+
+$ chmod 0600 yourPrivateKey.pem
+ Note
+If you are using the Dashboard from a Windows computer, use PuTTYgen to load the *.pem file and convert and save it as *.ppk. For more information see the WinSCP web page for PuTTYgen.
+
+To make the key pair known to SSH, run the ssh-add command.
+
+$ ssh-add yourPrivateKey.pem
+The Compute database registers the public key of the key pair.
+
+The Dashboard lists the key pair on the Access & Security tab.
 
 
-
-
-
+4.	Working With Databases
+------------------------------------------------
 
 .. |image1| image:: media/d3_image1.png
 .. |image2| image:: media/d3_image2.png
