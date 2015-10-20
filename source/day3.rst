@@ -4,18 +4,18 @@ ___________________________
 DAY-3: More Funny Things Ahead .................! 
 ---------------------------------------------------------------------------------------------
 
-In the earlier session, you worked with disk volumes and snapshots. I hoped you gained some useful information from that session.
+In the earlier session, you worked with disk volumes and snapshots. I hope you gained some useful information from that session.
 
 Today we will take you to another advanced level of OpenStack operation. This session will focus on :
 
 
 	1.	Working with Images
 
-	2.	Working With Containers
+	2.	Working with Containers
 
-	3.	Tightening Your Security
+	3.	Tightening your Security
 
-	4.	Working With Databases
+	4.	Working with Databases
 
 	
 
@@ -23,7 +23,7 @@ Today we will take you to another advanced level of OpenStack operation. This se
 1.	Working with Images
 -----------------------------------------
 
-In the context of OpenStack, an image or otherwise a virtual machine image is nothing but a virtual disk file containing a bootable operating system. 
+Taliking in context of OpenStack, an image or otherwise a virtual machine image is nothing but a virtual disk file containing a bootable operating system. 
 OpenStack uses an image as a source to create a new virtual machine instance. As a cloud adminstrator or a user you may need to upload and maintain VM images for your cloud.
 Both OpenStack dashboard as well as command line tools can be used to manage images for the cloud.
 
