@@ -24,6 +24,13 @@ Below are the learning ojectives of day4:
 
 |image1|
 
+
+
+
+|image2|
+
+
+
 2.	 OpenStack Node Types
 ----------------------------------------------
 
