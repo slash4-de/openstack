@@ -1,7 +1,7 @@
 Learn OpenStack in 4 Hours
 ___________________________
 
-DAY-4: Let's Be Practical with OpenStack .................! 
+DAY-4: What Makes OpenStack Powerful .................! 
 ---------------------------------------------------------------------------------------------
 
 Many of you may have heard this famous quote:  "There is no shortcut to experience!"
