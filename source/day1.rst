@@ -13,6 +13,21 @@ OpenStack is an open source cloud computing framework which enables
 organizations to build their own private clouds while providing them the
 freedom to customize and use the code according to their needs.
 
+Important facts about OpenStack:
+
+	1.	OpenStack is a cloud computing framework (supports virtualization)
+	
+	2.	OpenStack suports Open Source. Open Design, Open Community, Open Development
+	
+	3.	OpenStack is a collection of several independent components (projects)
+
+
+OpenStack's Mission
+================
+
+“To produce the ubiquitous Open Source cloud computing platform that will meet the needs of public and private cloud providers regardless of size, by being simple to implement and massively scalable.”
+
+
 We will not bore you with history of OpenStack but one thing is more
 important to share with you. OpenStack is really powerful and many
 technology giants are using it for building their cloud infrastructure.

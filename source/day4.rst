@@ -110,6 +110,54 @@ The same is depicted in the image below:
 2.	 OpenStack Node Types
 ----------------------------------------------
 
+Controller
+=======
+
+Controller nodes are responsible for running the management software services needed for the OpenStack environment to function. These nodes:
+
+Provide the front door that people access as well as the API services that all other components in the environment talk to.
+
+Run a number of services in a highly available fashion, utilizing Pacemaker and HAProxy to provide a virtual IP and load-balancing functions so all controller nodes are being used.
+
+Supply highly available "infrastructure" services, such as MySQL and Qpid, that underpin all the services.
+
+Provide what is known as "persistent storage" through services run on the host as well. This persistent storage is backed onto the storage nodes for reliability.
+
+
+Compute
+=======
+
+Compute nodes run the virtual machine instances in OpenStack. They:
+
+Run the bare minimum of services needed to facilitate these instances.
+
+Use local storage on the node for the virtual machines so that no VM migration or instance recovery at node failure is possible.
+
+
+Network
+======
+
+Network nodes are responsible for doing all the virtual networking needed for people to create public or private networks and uplink their virtual machines into external networks. Network nodes:
+
+Form the only ingress and egress point for instances running on top of OpenStack.
+
+Run all of the environment's networking services, with the exception of the networking API service (which runs on the controller node).
+
+
+Utility
+====
+
+Utility nodes are used by internal administration staff only to provide a number of basic system administration functions needed to get the environment up and running and to maintain the hardware, OS, and software on which it runs.
+
+These nodes run services such as provisioning, configuration management, monitoring, or GlusterFS management software. They are not required to scale, although these machines are usually backed up.
+
+
+
+Storage
+======
+
+Storage nodes store all the data required for the environment, including disk images in the Image service library, and the persistent storage volumes created by the Block Storage service. Storage nodes use GlusterFS technology to keep the data highly available and scalable.
+
 
 3.	Building OpenStack from Scratch
 -----------------------------------------------------------
