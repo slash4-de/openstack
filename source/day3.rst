@@ -323,7 +323,7 @@ Click Add.
 Instances will now accept all incoming ICMP packets.
 
 
-Add a key pair¶
+Add a key pair
 
 Create at least one key pair for each project.
 
@@ -367,6 +367,138 @@ The Dashboard lists the key pair on the Access & Security tab.
 
 4.	Working With Databases
 ------------------------------------------------
+
+The Database service provides scalable and reliable cloud provisioning functionality for both relational and non-relational database engines. Users can quickly and easily use database features without the burden of handling complex administrative tasks.
+
+
+
+
+Create a database instance
+
+Prerequisites. Before you create a database instance, you need to configure a default datastore and make sure you have an appropriate flavor for the type of database instance you want.
+
+Configure a default datastore.
+
+Because the dashboard does not let you choose a specific datastore to use with an instance, you need to configure a default datastore. The dashboard then uses the default datastore to create the instance.
+
+Add the following line to /etc/trove/trove.conf:
+
+default_datastore = DATASTORE_NAME
+Replace ``DATASTORE_NAME`` with the name that the administrative user set when issuing the trove-manage command to create the datastore. You can use the trove datastore-list command to display the datastores that are available in your environment.
+
+For example, if your MySQL datastore name is set to mysql, your entry would look like this:
+
+default_datastore = mysql
+Restart Database services on the controller node:
+
+# service trove-api restart
+# service trove-taskmanager restart
+# service trove-conductor restart
+Verify flavor.
+
+Make sure an appropriate flavor exists for the type of database instance you want.
+
+Create database instance. Once you have configured a default datastore and verified that you have an appropriate flavor, you can create a database instance.
+
+Log in to the dashboard.
+
+From the CURRENT PROJECT on the Project tab, select the appropriate project.
+
+On the Project tab, open the Database tab and click Instances category. This lists the instances that already exist in your environment.
+
+Click Launch Instance.
+
+In the Launch Database dialog box, specify the following values.
+
+Details
+
+Database Name: Specify a name for the database instance.
+
+Flavor: Select an appropriate flavor for the instance.
+
+Volume Size: Select a volume size. Volume size is expressed in GB.
+
+Initialize Databases: Initial Database
+
+Optionally provide a comma separated list of databases to create, for example:
+
+database1, database2, database3
+
+Initial Admin User: Create an initial admin user. This user will have access to all the databases you create.
+
+Password: Specify a password associated with the initial admin user you just named.
+
+Host: Optionally, allow the user to connect only from this host. If you do not specify a host, this user will be allowed to connect from anywhere.
+
+Click the Launch button. The new database instance appears in the databases list.
+
+Backup and restore a database
+
+You can use Database services to backup a database and store the backup artifact in the Object Storage module. Later on, if the original database is damaged, you can use the backup artifact to restore the database. The restore process creates a database instance.
+
+This example shows you how to back up and restore a MySQL database.
+
+To backup the database instance
+Log in to the dashboard.
+
+From the CURRENT PROJECT on the Project tab, select the appropriate project.
+
+On the Project tab, open the Database tab and click Instances category. This displays the existing instances in your system.
+
+Click Create Backup.
+
+In the Backup Database dialog box, specify the following values:
+
+Name
+
+Specify a name for the backup.
+
+Database Instance
+
+Select the instance you want to back up.
+
+Click Backup. The new backup appears in the backup list.
+
+To restore a database instance
+Now assume that your original database instance is damaged and you need to restore it. You do the restore by using your backup to create a new database instance.
+
+Log in to the dashboard.
+
+From the CURRENT PROJECT on the Project tab, select the appropriate project.
+
+On the Project tab, open the Database tab and click Backups category. This lists the available backups.
+
+Check the backup you want to use and click Restore Backup.
+
+In the Launch Database dialog box, specify the values you want for the new database instance.
+
+Click the Restore From Database tab and make sure that this new instance is based on the correct backup.
+
+Click Launch.
+
+The new instance appears in the database instances list.
+
+Update a database instance
+
+You can change various characteristics of a database instance, such as its volume size and flavor.
+
+To change the volume size of an instance
+Log in to the dashboard.
+From the CURRENT PROJECT on the Project tab, select the appropriate project.
+On the Project tab, open the Database tab and click Instances category. This displays the existing instances in your system.
+Check the instance you want to work with. In the Actions column, expand the drop down menu and select Resize Volume.
+In the Resize Database Volume dialog box, fill in the New Size field with an integer indicating the new size you want for the instance. Express the size in GB, and note that the new size must be larger than the current size.
+Click Resize Database Volume.
+To change the flavor of an instance
+Log in to the dashboard.
+From the CURRENT PROJECT on the Project tab, select the appropriate project.
+On the Project tab, open the Database tab and click Instances category. This displays the existing instances in your system.
+Check the instance you want to work with. In the Actions column, expand the drop down menu and select Resize Instance.
+In the Resize Database Instance dialog box, expand the drop down menu in the New Flavor field. Select the new flavor you want for the instance.
+Click Resize Database Instance.
+
+
+
 
 .. |image1| image:: media/d3_image1.png
 .. |image2| image:: media/d3_image2.png
