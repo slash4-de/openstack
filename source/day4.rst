@@ -22,6 +22,7 @@ Below are the learning ojectives of day4:
 1. 	 Understanding OpenStack Echosystem
 -----------------------------------------------------------------
 
+|image1|
 
 2.	 OpenStack Node Types
 ----------------------------------------------
