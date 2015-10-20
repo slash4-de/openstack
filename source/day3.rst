@@ -23,7 +23,7 @@ Today we will take you to another advanced level of OpenStack operation. This se
 1.	Working with Images
 -----------------------------------------
 
-Taliking in context of OpenStack, an image or otherwise a virtual machine image is nothing but a virtual disk file containing a bootable operating system. 
+Talking in context of OpenStack, an image or otherwise a virtual machine image is nothing but a virtual disk file containing a bootable operating system. 
 OpenStack uses an image as a source to create a new virtual machine instance. As a cloud adminstrator or a user you may need to upload and maintain VM images for your cloud.
 Both OpenStack dashboard as well as command line tools can be used to manage images for the cloud.
 
@@ -119,32 +119,28 @@ Now let's get back to some practical work and upload an image to our OpenStack c
 
 Follow this procedure to upload an image to a project:
 
-Log in to the dashboard.
+Log in to the dashboard as you did before.
 
-From the CURRENT PROJECT on the Project tab, select the appropriate project.
+Under the project tab, go to compute and click on images..
 
-On the Project tab, open the Compute tab and click Images category.
-
-A page shown in below sceenshot will be displayed:
+This will display the images page as displayed in the screenshot below:
 
 |image1|
 
 
 Click Create Image.
 
-The Create An Image dialog box appears.
+The 'Create An Image' dialog box appears.
 
 Enter the following values:
 
-	a.	Name	Enter a name for the image.
+	a.	Name		A meaningful name for the image
 
 	b.	Description	Enter a brief description of the image.
 
-	c.	Image Source	Choose the image source from the dropdown list. Your choices are Image Location and Image File.
+	c.	Image Source	Choose an image source. This could be "Image Location"  or "Image File". . If  you are downloading from Internet then select Image location otherwise if you are loading it from local disk then select image file.
 	
-	d.	Image File or Image Location	Based on your selection for Image Source, you either enter the location URL of the image in the Image Location field, or browse for the image file on your file system and add it.
-	
-	e.	Format	Select the image format (for example, QCOW2) for the image.
+	e.	Format		This is the image format either qcow2 or raw..
 
 Below screenshot depicts the steps:
 
@@ -152,15 +148,15 @@ Below screenshot depicts the steps:
 
 
 
-	f.	Architecture	Specify the architecture. For example, i386 for a 32-bit architecture or x86_64 for a 64-bit architecture.
+	f.	Architecture				This can be for example  i386 for a 32-bit architecture or x86_64 for a 64-bit architecture.
 	
-	g.	Minimum Disk (GB) and Minimum RAM (MB)	Leave these fields empty.
+	g.	Minimum Disk (GB) and Minimum RAM (MB)	You may leave it as empty.
 	
-	h.	Copy Data	Specify this option to copy image data to the Image service.
+	h.	Copy Data				If enabled, it will copy image data to the Image service.
 	
-	i.	Public	Select this check box to make the image public to all users with access to the current project.
+	i.	Public					If enabled, it will make the image public to all users with access to the current project.
 	
-	j.	Protected	Select this check box to ensure that only users with permissions can delete the image.
+	j.	Protected	Select this 			If enabled, it will ensure that only users with permissions can delete the image.
 
 Click Create Image.
 
@@ -168,9 +164,7 @@ The steps are also depicted in the screenshot  below:
 
 |image3|
 
-
-The image is queued to be uploaded. It might take some time before the status changes from Queued to Active
-
+You have put this image in queue waiting to be uploaded. After some time it will change it status from Queued to Active.
 
 1.2	Delete an Image
 ------------------------------------
