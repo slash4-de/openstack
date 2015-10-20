@@ -26,79 +26,79 @@ Below are the learning ojectives of day4:
 
 Provisioning a new instance involves the interaction between multiple components inside OpenStack :
 
-1.	CLI Command Line Interpreter for submitting commands to OpenStack Compute.
+ 	CLI Command Line Interpreter for submitting commands to OpenStack Compute.
 
-2.	Dashboard (“Horizon”) provides the interface for all the OpenStack services.
+ 	Dashboard (“Horizon”) provides the interface for all the OpenStack services.
 
-3.	Compute (“Nova”) retrieves virtual disks images(“Glance”) , attach flavor and associated metadata and transforms end user API requests into running instances.
+ .	Compute (“Nova”) retrieves virtual disks images(“Glance”) , attach flavor and associated metadata and transforms end user API requests into running instances.
 
-4.	Network (“Quantum”) provides virtual networking for Compute which allows users to create their own networks and then link them to the instances.
+ 	Network (“Quantum”) provides virtual networking for Compute which allows users to create their own networks and then link them to the instances.
 
-5.	Block Storage (“Cinder”) provides persistent storage volumes for Compute instances.
+ 	Block Storage (“Cinder”) provides persistent storage volumes for Compute instances.
 
-6.	Image (“Glance”) can store the actual virtual disk files in the Image Store.
+ 	Image (“Glance”) can store the actual virtual disk files in the Image Store.
 
-7.	Identity (“Keystone”) provides authentication and authorization for all OpenStack services.
+ 	Identity (“Keystone”) provides authentication and authorization for all OpenStack services.
 
-8.	Message Queue(“RabbitMQ”) handles the internal communication within Openstack components such as Nova , Quantum and Cinder.
+ .	Message Queue(“RabbitMQ”) handles the internal communication within Openstack components such as Nova , Quantum and Cinder.
 
-9.	The request flow for provisioning an Instance goes like this:
+ The request flow for provisioning an Instance goes like this:
 
-10.	Dashboard or CLI gets the user credential and does the REST call to Keystone for authentication.
+1.	Dashboard or CLI gets the user credential and does the REST call to Keystone for authentication.
 
-11.	Keystone authenticate the credentials and generate & send back auth-token which will be used for sending request to other Components through REST-call.
+2.	Keystone authenticate the credentials and generate & send back auth-token which will be used for sending request to other Components through REST-call.
 
-12.	Dashboard or CLI convert the new instance request specified in  ‘launch instance’ or ‘nova-boot’ form to REST API request and send it to nova-api.
+3.	Dashboard or CLI convert the new instance request specified in  ‘launch instance’ or ‘nova-boot’ form to REST API request and send it to nova-api.
 
-13.	nova-api receive the request and sends the request for validation auth-token and access permission to keystone.
+4.	nova-api receive the request and sends the request for validation auth-token and access permission to keystone.
 
-14.	Keystone validates the token and sends updated auth headers with roles and permissions.
+5.	Keystone validates the token and sends updated auth headers with roles and permissions.
 
-15.	nova-api interacts with nova-database.
+6.	nova-api interacts with nova-database.
 
-16.	Creates initial db entry for new instance.
+7.	Creates initial db entry for new instance.
  
-17.	nova-api sends the rpc.call request to nova-scheduler excepting to get  updated instance entry with host ID specified.
+8.	nova-api sends the rpc.call request to nova-scheduler excepting to get  updated instance entry with host ID specified.
 
-18.	nova-scheduler picks the request from the queue.
+9.	nova-scheduler picks the request from the queue.
 
-19.	nova-scheduler interacts with nova-database to find an appropriate host via filtering and weighing.
+10.	nova-scheduler interacts with nova-database to find an appropriate host via filtering and weighing.
 
-20.	Returns the updated instance entry with appropriate host ID after filtering and weighing.
+11.	Returns the updated instance entry with appropriate host ID after filtering and weighing.
 
-21.	nova-scheduler sends the rpc.cast request to nova-compute for ‘launching instance’ on appropriate host .
+12.	nova-scheduler sends the rpc.cast request to nova-compute for ‘launching instance’ on appropriate host .
 
-22.	nova-compute picks the request from the queue.
+13.	nova-compute picks the request from the queue.
 
-23.	nova-compute send the rpc.call request to nova-conductor to fetch the instance information such as host ID and flavor( Ram , CPU ,Disk).
+14.	nova-compute send the rpc.call request to nova-conductor to fetch the instance information such as host ID and flavor( Ram , CPU ,Disk).
 
-24.	nova-conductor picks the request from the queue.
+15.	nova-conductor picks the request from the queue.
 
-25.	nova-conductor interacts with nova-database.
+16.	nova-conductor interacts with nova-database.
 
-26.	Return the instance information.
+17.	Return the instance information.
 
-27.	nova-compute picks the instance information from the queue.
+18.	nova-compute picks the instance information from the queue.
 
-28.	nova-compute does the REST call by passing auth-token to glance-api  to get the Image URI by Image ID from glance and upload image from image storage.
+19.	nova-compute does the REST call by passing auth-token to glance-api  to get the Image URI by Image ID from glance and upload image from image storage.
 
-29	glance-api validates the auth-token with keystone. 
+20.	glance-api validates the auth-token with keystone. 
 
-30.	nova-compute get the image metadata.
+21.	nova-compute get the image metadata.
 
-31.	nova-compute does the REST-call by passing auth-token to Network API to allocate and configure the network such that instance gets the IP address. 
+22.	nova-compute does the REST-call by passing auth-token to Network API to allocate and configure the network such that instance gets the IP address. 
 
-32	quantum-server validates the auth-token with keystone.
+23.	quantum-server validates the auth-token with keystone.
 
-33.	nova-compute get the network info.
+24.	nova-compute get the network info.
 
-34.	nova-compute does the REST call by passing auth-token to Volume API to attach volumes to instance.
+25.	nova-compute does the REST call by passing auth-token to Volume API to attach volumes to instance.
 
-35.	cinder-api validates the auth-token with keystone.
+26.	cinder-api validates the auth-token with keystone.
 
-36.	nova-compute gets the block storage info.
+27	nova-compute gets the block storage info.
 
-37.	nova-compute generates data for hypervisor driver and executes request on Hypervisor( via libvirt or api).
+28.	nova-compute generates data for hypervisor driver and executes request on Hypervisor( via libvirt or api).
 
 
 The same is depicted in the image below:
