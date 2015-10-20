@@ -148,15 +148,15 @@ Below screenshot depicts the steps:
 
 
 
-	f.	Architecture				This can be for example  i386 for a 32-bit architecture or x86_64 for a 64-bit architecture.
+	f.	Architecture			:	This can be for example  i386 for a 32-bit architecture or x86_64 for a 64-bit architecture.
 	
-	g.	Minimum Disk (GB) and Minimum RAM (MB)	You may leave it as empty.
+	g.	Minimum Disk (GB) and Minimum RAM (MB) :	You may leave it as empty.
 	
-	h.	Copy Data				If enabled, it will copy image data to the Image service.
+	h.	Copy Data			:	If enabled, it will copy image data to the Image service.
 	
-	i.	Public					If enabled, it will make the image public to all users with access to the current project.
+	i.	Public				:	If enabled, it will make the image public to all users with access to the current project.
 	
-	j.	Protected	Select this 			If enabled, it will ensure that only users with permissions can delete the image.
+	j.	Protected	Select this 		:	If enabled, it will ensure that only users with permissions can delete the image.
 
 Click Create Image.
 
@@ -171,10 +171,14 @@ You have put this image in queue waiting to be uploaded. After some time it will
 
 Deletion of images is permanent and cannot be reversed. Only users with the appropriate permissions can delete images.
 
-Log in to the dashboard.
-From the CURRENT PROJECT on the Project tab, select the appropriate project.
-On the Project tab, open the Compute tab and click Images category.
-Select the images that you want to delete.
+Log in to the dashboard or skip if you have already logged in.
+
+Under the project tab, go to compute and click on images..
+
+This will display the images page.
+
+Select one or more images that you want to delete.
+
 Click Delete Images.
 
 The steps are shown in the below screenshot as well
@@ -187,26 +191,32 @@ In the Confirm Delete Images dialog box, click Delete Images to confirm the dele
 2.	Working With Containers
 ---------------------------------------------------------
 
-In OpenStack Object Storage, containers provide storage for objects in a manner similar to a Windows folder or Linux file directory, though they cannot be nested. 
-An object in OpenStack consists of the file to be stored in the container and any accompanying metadata.
+You may think of containers as folders in windows or Linux. However there is one fundamental difference: Containers can not be nested! This means a container can not be created inside another container.
+
+Container is a form of object storage because it consists of  data as well as metadata that is related to the stored data.
+
+Now roll up your sleeves to create a container.
 
 Create a container
+=============
 
-Log in to the dashboard.
-From the CURRENT PROJECT on the Project tab, select the appropriate project.
-On the Project tab, open the Object Store tab and click Containers category.
+Goto the 'Containers' option under 'Object Store' on the left.
+
 Click Create Container.
+
 In the Create Container dialog box, enter a name for the container, and then click Create Container.
+
 You have successfully created a container.
+
+Let's upload an object to the container now:
 
 
 Upload an object
+============
 
-Log in to the dashboard.
+Goto the 'Containers' option under 'Object Store' on the left.
 
-From the CURRENT PROJECT on the Project tab, select the appropriate project.
-
-On the Project tab, open the Object Store tab and click Containers category.
+Click Create Container.
 
 Select the container in which you want to store your object.
 
@@ -223,45 +233,41 @@ Click Upload Object.
 You have successfully uploaded an object to the container
 
 
-Manage an object
 
-To edit an object
+Edit an object
+==========
 
-Log in to the dashboard.
+Goto the 'Containers' option under 'Object Store' on the left.
 
-From the CURRENT PROJECT on the Project tab, select the appropriate project.
+Select the container that you want to edit.
 
-On the Project tab, open the Object Store tab and click Containers category.
+Click 'More' and choose 'Edit' from the dropdown list.
 
-Select the container in which you want to store your object.
-
-Click More and choose Edit from the dropdown list.
-
-The Edit Object dialog box is displayed.
+The 'Edit Object' dialog box is displayed.
 
 Browse to and select the file that you want to upload.
 
 Click Update Object.
 
 
+Copy an Object from one container to another
+==================================
 
-To copy an object from one container to another
+Goto the 'Containers' option under 'Object Store' on the left.
 
-Log in to the dashboard.
-From the CURRENT PROJECT on the Project tab, select the appropriate project.
-On the Project tab, open the Object Store tab and click Containers category.
-Select the container in which you want to store your object.
+Select the container that you want to store your object.
+
 Click More and choose Copy from the dropdown list.
+
 In the Copy Object launch dialog box, enter the following values:
+
 Destination Container: Choose the destination container from the list.
+
 Path: Specify a path in which the new copy should be stored inside of the selected container.
+
 Destination object name: Enter a name for the object in the new container.
+
 Click Copy Object.
-
-
-
-
-
 
 
 3.	Tightening Your Security
@@ -284,9 +290,6 @@ This procedure can be adjusted as necessary to add additional security group rul
 Note
 When adding a rule, you must specify the protocol used with the destination port or source port.
 
-Log in to the dashboard.
-
-From the CURRENT PROJECT on the Project tab, select the appropriate project.
 
 On the Project tab, open the Compute tab and click Access & Security category. The Security Groups tab shows the security groups that are available for this project.
 
@@ -318,11 +321,12 @@ Instances will now accept all incoming ICMP packets.
 
 
 Add a key pair
+==========
 
 Create at least one key pair for each project.
 
 Log in to the dashboard.
-From the CURRENT PROJECT on the Project tab, select the appropriate project.
+
 On the Project tab, open the Compute tab and click Access & Security category.
 Click the Key Pairs tab, which shows the key pairs that are available for this project.
 Click Create Key Pair.
@@ -330,10 +334,7 @@ In the Create Key Pair dialog box, enter a name for your key pair, and click Cre
 Respond to the prompt to download the key pair.
 
 Import a key pair
-
-Log in to the dashboard.
-
-From the CURRENT PROJECT on the Project tab, select the appropriate project.
+============
 
 On the Project tab, open the Compute tab and click Access & Security category.
 
@@ -362,9 +363,9 @@ The Dashboard lists the key pair on the Access & Security tab.
 4.	Working With Databases
 ------------------------------------------------
 
-The Database service provides scalable and reliable cloud provisioning functionality for both relational and non-relational database engines. Users can quickly and easily use database features without the burden of handling complex administrative tasks.
+The Database service provides scalable and reliable cloud provisioning functionality for both relational and non-relational database engines. 
 
-
+Users can quickly and easily use database features without the burden of handling complex administrative tasks.
 
 
 Create a database instance
@@ -383,6 +384,7 @@ Replace ``DATASTORE_NAME`` with the name that the administrative user set when i
 For example, if your MySQL datastore name is set to mysql, your entry would look like this:
 
 default_datastore = mysql
+
 Restart Database services on the controller node:
 
 # service trove-api restart
@@ -396,7 +398,6 @@ Create database instance. Once you have configured a default datastore and verif
 
 Log in to the dashboard.
 
-From the CURRENT PROJECT on the Project tab, select the appropriate project.
 
 On the Project tab, open the Database tab and click Instances category. This lists the instances that already exist in your environment.
 
@@ -435,7 +436,6 @@ This example shows you how to back up and restore a MySQL database.
 To backup the database instance
 Log in to the dashboard.
 
-From the CURRENT PROJECT on the Project tab, select the appropriate project.
 
 On the Project tab, open the Database tab and click Instances category. This displays the existing instances in your system.
 
@@ -458,7 +458,6 @@ Now assume that your original database instance is damaged and you need to resto
 
 Log in to the dashboard.
 
-From the CURRENT PROJECT on the Project tab, select the appropriate project.
 
 On the Project tab, open the Database tab and click Backups category. This lists the available backups.
 
@@ -478,14 +477,14 @@ You can change various characteristics of a database instance, such as its volum
 
 To change the volume size of an instance
 Log in to the dashboard.
-From the CURRENT PROJECT on the Project tab, select the appropriate project.
+.
 On the Project tab, open the Database tab and click Instances category. This displays the existing instances in your system.
 Check the instance you want to work with. In the Actions column, expand the drop down menu and select Resize Volume.
 In the Resize Database Volume dialog box, fill in the New Size field with an integer indicating the new size you want for the instance. Express the size in GB, and note that the new size must be larger than the current size.
 Click Resize Database Volume.
 To change the flavor of an instance
 Log in to the dashboard.
-From the CURRENT PROJECT on the Project tab, select the appropriate project.
+
 On the Project tab, open the Database tab and click Instances category. This displays the existing instances in your system.
 Check the instance you want to work with. In the Actions column, expand the drop down menu and select Resize Instance.
 In the Resize Database Instance dialog box, expand the drop down menu in the New Flavor field. Select the new flavor you want for the instance.
