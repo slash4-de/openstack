@@ -210,6 +210,10 @@ Create a container
 
 	c.	In the Create Container dialog box, enter a name for the container, and then click Create Container.
 
+Same procedure is shown in the below screenshot :
+ 
+|image5|
+
 You have successfully created a container.
 
 Let's upload an object to the container now:
@@ -277,7 +281,7 @@ Once you have ceated two or more containers, you can use the below procedure:
 
 	h.	Click Copy Object.
 
-Thats it! you copied objects beteen containers.  Now let's talk about securing the VM instances:
+Thats it! you copied objects between containers.  Now let's talk about securing the VM instances:
 
 3.	Tightening Your Security
 ---------------------------------------------
