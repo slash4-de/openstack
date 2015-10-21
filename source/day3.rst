@@ -263,7 +263,7 @@ Once you have ceated two or more containers, you can use the below procedure:
 
 	a.	Goto the 'Containers' option under 'Object Store' on the left.
 
-	b.	Select the container that you want to store your object.
+	b.	Select the container that contains your source object.
 
 	c.	Click More and choose Copy from the dropdown list.
 
@@ -291,12 +291,12 @@ Openstack has a default secuity group with a rule which blocks all incomming tra
 
 Before  you launch your instance, it is better to add rules to the default security group for allowing  SSH traffic so you can access your VM instance remotely.
 
-You can add additional rules to this security group which allow HTTP and HTTPS traffic. Or any other type of traffic that you want to allow.
+You can add additional rules to this security group to allow HTTP or HTTPS traffic or any other type of traffic that you desire.
 
 SSH Keypairs
 ==========
 
-Key pairs provide an alternative mechanism to password based authentication. A key pair is a combination of a publick key and a private key.
+Key pairs provide an alternative mechanism to password based authentication. A key pair is a combination of a public key and a private key.
 
 To enable key based authentication on a VM instance, you need to inject that key to it first. 
 You must remember that the image that you are going to use for creating your instance must include 'cloud-init' package. 
@@ -315,219 +315,131 @@ Besides this private IP address it is also possible to assign a public IP addres
 
 This  IP is called a floating IP as it can be added and removed dynamically. Also it can be un configured from one instance and reconfigured on another instance. So it can keep on floating between instances.
 
-Having said this, we will now walk you through adding a rule to default security group.
+During the first day session you assigned a floating IP to your instance and also added rules to the default security group. 
 
-Add a rule to the default security group
-===========================
-
-This procedure enables SSH and ICMP (ping) access to instances. 
-
-The rules apply to all instances within a given project, and should be set for every project unless there is a reason to prohibit SSH or ICMP access to the instances.
-
-This procedure can be adjusted as necessary to add additional security group rules to a project, if your cloud requires them.
-
-Note
-When adding a rule, you must specify the protocol used with the destination port or source port.
-
-
-On the Project tab, open the Compute tab and click Access & Security category. The Security Groups tab shows the security groups that are available for this project.
-
-Select the default security group and click Manage Rules.
-
-To allow SSH access, click Add Rule.
-
-In the Add Rule dialog box, enter the following values:
-
-Rule: SSH
-Remote: CIDR
-
-Note
-To accept requests from a particular range of IP addresses, specify the IP address block in the CIDR box.
-
-Click Add.
-
-Instances will now have SSH port 22 open for requests from any IP address.
-
-To add an ICMP rule, click Add Rule.
-
-In the Add Rule dialog box, enter the following values:
-
-Rule: All ICMP
-Remote: Ingress
-Click Add.
-
-Instances will now accept all incoming ICMP packets.
-
-
-Add a key pair
-==========
-
-Create at least one key pair for each project.
-
-Log in to the dashboard.
-
-On the Project tab, open the Compute tab and click Access & Security category.
-Click the Key Pairs tab, which shows the key pairs that are available for this project.
-Click Create Key Pair.
-In the Create Key Pair dialog box, enter a name for your key pair, and click Create Key Pair.
-Respond to the prompt to download the key pair.
-
-Import a key pair
-============
-
-On the Project tab, open the Compute tab and click Access & Security category.
-
-Click the Key Pairs tab, which shows the key pairs that are available for this project.
-
-Click Import Key Pair.
-
-In the Import Key Pair dialog box, enter the name of your key pair, copy the public key into the Public Key box, and then click Import Key Pair.
-
-Save the *.pem file locally.
-
-To change its permissions so that only you can read and write to the file, run the following command:
-
-$ chmod 0600 yourPrivateKey.pem
- Note
-If you are using the Dashboard from a Windows computer, use PuTTYgen to load the *.pem file and convert and save it as *.ppk. For more information see the WinSCP web page for PuTTYgen.
-
-To make the key pair known to SSH, run the ssh-add command.
-
-$ ssh-add yourPrivateKey.pem
-The Compute database registers the public key of the key pair.
-
-The Dashboard lists the key pair on the Access & Security tab.
-
+Let's proceed ahead and learn about OpenStack's database as a service.
 
 4.	Working With Databases
 ------------------------------------------------
 
-The Database service provides scalable and reliable cloud provisioning functionality for both relational and non-relational database engines. 
+OpenStack database service offers provisioning of both relational as well as non relational databases in a scalable and reliable manner. 
 
-Users can quickly and easily use database features without the burden of handling complex administrative tasks.
+Without any need to handle those complex and time taking tasks of installing software packages for the databases, you can simply and quickly create and use a database.
 
+Let's create a new database instance to see how it works. 
 
 Create a database instance
+=====================
 
-Prerequisites. Before you create a database instance, you need to configure a default datastore and make sure you have an appropriate flavor for the type of database instance you want.
-
-Configure a default datastore.
-
-Because the dashboard does not let you choose a specific datastore to use with an instance, you need to configure a default datastore. The dashboard then uses the default datastore to create the instance.
-
-Add the following line to /etc/trove/trove.conf:
-
-default_datastore = DATASTORE_NAME
-Replace ``DATASTORE_NAME`` with the name that the administrative user set when issuing the trove-manage command to create the datastore. You can use the trove datastore-list command to display the datastores that are available in your environment.
-
-For example, if your MySQL datastore name is set to mysql, your entry would look like this:
-
-default_datastore = mysql
-
-Restart Database services on the controller node:
-
-# service trove-api restart
-# service trove-taskmanager restart
-# service trove-conductor restart
-Verify flavor.
-
-Make sure an appropriate flavor exists for the type of database instance you want.
-
-Create database instance. Once you have configured a default datastore and verified that you have an appropriate flavor, you can create a database instance.
-
-Log in to the dashboard.
+Note: Please remember that before you create a databae, you need to configure a default datastore. In this case since you are using the trystack environmnent, it has already configured the default datastore for you.
 
 
-On the Project tab, open the Database tab and click Instances category. This lists the instances that already exist in your environment.
+	1.	Log in to the dashboard.
 
-Click Launch Instance.
+	2.	Under project tab, go to the 'Database' tab and lick on 'Instances'
 
-In the Launch Database dialog box, specify the following values.
+	3. 	You will see if there are any pre existing instances.
 
-Details
+	4.	Click on 'Launch Instance'
 
-Database Name: Specify a name for the database instance.
 
-Flavor: Select an appropriate flavor for the instance.
+In the new popup window enter the details about your new database instance:
 
-Volume Size: Select a volume size. Volume size is expressed in GB.
+	Database Name: Specify a name for the database instance.
 
-Initialize Databases: Initial Database
+	Flavor: Select an appropriate flavor for the instance.
 
-Optionally provide a comma separated list of databases to create, for example:
+	Volume Size: Select a volume size. Volume size is expressed in GB.
 
-database1, database2, database3
+	Initialize Databases: Initial Database
 
-Initial Admin User: Create an initial admin user. This user will have access to all the databases you create.
+	Optionally provide a comma separated list of databases to create, for example:
 
-Password: Specify a password associated with the initial admin user you just named.
+	database1, database2, database3
 
-Host: Optionally, allow the user to connect only from this host. If you do not specify a host, this user will be allowed to connect from anywhere.
+	Initial Admin User: Create an initial admin user. This user will have access to all the databases you create.
+
+	Password: Specify a password associated with the initial admin user you just named.
+
+	Host: Optionally, allow the user to connect only from this host. If you do not specify a host, this user will be allowed to connect from anywhere.
 
 Click the Launch button. The new database instance appears in the databases list.
 
-Backup and restore a database
 
-You can use Database services to backup a database and store the backup artifact in the Object Storage module. Later on, if the original database is damaged, you can use the backup artifact to restore the database. The restore process creates a database instance.
+Backup and restore a database
+=========================
+
+You can use Database services to backup a database and store the backup artifact in the Object Storage module. 
+
+Later on, if the original database is damaged, you can use the backup artifact to restore the database. The restore process creates a database instance.
 
 This example shows you how to back up and restore a MySQL database.
 
 To backup the database instance
-Log in to the dashboard.
 
+	1	.Log in to the dashboard.
 
-On the Project tab, open the Database tab and click Instances category. This displays the existing instances in your system.
+	2.	On the Project tab, open the Database tab and click Instances category. This displays the existing instances in your system.
 
-Click Create Backup.
+	3.	Click Create Backup.
 
 In the Backup Database dialog box, specify the following values:
 
-Name
+	Name 			Specify a name for the backup.
 
-Specify a name for the backup.
+	Database Instance		Select the instance you want to back up.
 
-Database Instance
+	Click Backup. 		The new backup appears in the backup list.
 
-Select the instance you want to back up.
 
-Click Backup. The new backup appears in the backup list.
 
-To restore a database instance
 Now assume that your original database instance is damaged and you need to restore it. You do the restore by using your backup to create a new database instance.
 
-Log in to the dashboard.
+Restore a database instance
+=====================
 
+	1.	Log in to the dashboard.
 
-On the Project tab, open the Database tab and click Backups category. This lists the available backups.
+	2.	On the Project tab, open the Database tab and click Backups category. This lists the available backups.
 
-Check the backup you want to use and click Restore Backup.
+	3.	Check the backup you want to use and click Restore Backup.
 
-In the Launch Database dialog box, specify the values you want for the new database instance.
+	4.	In the Launch Database dialog box, specify the values you want for the new database instance.
 
-Click the Restore From Database tab and make sure that this new instance is based on the correct backup.
+	5.	Click the Restore From Database tab and make sure that this new instance is based on the correct backup.
 
-Click Launch.
+	6.	Click Launch.
 
 The new instance appears in the database instances list.
 
-Update a database instance
-
 You can change various characteristics of a database instance, such as its volume size and flavor.
 
-To change the volume size of an instance
-Log in to the dashboard.
-.
-On the Project tab, open the Database tab and click Instances category. This displays the existing instances in your system.
-Check the instance you want to work with. In the Actions column, expand the drop down menu and select Resize Volume.
-In the Resize Database Volume dialog box, fill in the New Size field with an integer indicating the new size you want for the instance. Express the size in GB, and note that the new size must be larger than the current size.
-Click Resize Database Volume.
-To change the flavor of an instance
-Log in to the dashboard.
+Change the volume size of an instance
+=============================
 
-On the Project tab, open the Database tab and click Instances category. This displays the existing instances in your system.
-Check the instance you want to work with. In the Actions column, expand the drop down menu and select Resize Instance.
-In the Resize Database Instance dialog box, expand the drop down menu in the New Flavor field. Select the new flavor you want for the instance.
-Click Resize Database Instance.
+	1.	Log in to the dashboard.
+.
+	2.	On the Project tab, open the Database tab and click Instances category. This displays the existing instances in your system.
+
+	3.	Check the instance you want to work with. In the Actions column, expand the drop down menu and select Resize Volume.
+
+	4.	In the Resize Database Volume dialog box, fill in the New Size field with an integer indicating the new size you want for the instance. Express the size in GB, and note that the new size must be larger than the current size.
+
+Click Resize Database Volume.
+
+
+To change the flavor of an instance
+==========================
+
+	1.	Log in to the dashboard.
+
+	2.	On the Project tab, open the Database tab and click Instances category. This displays the existing instances in your system.
+
+	3.	Check the instance you want to work with. In the Actions column, expand the drop down menu and select Resize Instance.
+
+	4.	In the Resize Database Instance dialog box, expand the drop down menu in the New Flavor field. Select the new flavor you want for the instance.
+
+	5.	Click Resize Database Instance.
 
 
 
