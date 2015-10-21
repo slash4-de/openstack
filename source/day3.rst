@@ -4,9 +4,9 @@ ___________________________
 DAY-3: More Funny Things Ahead .................! 
 ---------------------------------------------------------------------------------------------
 
-In the earlier session, you worked with disk volumes and snapshots. I hope you gained some useful information from that session.
+In the earlier session, you worked with disk volumes and snapshots. We hope you gained some useful information from that session.
 
-Today we will take you to another advanced level of OpenStack operation. This session will focus on :
+Today we will take you to another advanced level of OpenStack operations. This session will focus on :
 
 
 	1.	Working with Images
@@ -104,7 +104,8 @@ VHDX is an upgraded version of VHD that can support larger disk size and also pr
 OVF
 ===
 
-Distributed Management Task Force (DMTF) devised the Open Virtualization Format (OVF).  OpenStack Compute does not directly support OVF packages. You will need to  extract the image file(s) from an OVF package to be able to use it with OpenStack.
+Distributed Management Task Force (DMTF) devised the Open Virtualization Format (OVF).  OpenStack Compute does not directly support OVF packages.
+You will need to  extract the image file(s) from an OVF package to be able to use it with OpenStack.
 
 ISO
 ===
@@ -112,10 +113,10 @@ ISO
 It is the image file format most commonly used for CDs and DVDs. But since an ISO contains a bootable filesystem along with an operating system, it can be used as a virtual machine image.
 
 
+Now let's get back to practical work and upload an image to our OpenStack cloud.
+
 1.1	Upload An Image
 -------------------------------------
-
-Now let's get back to some practical work and upload an image to our OpenStack cloud.
 
 Follow this procedure to upload an image to a project:
 
@@ -138,7 +139,9 @@ Enter the following values:
 
 	b.	Description	Enter a brief description of the image.
 
-	c.	Image Source	Choose an image source. This could be "Image Location"  or "Image File". . If  you are downloading from Internet then select Image location otherwise if you are loading it from local disk then select image file.
+	c.	Image Source	Choose an image source. This could be "Image Location"  or "Image File". . 
+		
+				If  you are downloading from Internet then select Image location otherwise if you are loading it from local disk then select image file.
 	
 	e.	Format		This is the image format either qcow2 or raw..
 
@@ -156,7 +159,8 @@ Below screenshot depicts the steps:
 	
 	i.	Public				:	If enabled, it will make the image public to all users with access to the current project.
 	
-	j.	Protected	Select this 		:	If enabled, it will ensure that only users with permissions can delete the image.
+	j.	Protected		 		:	If enabled, it will ensure that only users with permissions can delete the image.
+
 
 Click Create Image.
 
@@ -164,28 +168,28 @@ The steps are also depicted in the screenshot  below:
 
 |image3|
 
-You have put this image in queue waiting to be uploaded. After some time it will change it status from Queued to Active.
+You have put this image in queue waiting to be uploaded. After some time it will change it status from 'Queued' to 'Active'.
 
 1.2	Delete an Image
 ------------------------------------
 
-Deletion of images is permanent and cannot be reversed. Only users with the appropriate permissions can delete images.
+Remember that this action is permanent and it will delete the image from your cloud. It can not be reversed. Also deletion needs appropriate permissions.
 
-Log in to the dashboard or skip if you have already logged in.
+	a.	Log in to the dashboard or skip if you have already logged in.
 
-Under the project tab, go to compute and click on images..
+	b.	Under the project tab, go to compute and click on images..
 
-This will display the images page.
+	c.	This will display the images page.
 
-Select one or more images that you want to delete.
+	d.	Select one or more images that you want to delete.
 
-Click Delete Images.
+	e.	Click Delete Images.
 
 The steps are shown in the below screenshot as well
 
 |image4|
 
-In the Confirm Delete Images dialog box, click Delete Images to confirm the deletion.
+In the 'Confirm Delete Images' dialog box, click 'Delete Images' to confirm the deletion.
 
 
 2.	Working With Containers
@@ -195,16 +199,16 @@ You may think of containers as folders in windows or Linux. However there is one
 
 Container is a form of object storage because it consists of  data as well as metadata that is related to the stored data.
 
-Now roll up your sleeves to create a container.
+Let's jump into it and create a container.
 
 Create a container
 =============
 
-Goto the 'Containers' option under 'Object Store' on the left.
+	a.	Goto the 'Containers' option under 'Object Store' on the left.
 
-Click Create Container.
+	b.	Click Create Container.
 
-In the Create Container dialog box, enter a name for the container, and then click Create Container.
+	c.	In the Create Container dialog box, enter a name for the container, and then click Create Container.
 
 You have successfully created a container.
 
@@ -214,76 +218,111 @@ Let's upload an object to the container now:
 Upload an object
 ============
 
-Goto the 'Containers' option under 'Object Store' on the left.
+	a.	Goto the 'Containers' option under 'Object Store' on the left.
 
-Click Create Container.
+	b.	Click Create Container.
 
-Select the container in which you want to store your object.
+	c.	Select the container in which you want to store your object.
 
-Click Upload Object.
+	d.	Click Upload Object.
 
-The Upload Object To Container: <name> dialog box appears. ``<name>`` is the name of the container to which you are uploading the object.
+	e.	The Upload Object To Container: <name> dialog box appears. ``<name>`` is the name of the container to which you are uploading the object.
 
-Enter a name for the object.
+	f.	Enter a name for the object.
 
-Browse to and select the file that you want to upload.
+	g.	Browse to and select the file that you want to upload.
 
-Click Upload Object.
+	h.	Click Upload Object.
 
 You have successfully uploaded an object to the container
 
-
+Now let's update a container with new fiiles:
 
 Edit an object
 ==========
 
-Goto the 'Containers' option under 'Object Store' on the left.
+	a.	Goto the 'Containers' option under 'Object Store' on the left.
 
-Select the container that you want to edit.
+	b.	Select the container that you want to edit.
 
-Click 'More' and choose 'Edit' from the dropdown list.
+	c.	Click 'More' and choose 'Edit' from the dropdown list.
 
-The 'Edit Object' dialog box is displayed.
+	d.	The 'Edit Object' dialog box is displayed.
 
-Browse to and select the file that you want to upload.
+	e.	Browse to and select the file that you want to upload.
 
-Click Update Object.
+	f.	Click Update Object.
 
+Let's have some more fun with containers. This time we will copy an object from one container to another. 
+
+Before we do that you need to create a second container.
 
 Copy an Object from one container to another
 ==================================
+Once you have ceated two or more containers, you can use the below procedure:
 
-Goto the 'Containers' option under 'Object Store' on the left.
+	a.	Goto the 'Containers' option under 'Object Store' on the left.
 
-Select the container that you want to store your object.
+	b.	Select the container that you want to store your object.
 
-Click More and choose Copy from the dropdown list.
+	c.	Click More and choose Copy from the dropdown list.
 
-In the Copy Object launch dialog box, enter the following values:
+	d.	In the Copy Object launch dialog box, enter the following values:
 
-Destination Container: Choose the destination container from the list.
+	e.	Destination Container: Choose the destination container from the list.
 
-Path: Specify a path in which the new copy should be stored inside of the selected container.
+	f.	Path: Specify a path in which the new copy should be stored inside of the selected container.
 
-Destination object name: Enter a name for the object in the new container.
+	g.	Destination object name: Enter a name for the object in the new container.
 
-Click Copy Object.
+	h.	Click Copy Object.
 
+Thats it! you copied objects beteen containers.  Now let's talk about securing the VM instances:
 
 3.	Tightening Your Security
 ---------------------------------------------
 
-Before you launch an instance, you should add security group rules to enable users to ping and use SSH to connect to the instance. Security groups are sets of IP filter rules that define networking access and are applied to all instances within a project. To do so, you either add rules to the default security group Add a rule to the default security group or add a new security group with rules.
+Security Groups and Rules
+====================
 
-Key pairs are SSH credentials that are injected into an instance when it is launched. To use key pair injection, the image that the instance is based on must contain the cloud-init package. Each project should have at least one key pair. For more information, see the section Add a key pair.
+OpenStack provides a feature called security groups. A security group is like an 'Access Control List' that contains several rules. 
+Each rule either allows or blocks some kind of traffic. 
+Openstack has a default secuity group with a rule which blocks all incomming traffic.
 
-If you have generated a key pair with an external tool, you can import it into OpenStack. The key pair can be used for multiple instances that belong to a project. For more information, see the section Import a key pair.
+Before  you launch your instance, it is better to add rules to the default security group for allowing  SSH traffic so you can access your VM instance remotely.
 
-When an instance is created in OpenStack, it is automatically assigned a fixed IP address in the network to which the instance is assigned. This IP address is permanently associated with the instance until the instance is terminated. However, in addition to the fixed IP address, a floating IP address can also be attached to an instance. Unlike fixed IP addresses, floating IP addresses are able to have their associations modified at any time, regardless of the state of the instances involved.
+You can add additional rules to this security group which allow HTTP and HTTPS traffic. Or any other type of traffic that you want to allow.
+
+SSH Keypairs
+==========
+
+Key pairs provide an alternative mechanism to password based authentication. A key pair is a combination of a publick key and a private key.
+
+To enable key based authentication on a VM instance, you need to inject that key to it first. 
+You must remember that the image that you are going to use for creating your instance must include 'cloud-init' package. 
+
+Secondly, your project must include at least one key-pair. And the same key-pair can be used with multiple instances.
+
+It is possible to generate  a key-pair inside dashboard or otherwise you can also import an exising key from  your pc or laptop.
+
+Fixed and Floating IP Addresses
+=================
+I hope you remember that you created a private network in an earlier session! This private network is used to assign IP addresses to the newly created VM instances.
+
+This private IP address is assigned as a fixed address and it is released when the instance is destroyed (or terminated).
+
+Besides this private IP address it is also possible to assign a public IP address to the instance so that you can access your VM instance from your own pc over the Internet.
+
+This  IP is called a floating IP as it can be added and removed dynamically. Also it can be un configured from one instance and reconfigured on another instance. So it can keep on floating between instances.
+
+Having said this, we will now walk you through adding a rule to default security group.
 
 Add a rule to the default security group
+===========================
 
-This procedure enables SSH and ICMP (ping) access to instances. The rules apply to all instances within a given project, and should be set for every project unless there is a reason to prohibit SSH or ICMP access to the instances.
+This procedure enables SSH and ICMP (ping) access to instances. 
+
+The rules apply to all instances within a given project, and should be set for every project unless there is a reason to prohibit SSH or ICMP access to the instances.
 
 This procedure can be adjusted as necessary to add additional security group rules to a project, if your cloud requires them.
 
