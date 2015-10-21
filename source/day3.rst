@@ -208,11 +208,15 @@ Create a container
 
 	b.	Click Create Container.
 
-	c.	In the Create Container dialog box, enter a name for the container, and then click Create Container.
+
 
 Same procedure is shown in the below screenshot :
  
 |image5|
+
+	c.	In the Create Container dialog box, enter a name for the container, and set access as 'public'
+
+	d.	Click Create Container.
 
 You have successfully created a container.
 
@@ -224,21 +228,19 @@ Upload an object
 
 	a.	Goto the 'Containers' option under 'Object Store' on the left.
 
-	b.	Click Create Container.
+	b.	Select the container in which you want to store your object.
 
-	c.	Select the container in which you want to store your object.
+	c.	Click Upload Object.
 
-	d.	Click Upload Object.
+	d.	The Upload Object To Container: <name> dialog box appears. ``<name>`` is the name of the container to which you are uploading the object.
 
-	e.	The Upload Object To Container: <name> dialog box appears. ``<name>`` is the name of the container to which you are uploading the object.
+	e.	Enter a name for the object.
 
-	f.	Enter a name for the object.
+	f.	Browse to and select the file that you want to upload.
 
-	g.	Browse to and select the file that you want to upload.
+	g.	Click Upload Object.
 
-	h.	Click Upload Object.
-
-You have successfully uploaded an object to the container
+You have successfully uploaded an object to the container.
 
 Now let's update a container with new fiiles:
 
@@ -270,6 +272,10 @@ Once you have ceated two or more containers, you can use the below procedure:
 	b.	Select the container that contains your source object.
 
 	c.	Click More and choose Copy from the dropdown list.
+
+The same procedure is depicted in the image below:
+
+|image6|
 
 	d.	In the Copy Object launch dialog box, enter the following values:
 
