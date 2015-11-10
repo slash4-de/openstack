@@ -44,10 +44,18 @@ Generally an OpenStack cloud consists of following core services:
 	Database as a Service (Trove)
 
 	Big Data Applications\Hadoop (Sahara)
+	
+	OpenStack Messaging Service
+
+Below diagram shows several Openstack components integrated with each other:
+
+|image1|
+
 
 Let's explain each term very briefly:
 
-OpenStack Compute (nova):	It provides the hypervisor service to the cloud environment. OpenStack supports hypervisors including:
+OpenStack Compute (nova):	It provides the hypervisor service to the cloud environment. Compute (“Nova”) retrieves virtual disks images , attach flavor and associated metadata and transforms end user API requests into running instances.
+OpenStack supports hypervisors including:
 
 		KVM - Kernel-based Virtual Machine. In this case the virtual disk format is inherited from QEMU since it uses a modified QEMU program to launch the virtual machine. The supported disk formats include raw images, the qcow2, and VMware formats.
 
@@ -67,52 +75,34 @@ OpenStack Compute (nova):	It provides the hypervisor service to the cloud enviro
 		(e.g, PXE for image deployment, and IPMI for power management).
 
 
-OpenStack Networking (neutron) : 	It provides networking service to other OpenStack components. This includes, VLANs , ip address information and routing etc.
+OpenStack Networking (neutron) : 	provides networking service to other OpenStack components. This includes, VLANs , ip address information and routing etc.
+ It also provides virtual networking for Compute which allows users to create their own networks and then link them to the instances.
 
-OpenStack Image service (glance) :         It provides services including discovering, registering, and retrieving virtual machine images. 
+OpenStack Image service (glance) :        provides services including discovering, registering, and retrieving virtual machine images. 
 It provides a RESTful API for querying of VM image metadata as well as retrieval of the actual image.
 
-OpenStack Identity (keystone) :	
+OpenStack Identity (keystone) :	provides authentication and authorization for all OpenStack services.
 
-	OpenStack dashboard (horizon)
+OpenStack dashboard (horizon) :	provides the interface for all the OpenStack services.
 
-	Telemetry (ceilometer)
+Telemetry (ceilometer) :		provides metering and resource metering service to the cloud environment.
 
-	Orchestration Service (Heat)
+Orchestration Service (Heat) :		provides features like automatic out scaling of cloud resources.
 	
-	OpenStack Object Storage (swift)
+OpenStack Object Storage (swift) :	provides an object store for keeping data as well as associated metadata.
 	
-	OpenStack Block Storage (cinder). 
+OpenStack Block Storage (cinder) :	provides persistent storage volumes for Compute instances.
 	
-	Database as a Service (Trove)
+Database as a Service (Trove) :	provides database as a service.
 
-	Big Data Applications\Hadoop (Sahara)
+Message Queue(“RabbitMQ”)  : 	handles the internal communication within Openstack components such as Nova , neutron and Cinder.
 
+OpenStack CLI :			command Line Interpreter for submitting commands to OpenStack Compute.
 
+Big Data Applications\Hadoop (Sahara)	provides deployment of huge data intesive applications like hadoop.
 
-Below diagram shows several Openstack components integrated with each other:
-
-
-
-|image1|
 
 Provisioning a new instance involves the interaction between multiple components inside OpenStack :
-
- 	CLI Command Line Interpreter for submitting commands to OpenStack Compute.
-
- 	Dashboard (“Horizon”) provides the interface for all the OpenStack services.
-
- .	Compute (“Nova”) retrieves virtual disks images(“Glance”) , attach flavor and associated metadata and transforms end user API requests into running instances.
-
- 	Network (“Quantum”) provides virtual networking for Compute which allows users to create their own networks and then link them to the instances.
-
- 	Block Storage (“Cinder”) provides persistent storage volumes for Compute instances.
-
- 	Image (“Glance”) can store the actual virtual disk files in the Image Store.
-
- 	Identity (“Keystone”) provides authentication and authorization for all OpenStack services.
-
- .	Message Queue(“RabbitMQ”) handles the internal communication within Openstack components such as Nova , Quantum and Cinder.
 
  The request flow for provisioning an Instance goes like this:
 
@@ -176,7 +166,6 @@ Provisioning a new instance involves the interaction between multiple components
 The same is depicted in the image below:
 
 |image2|
-
 
 
 2.	 OpenStack Node Types
