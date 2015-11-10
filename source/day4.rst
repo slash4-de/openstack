@@ -74,7 +74,6 @@ OpenStack supports hypervisors including:
 		Bare Metal - It is not a traditional hypervisor, rather its a driver that provisions physical hardware through pluggable sub-drivers 
 		(e.g, PXE for image deployment, and IPMI for power management).
 
-
 OpenStack Networking (neutron) : 	provides networking service to other OpenStack components. This includes, VLANs , ip address information and routing etc.
  It also provides virtual networking for Compute which allows users to create their own networks and then link them to the instances.
 
@@ -100,7 +99,6 @@ Message Queue(“RabbitMQ”)  : 	handles the internal communication within Openstac
 OpenStack CLI :			command Line Interpreter for submitting commands to OpenStack Compute.
 
 Big Data Applications\Hadoop (Sahara)	provides deployment of huge data intesive applications like hadoop.
-
 
 Provisioning a new instance involves the interaction between multiple components inside OpenStack :
 
@@ -222,6 +220,14 @@ Storage nodes store all the data required for the environment, including disk im
 
 3.	Building OpenStack from Scratch
 -----------------------------------------------------------
+
+We have made available for you a few helping bash scripts for deploying an OpenStack cloud from start. 
+
+Below is the cloud architecture that we want to build:
+
+
+Let's do it ourselves. Below are the pre-requisities:
+
 
 
 
