@@ -11,16 +11,37 @@ So experience is something that we all need !  Let's have some more practical ex
 Below are the learning ojectives of day4:
 .
 
-1. 	 Understanding OpenStack Echosystem
+1. 	 Understanding OpenStack Components
 
 2.	 OpenStack Node Types
 
 3.	Building OpenStack from Scratch
 
 
-
-1. 	 Understanding OpenStack Echosystem
+	
+1. 	 Understanding OpenStack Components
 -----------------------------------------------------------------
+Generally an OpenStack cloud consists of following core OpenStack services:
+
+	OpenStack Compute (nova)
+
+	OpenStack Networking (neutron)
+
+	OpenStack Image service (glance)
+
+	OpenStack Identity (keystone)
+
+	OpenStack dashboard (horizon)
+
+	Telemetry (ceilometer)
+
+	Orchestration Service (Heat)
+	
+	OpenStack Object Storage (swift)
+	
+	OpenStack Block Storage (cinder). 
+
+
 
 |image1|
 
