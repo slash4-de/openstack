@@ -350,6 +350,37 @@ We will run the scripts 'neutron-create-networks.sh' after installing compute no
 Installing the Compute Node
 --------------------------------------
 
+The folder named 'compute' contains below files:
+
+	compute.conf 		(This the configuration file containing IP address information and passwords information)
+	
+	compute-setup-ip.sh		( This script configures the IP address mentioned in the configuration file)
+	
+	compute-install.sh		(This script downloads the nessary packages and installs openstack 
+
+
+Follow below steps to install the network node:
+
+1. Checkout the compute.conf file .Make sure that it contains the correct IP address.
+
+2.	Run the script 'compute-setup-ip.sh' to configure the IP management IP address
+
+		# bash compute-setup-ip.sh
+
+3.	Reboot the server so that configuration changes may take affect
+
+		# reboot
+
+4.	After the system is rebooted and is back to normal, run the script 'compute-install.sh'
+
+		# bash compute-install.sh
+
+This will take a while as it will download all necessary packages for controller node and install them.
+
+5.	Finally reboot the server once more to get the controller node up and running.
+
+		# reboot 	
+
 
 
 
