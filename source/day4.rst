@@ -73,9 +73,8 @@ OpenStack supports hypervisors including:
 
 		Bare Metal - It is not a traditional hypervisor, rather its a driver that provisions physical hardware through pluggable sub-drivers 
 		(e.g, PXE for image deployment, and IPMI for power management).
-
 OpenStack Networking (neutron) : 	provides networking service to other OpenStack components. This includes, VLANs , ip address information and routing etc.
- It also provides virtual networking for Compute which allows users to create their own networks and then link them to the instances.
+It provides virtual networking for Compute which allows users to create their own networks and then link them to the instances.
 
 OpenStack Image service (glance) :        provides services including discovering, registering, and retrieving virtual machine images. 
 It provides a RESTful API for querying of VM image metadata as well as retrieval of the actual image.
@@ -225,6 +224,7 @@ We have made available for you a few helping bash scripts for deploying an OpenS
 
 Below is the cloud architecture that we want to build:
 
+|image3|
 
 Let's do it ourselves. Below are the pre-requisities:
 
