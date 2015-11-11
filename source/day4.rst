@@ -382,6 +382,13 @@ This will take a while as it will download all necessary packages for controller
 		# reboot 	
 
 
+Accessing the OpenStack Dashboard
+--------------------------------------------------
+
+If everything has gone well so far then you are done. Congratualtions! You can access the the dashboard at:
+
+http://192.168.10.12/horizon
+
 
 
 
