@@ -257,7 +257,9 @@ NIC1
 We will assgin these IP addresses on the NIC1 on three nodes:
 
 	cloud-compute	192.168.10.10
+
 	cloud-network	192.168.10.11
+
 	cloud-controller	192.168.10.12
 
 NIC2
@@ -265,6 +267,7 @@ NIC2
 Since NIC2 is required on compute and network only so we will assign them below addresses:
 	
 	cloud-compute	192.168.20.10
+
 	cloud-network	192.168.20.20
 
 NIC3
@@ -272,10 +275,44 @@ NIC3
 NIC3 is installed on network node only however it does not need to be assigned a static IP address.
 
 
+Installing the Controller Node
+--------------------------------------
+
+We will start with the controller node first. There are three files present under the folder named controller here:
+
+	controller.conf 		(This the configuration file containing IP address information and passwords information)
+	
+	controller-setup-ip.sh	( This script configures the IP address mentioned in the configuration file)
+	
+	controller-install.sh		(This script downloads the nessary packages and installs openstack controller)
+
+Follow below steps to install the controller node:
+
+1.	Download folder named controller to the controller node ( make sure it contains all three files mentioned above).
+
+2.	Run the script 'controller-setup-ip.sh' to configure the IP management IP address
+
+		# bash controller-setup-ip.sh
+
+3.	Reboot the server so that configuration changes may take affect
+
+		# reboot
+
+4.	After the system is rebooted and is back to normal, run the script 'controller-install.sh'
+
+		# bash controller-install.sh
+This will take a while as it will download all necessary packages for controller node and install them.
+
+5.	Finally reboot the server once more to get the controller node up and running.
+
+		# reboot
 
 
+Installing the Network Node
+--------------------------------------
 
-
+Installing the Compute Node
+--------------------------------------
 
 
 
