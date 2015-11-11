@@ -310,6 +310,42 @@ This will take a while as it will download all necessary packages for controller
 
 Installing the Network Node
 --------------------------------------
+The folder named 'network' contains four files as :
+
+
+	neutron.conf 		(This the configuration file containing IP address information and passwords information)
+	
+	neutron-setup-ip.sh		( This script configures the IP address mentioned in the configuration file)
+	
+	neutron-install.sh		(This script downloads the nessary packages and installs openstack 
+
+	neutron-create-networks.sh	( Creates neutron networks )
+
+
+Follow below steps to install the network node:
+
+1. Checkout the neutron.conf file .Make sure that it contains the correct IP address.
+
+2.	Run the script 'neutron-setup-ip.sh' to configure the IP management IP address
+
+		# bash neutron-setup-ip.sh
+
+3.	Reboot the server so that configuration changes may take affect
+
+		# reboot
+
+4.	After the system is rebooted and is back to normal, run the script 'controller-install.sh'
+
+		# bash neutron-install.sh
+
+This will take a while as it will download all necessary packages for controller node and install them.
+
+5.	Finally reboot the server once more to get the controller node up and running.
+
+		# reboot 	
+
+We will run the scripts 'neutron-create-networks.sh' after installing compute node.
+
 
 Installing the Compute Node
 --------------------------------------
