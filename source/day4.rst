@@ -226,7 +226,15 @@ Below is the cloud architecture that we want to build:
 
 |image3|
 
-Let's do it ourselves. Below are the pre-requisities:
+Below are the pre-requisities:
+
+		Three physical / virtual machines with CentOS 6 installed.
+
+		Hardware virtualization enabled in the host machine (where compute node will be installed)
+
+		Three subnets (management, private and public)
+
+
 
 
 
