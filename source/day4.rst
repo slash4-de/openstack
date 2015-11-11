@@ -389,6 +389,9 @@ If everything has gone well so far then you are done. Congratualtions! You can a
 
 http://192.168.10.12/horizon
 
+You can rock and roll with your own private cloud!
+
+
 
 
 
