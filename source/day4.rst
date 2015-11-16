@@ -262,7 +262,7 @@ So let's get started by assigning IP addresses to all three hosts on the managem
 Wait, don't kill yourself by manually editing the configuration files. We have made a small script to assist you in this. 
 
 NIC1
-------
+====
 We will assgin these IP addresses on the NIC1 on three nodes:
 
 -	cloud-compute	192.168.10.10
@@ -272,7 +272,7 @@ We will assgin these IP addresses on the NIC1 on three nodes:
 -	cloud-controller	192.168.10.12
 
 NIC2
-------
+====
 Since NIC2 is required on compute and network only so we will assign them below addresses:
 	
 -	cloud-compute	192.168.20.10
@@ -280,12 +280,12 @@ Since NIC2 is required on compute and network only so we will assign them below 
 -	cloud-network	192.168.20.20
 
 NIC3
-------
+====
 NIC3 is installed on network node only however it does not need to be assigned a static IP address.
 
 
-Installing the Controller Node
---------------------------------------
+3.1	Installing the Controller Node
+==============================
 
 We will start with the controller node first. There are three files present under the folder named controller here:
 
@@ -318,8 +318,9 @@ This will take a while as it will download all necessary packages for controller
 ``# reboot``
 
 
-Installing the Network Node
---------------------------------------
+3.2	Installing the Network Node
+==============================
+
 The folder named 'network' contains four files as :
 
 
@@ -357,8 +358,8 @@ This will take a while as it will download all necessary packages for controller
 We will run the scripts 'neutron-create-networks.sh' after installing compute node.
 
 
-Installing the Compute Node
---------------------------------------
+3.3	Installing the Compute Node
+==============================
 
 The folder named 'compute' contains below files:
 
@@ -393,7 +394,7 @@ This will take a while as it will download all necessary packages for controller
 
 
 Accessing the OpenStack Dashboard
---------------------------------------------------
+------------------------------------------------------
 
 If everything has gone well so far then you are done. Congratualtions! You can access the the dashboard at:
 
