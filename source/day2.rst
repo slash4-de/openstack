@@ -38,9 +38,9 @@ Let's explain OpenStack storage types in a bit more depth.
 
 You must know that OpenStack offers mainly two categories of block storage:
 
-	1.  Ephemeral  storage
+-  Ephemeral  storage
 
-	2.  Persistent volumes 
+- Persistent volumes 
 
 Ephemeral Storage
 ==============
@@ -49,69 +49,65 @@ The life of instance guarentees the life of ephermeral storage. This means when 
 
 Below are few important facts you must remember about ephermeral storage:
 
-	1.	Alghough ephermeral storage does not persist across deletions/terminations of VM instances however they persist across the reboots of the VM instance or the guiest operating system.
+1.	Alghough ephermeral storage does not persist across deletions/terminations of VM instances however they persist across the reboots of the VM instance or the guiest operating system.
 
-	2. 	Every instance must have some ephermeral storage.
+2. 	Every instance must have some ephermeral storage.
 
-	3.	The association of an emphermeral storage is unique. It can only be associated with a single instance at a time.
+3.	The association of an emphermeral storage is unique. It can only be associated with a single instance at a time.
 	
-	4.	The size of ephermeral storage varies with the flavor of the instance.
+4.	The size of ephermeral storage varies with the flavor of the instance.
 	
-	5.	Typically the root filesystem for a VM instance is created on ephermeral storage.
+5.	Typically the root filesystem for a VM instance is created on ephermeral storage.
 
-	6.	A few flavors provide more than one ephermeral storage disks with varying sizes. This is used by the guest operating system for creating filesystems and storing data.
+6.	A few flavors provide more than one ephermeral storage disks with varying sizes. This is used by the guest operating system for creating filesystems and storing data.
 
 Persistant Volume Storage
 ===================
 
 Now you know what is an ephermeral disk storage in OpenStack terminology. Let' talk about a disk volume next.
 
-	1.	These are virtualized block devices which are by default independent of any VM instance.
+1.	These are virtualized block devices which are by default independent of any VM instance.
 	
-	2.	Volumes can be attached to single instance at a time. This means concurrent access from two VM instances at the same time is not possible. 
-		However it is possible to detach a volume from one instance and attach it to another running instance.
+2.	Volumes can be attached to single instance at a time. This means concurrent access from two VM instances at the same time is not possible. However it is possible to detach a volume from one instance and attach it to another running instance.
 
- 	3.	Since the volumes are custom created by the user, therefore they can be of any size depending upon the avaialbe quota and limits.
+3.	Since the volumes are custom created by the user, therefore they can be of any size depending upon the avaialbe quota and limits.
 
-	4. 	By default, volumes are created with empty filesystems and as raw block devices.
+4. 	By default, volumes are created with empty filesystems and as raw block devices.
 	
-	5.	Before formatting a volume or creating a filesystem on it, you need to attach it with an instance.
+5.	Before formatting a volume or creating a filesystem on it, you need to attach it with an instance.
 
-	6.	Volumes can be used in a same manner as an external disk.
+6.	Volumes can be used in a same manner as an external disk.
  
-	7.	You can have the disk volume even if you distroy the instance and its root disk.  
+7.	You can have the disk volume even if you distroy the instance and its root disk.  
 
 
 Ok. so far so good! Let's create a new disk volume.
 
-	1. Goto  'Project'  and then 'Compute' and 'Volumes'
+1. Goto  'Project'  and then 'Compute' and 'Volumes'
 
 |image1|
 
-	2. Next select 'Create Volume'  on the right top of the page.
-
+2. Next select 'Create Volume'  on the right top of the page.
 
 |image2|
 
-
 A popup menu will appear where you need to fillout the details for the new volume. 
 
-	1. Set a meaningful volume name.
+1. Set a meaningful volume name.
 
-	2. Set a volume description
+2. Set a volume description
 
-	3. Select 'No volume source , empty volume'  as we want to create an empty volume here.
+3. Select 'No volume source , empty volume'  as we want to create an empty volume here.
 
-	4. Select no volume type.
+4. Select no volume type.
 
-	5. Set the size of the volume in GB
+5. Set the size of the volume in GB
 
-	6. Select availability zone as 'Nova'
+6. Select availability zone as 'Nova'
 
-	7. Click on 'Create Volume'
+7. Click on 'Create Volume'
 
 This is depicted in the image below too:
-
 
 |image3|
 
@@ -126,40 +122,36 @@ You can however attach more than one volumes (hard drives) to your VM instance a
 
  Let's leave this new volume here and we will come back  laters and will attach it with one of our instances. 
 
-
 2.  Create a Snapshot of a Volume
 ---------------------------------------------
 Let's understand a few conceptual facts about Snapshots before we actually create one.
 
-	1.	A snapshot is also a block storage that is persistant like a volume and can be created from a volume. 
+1.	A snapshot is also a block storage that is persistant like a volume and can be created from a volume. 
 
-	2.	In fact, it is a read-only image or copy of a volume that is taken in a specific point in time. 
+2.	In fact, it is a read-only image or copy of a volume that is taken in a specific point in time. 
 
-	3.	A snapshot can be created from a volume that is available otherwise it is also possible to create a snapshot that is in use ( this is called forceful creation)
+3.	A snapshot can be created from a volume that is available otherwise it is also possible to create a snapshot that is in use ( this is called forceful creation)
 
-	4.	It is possible to create a new volume from a snapshot.
-
+4.	It is possible to create a new volume from a snapshot.
 
 Ready? Let's go and create a new snapshot for our new volume that we just created.
 
 
-	1. Click on the drop down menu under 'Actions' field in the row where the newly created volume is displayed.
+1. Click on the drop down menu under 'Actions' field in the row where the newly created volume is displayed.
 
-	2. Select 'Create Snapshot' 
+2. Select 'Create Snapshot' 
 
 |image5|
 
 A popup window will appear. You will need to fill out the details about the snapshopt as below:
 
-	1.	A meaningful name for the snapshot
+1.	A meaningful name for the snapshot
 
-	2.	A description for the snapshot
+2.	A description for the snapshot
 
-	3.	Click on 'Create Volume Snapshot'
-
+3.	Click on 'Create Volume Snapshot'
 
 |image6|
-
 
 3. Attach a Volume To an Instance
 -------------------------------------------
@@ -173,12 +165,11 @@ It is important to remember that volumes can not be attached to windows guests. 
 
 To attach a volume to your VM instance, you need to take the follwoing steps:
 
-	1.	At the volumes page, go to the row for the volume you created earlier.
+1.	At the volumes page, go to the row for the volume you created earlier.
 
-	2.	Click at the drop down menu under 'Actions' field 
+2.	Click at the drop down menu under 'Actions' field 
 
-	3. 	Select 'Manage Attachments'
-
+3. 	Select 'Manage Attachments'
 
 This is also depicted in the image below:
 
@@ -194,7 +185,6 @@ The steps are also shown in the image below:
 
 Thats it !. Now you may see that the volume has been attached to your instance.  You will notice it under  'Attached To' column as highlighted in the next image:
 
-
 |image9|
 
 Congratulations! You attached a new volume to your instance. Now what next? You need to create a filesystem on this raw block device  and then mount this volume on a mount point 
@@ -203,7 +193,7 @@ Only after that you can see it as a regular disk and use it for storing data.
 
 Login to your VM instance and run the following command :
 
-$ fdisk -l
+``$ fdisk -l``
 
 The newly attached volume will be displayed in addition to the existing disk volumes.  In some cases it will be attached as  /dev/vdb
 
@@ -271,21 +261,19 @@ Now you need to create a folder as mounting point for this partition.
 
 You can use the 'mkdir' command to create a new directory that you will use as a mount point for this volume.
 
+``$ sudo mkdir /mydiskvolume``
 
-		$ sudo mkdir /mydiskvolume
-		$ sudo mount /dev/vdb  /mydiskvolume
+``$ sudo mount /dev/vdb  /mydiskvolume``
 
 To verfiy that the disk has been mounted properly, run the below command:
 
-		$ df -h
+``$ df -h``
 
 You can make the changes permenant by adding  a new line to the /etc/fstab file. The line should be something like below:
 
-
-/dev/vdb1		/mydiskvolume	ext3	rw	0	0
+``/dev/vdb1		/mydiskvolume	ext3	rw	0	0``
 
 Thats it!. You have successfully attached a new volume to your instance and also created a filesystem and then mounted on the system.
-
 
 4.	Deleting a Snapshot
 ---------------------------------------
@@ -293,11 +281,10 @@ Why on earth someone needs to delete a snapshot? Well there are times when you h
 
 So how to do it? Let's see it now.  
 	
-	a.	First of all go to the dashboard as always you do. Then goto compute --> Volumes  --> Volume Snapshots
-	b. 	Click on  'Delete Volume Snapshot' on the right. A confirmation window will apear, select 'delete snapshot' again.
+a.	First of all go to the dashboard as always you do. Then goto compute --> Volumes  --> Volume Snapshots
+b. 	Click on  'Delete Volume Snapshot' on the right. A confirmation window will apear, select 'delete snapshot' again.
 
 The same procedure is depicted in the image below:
-
 
 |image11|
 
@@ -308,19 +295,17 @@ Just as you can detach a physical hard drive from your machine, you can detach a
 
 Same is the as case with a disk volume attached to a VM instance. First of all you must unmount it from the instance usiing the below command:
 
-	$ sudo umount /dev/vdb      # (In this case /dev/vdb is the volume to be detached)
+``$ sudo umount /dev/vdb      # (In this case /dev/vdb is the volume to be detached)``
 
 Now you can go to the OpenStack dashboard and under projects, goto compute. Select Volumes and then goto 'Manage Volumes' on the right in the same row where your newly created volume is displayed.
 
 The same is depicted in the image below:
-
 
 |image12|
 
 Next, a popup window will appear. Click on 'Detach Volume' .  This will detach the volume from the instance. Now you can delete this volume if you think it is no longer needed.
 
 Let's go to next section and see how to delte a disk volume.
-
 
 6. 	Deleting a Disk Volume
 -------------------------------------------
@@ -342,11 +327,11 @@ The same procedure is depicted in the image below:
 
 At times you may need to terminate an instance to permenantly detele it. This will destroy everything including the data stored on its primary disk. However the secondary disk volumes attached to it will not be deleted.
 
-	a.	You may terminate an instance using a similar procedure that you used to create it. Goto OpenStack dashboard then goto 'Compute' and then 'Instances'
+a.	You may terminate an instance using a similar procedure that you used to create it. Goto OpenStack dashboard then goto 'Compute' and then 'Instances'
 
-	b.	Select the instance you want to terminate.
+b.	Select the instance you want to terminate.
 
-	c. 	Click on the button ' Terminate Instances'.  Click on 'Terminate Instances' again  in the confirmation window.
+c. 	Click on the button ' Terminate Instances'.  Click on 'Terminate Instances' again  in the confirmation window.
 
 The same procedure is depicted in the below image:
 
