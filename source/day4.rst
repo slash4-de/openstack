@@ -301,11 +301,11 @@ Follow below steps to install the controller node:
 
 2.	Run the script 'controller-setup-ip.sh' to configure the IP management IP address
 
-# `` bash controller-setup-ip.sh``
+ `` $ sudo bash controller-setup-ip.sh``
 
 3.	Reboot the server so that configuration changes may take affect
 
-# `` reboot``
+#  `` reboot``
 
 4.	After the system is rebooted and is back to normal, run the script 'controller-install.sh'
 
