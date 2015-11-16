@@ -15,15 +15,16 @@ freedom to customize and use the code according to their needs.
 
 Important facts about OpenStack:
 
-	1.	OpenStack is a cloud computing framework (supports virtualization)
+-	OpenStack is a cloud computing framework (supports virtualization)
 	
-	2.	OpenStack suports Open Source. Open Design, Open Community, Open Development
+-	OpenStack suports Open Source. Open Design, Open Community, Open Development
 	
-	3.	OpenStack is a collection of several independent components (projects)
+-	OpenStack is a collection of several independent components (projects)
 
 
 OpenStack's Mission
 ================
+Here is the official mission statement for OpenStack:
 
 “To produce the ubiquitous Open Source cloud computing platform that will meet the needs of public and private cloud providers regardless of size, by being simple to implement and massively scalable.”
 
@@ -36,10 +37,8 @@ OK, let’s get prepared to spin up our own virtual machine in an
 OpenStack environment!!
 
 After this course you will know the most important features provided by
-OpenStack, what kind of cloud features can it provide, how it can be
-used and above all, you will see that how easy it is to be used!
+OpenStack,  how to use those features and above all, you will see that how powerful it is!
 
-You will feel yourself that OpenStack is really a powerfull framework.
 This is not all about OpenStack!!!. OpenStack can also be used for:
 
 -  Creating and managing virtual machine instances using different operating systems (Linux, Windows.. )
@@ -151,19 +150,19 @@ You can infact create more than one private network depending upon your requirem
 
 Let's explain the important terms used to define a network segment:
 
-	--	Network :  It is the name of the network segment that you want to create. For example you can call it 'Internal' if it is an internal network. 
+-	Network :  It is the name of the network segment that you want to create. For example you can call it 'Internal' if it is an internal network. 
 
-	--	Subnet   :  It is a block of IP addresses ( IPv4  or IPv6) which will be used to assign IP addresses to the connecting instances.
+-	Subnet   :  It is a block of IP addresses ( IPv4  or IPv6) which will be used to assign IP addresses to the connecting instances.
 
-	--	Port        :  A port is the interface of a VM instance or a virtual router which will be used to connect to this network. It is just like the NIC on a PC.
+-	Port        :  A port is the interface of a VM instance or a virtual router which will be used to connect to this network. It is just like the NIC on a PC.
 
 Now let's proceed towards actually creating a new network. You need to take following steps in order to create a new network:
 
-	a. Under Network on the left menu bar, go to Networks and select create Network as it is depicted in the image below:
+a. Under Network on the left menu bar, go to Networks and select create Network as it is depicted in the image below:
 
 |image4|
 
-	b. Now you need to provide a meaningful name to your network. Under the Network tab, fill in the Network Name. Make sure that the 'Admin State' is up. Click Next.
+b. Now you need to provide a meaningful name to your network. Under the Network tab, fill in the Network Name. Make sure that the 'Admin State' is up. Click Next.
 
 |image5|
 
@@ -171,24 +170,24 @@ As explained earlier, each network must have at least one subnet associated to i
 
 Next, you need to mention the subnet information.
 
-	c. Under Subnet tab, enter the subnet address in CIDR (Classless Inter Domain Routing) notation.
+c. Under Subnet tab, enter the subnet address in CIDR (Classless Inter Domain Routing) notation.
 	    The private IP addresses will be assigned to our VM instances from this subnet. In this example you will use 192.168.1.0/24 . 
 	     As this is an IPv4 address therefore we will set IP version as IPv4 and click Next
 
 A gateway IP is required so that all the instances on this network with use this IP for sending traffic that is destined towards outside world. In other words you can say this gateway IP is the IP address assigned on the router.
 |image6|
 
-
 Next, you need to add some more detailed information about the subnet.
-	d. Under Subnet Details tab, make sure that the 'Enable DHCP' option is on. 
 
-		4.1	Under 'Allocation Pools', mention the starting IP address and the ending IP address separated by a comma.  Instances will be assigned IP addresses within this range.
+d. Under Subnet Details tab, make sure that the 'Enable DHCP' option is on. 
 
-		4.2	Set the DNS name server addresses as 8.8.4.4 and 8.8.8.8 on two separate lines respectively and click Create.
+4.1.	Under 'Allocation Pools', mention the starting IP address and the ending IP address separated by a comma.  Instances will be assigned IP addresses within this range.
 
-		4.3	Leave the 'Host routes' option as empty.
+4.2.	Set the DNS name server addresses as 8.8.4.4 and 8.8.8.8 on two separate lines respectively and click Create.
 
-		4.4	These DNS addresses belong to google and can be used as public DNS addresses. The steps are also shown in this image:
+4.3.	Leave the 'Host routes' option as empty.
+
+4.4.	These DNS addresses belong to google and can be used as public DNS addresses. The steps are also shown in this image:
 
 |image7|
 
@@ -209,7 +208,7 @@ Now is the action time! Let’s go to Compute menu on the left and then select '
 
 |image8|
 
-	a. A popup window will appear. Under the details section let's fill out the instance details as below:
+a. A popup window will appear. Under the details section let's fill out the instance details as below:
 
 -  The availability zone should be nova. This is the default setting.
 
@@ -231,27 +230,28 @@ A security group is infact a combintion of rules which are applicable to similar
 For example, you have a group of web servers and you want to allow http, https, ssh and ping traffic to these web servers from outside. You can create a security group called 'web-servers-group' and a rule for each traffic type.
 But today let's use the default security group that is already defined in OpenStack.
 
-	b. Under ‘Access & Security’, select the 'default' security group. 
+b. Under ‘Access & Security’, select the 'default' security group. 
 We need to add key pairs in order to be able to login to our new instance after it is created. To create and add a key pair, click on the + button near to ‘Key Pair’ field.
 
 
 |image10|
 	
-	c. A new popup window will appear. Enter a name for the key and paste the contents of the public key. You can create the new key according to the instructions on the right.
-	   You can import your existing public keys from your personal machine as well. If you have a linux PC then you can use the following command:
+c. A new popup window will appear. Enter a name for the key and paste the contents of the public key. You can create the new key according to the instructions on the right.
 
-		ssh-keygen -t rsa  <YourKeyName>    # ( Replace <YourKeyName> with your new key name)
+You can import your existing public keys from your personal machine as well. If you have a linux PC then you can use the following command:
 
-	  If you are using a windows based PC, you can use the  PUTTYGEN software utility to create  a public key.
+``# ssh-keygen -t rsa  <YourKeyName>``    # ( Replace <YourKeyName> with your new key name)
+
+If you are using a windows based PC, you can use the  PUTTYGEN software utility to create  a public key.
 
 
 |image11|
 
-	d. Upon successful import, a message like below will appear:
+d. Upon successful import, a message like below will appear:
 
 |image12|
 
-	e. Next, under networking tab, select the network that we created earlier and click on launch button.Below image displays the steps:
+e. Next, under networking tab, select the network that we created earlier and click on launch button.Below image displays the steps:
 
 |image13|
 
@@ -262,13 +262,12 @@ Once the new instance has been launched, a message like below will be displayed:
 4. Creating A Router For Your Network Segment
 ===================================
 
-
 You must know how a router works. It connects more than one networks. It routes packets between two or more networks. For your newly created network you need at least one router.
 This will make sure that your instances can talk to the outside world. Therefore you need a router that has interfaces connected to your network and external networks. 
 
 To create a new router let's follow below steps:
 
-	a. Goto 'Network' on the left menu under 'Project' and select 'Routers'. The same is depicted in the image below:
+a. Goto 'Network' on the left menu under 'Project' and select 'Routers'. The same is depicted in the image below:
 
 |image15|
 
@@ -276,64 +275,65 @@ Click on 'Create Router' on the right as shown in the image below:
 
 |image16|
 
-Set a meaningful router name
-Set the 'Admin state' to up
-Select the external public network
-Click on 'Create Router'
-Once the router is created, a message like below will be displayed:
+- Set a meaningful router name
+- Set the 'Admin state' to up
+- Select the external public network
+- Click on 'Create Router'
+- Once the router is created, a message like below will be displayed:
 
 |image17|
 
 This newly created needs a gateway IP so that it can forwar all the default traffic to it.
  
  Follow below steps to acheive this:
-		a. Goto the router details page on the newly created router and click on 'Set Gateway'
+
+a. Goto the router details page on the newly created router and click on 'Set Gateway'
+
 |image18|
 	
-		b. Select the external network and click 'Set Gateway'
+b. Select the external network and click 'Set Gateway'
+
 |image19|
 
 So far the router is created and gateway has been set but it is not connected to your private network.
 
 Hence you need to add an interface to the router and connect that interface to the private network.
 
-To do this, click on 'Add Interface' option under 'Interfaces' tab on router details page. This is shown in the image below:
+a. Click on 'Add Interface' option under 'Interfaces' tab on router details page. This is shown in the image below:
 
 |image20|
 
-Under subnet, select the network subnet that we created earlier and click on 'Add Interface'.
+b. Under subnet, select the network subnet that we created earlier and click on 'Add Interface'.
 
 |image21|
 
-Now to confirm the interface addition, we can view it under network topology. To see the network topology, to 'Network Topology' under Networks as shown below:
+c. Now to confirm the interface addition, we can view it under network topology. To see the network topology, to 'Network Topology' under Networks as shown below:
 
 |image22|
 
 5. Assign a floating IP Address
 =======================
 
-
-
 A floating IP Address is required to access the VM instance remotely using pubic Internet. Floating IPs are ussually public IP Addresses which are routable using Internet.
 To assign a flaoting IP, we need to follow below steps:
-	a. Under 'Compute', go to 'Instances' and select the instance.
+
+a. Under 'Compute', go to 'Instances' and select the instance.
 
 |image23|
 
-After selecting the instance, select the drop down menu under 'Actions' column.
+b. After selecting the instance, select the drop down menu under 'Actions' column.
 
-From this drop down menu, select 'Associate floating IP' option.
-
+c. From this drop down menu, select 'Associate floating IP' option.
 
 |image24|
 
 A popup window like below will appear:
 
-Select the  the port to be associated and click on '+' button under IP Address
+d. Select the  the port to be associated and click on '+' button under IP Address
 
 |image25|
 
-Select the pool and click on 'Allocate IP' . This will allocate a pulic IP to the newly created instance.
+e. Select the pool and click on 'Allocate IP' . This will allocate a pulic IP to the newly created instance.
 
 |image26|
 
@@ -342,17 +342,23 @@ Select the pool and click on 'Allocate IP' . This will allocate a pulic IP to th
 
 Security policies are required to allow or deny access to the VM instances from outside world. It is used to control the incomming and outgoing traffic to and from the VM instances.
 This can be done from 'Access and Security' option under 'Compute' menu option on the left. Following steps need to be followed to accomplish this:
-	a. Under 'Compute', goto 'Access and Security' and then goto 'Security Groups' tab.
+
+a. Under 'Compute', goto 'Access and Security' and then goto 'Security Groups' tab.
 	
 |image27|
 
-	b. Click 'Manage Rules' in the 'default' row.
+b. Click 'Manage Rules' in the 'default' row.
 
 |image28|	
 
-Let's say we need to allow ping (ICMP), web server traffic (port 80) and SSH traffic to this VM instance from outside.  We need to add three rules for this.
+Let's say we need to allow ping (ICMP), web server traffic (port 80) and SSH traffic to this VM instance from outside.  
+
+We need to add three rules for this.
+
 a. Click on 'Add Rule' and select 'ALL ICMP'.
+
 b. Click on 'Add Rule' and select 'SSH'
+
 c. Click on 'Add Rule' and select 'HTTP'
 
 |image29|
