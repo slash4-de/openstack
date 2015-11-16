@@ -57,22 +57,23 @@ Let's explain each term very briefly:
 OpenStack Compute (nova):	It provides the hypervisor service to the cloud environment. Compute (“Nova”) retrieves virtual disks images , attach flavor and associated metadata and transforms end user API requests into running instances.
 OpenStack supports hypervisors including:
 
-		KVM - Kernel-based Virtual Machine. In this case the virtual disk format is inherited from QEMU since it uses a modified QEMU program to launch the virtual machine. The supported disk formats include raw images, the qcow2, and VMware formats.
+-		KVM - Kernel-based Virtual Machine. In this case the virtual disk format is inherited from QEMU since it uses a modified QEMU program to launch the virtual machine. The supported disk formats include raw images, the qcow2, and VMware formats.
 
-		LXC - Linux Containers (through libvirt), are used to run Linux-based virtual machines.
+-		LXC - Linux Containers (through libvirt), are used to run Linux-based virtual machines.
 
-		QEMU - Quick EMUlator, mostly used by developers.
+-		QEMU - Quick EMUlator, mostly used by developers.
 
-		UML - User Mode Linux, mostly used by developers.
+-		UML - User Mode Linux, mostly used by developers.
 
-		VMware - VMware-based Linux and Windows images  are used by vSphere through a connection with a vCenter server or directly with an ESXi host.
+-		VMware - VMware-based Linux and Windows images  are used by vSphere through a connection with a vCenter server or directly with an ESXi host.
 
-		Xen - XenServer, Xen Cloud Platform (XCP), use to run Linux or Windows virtual machines. You must install the nova-compute service in a para-virtualized VM.
+-		Xen - XenServer, Xen Cloud Platform (XCP), use to run Linux or Windows virtual machines. You must install the nova-compute service in a para-virtualized VM.
 
-		Hyper-V - Used to create Windows, Linux, and FreeBSD virtual machines. It runs nova-compute natively on the Windows virtualization platform.
+-		Hyper-V - Used to create Windows, Linux, and FreeBSD virtual machines. It runs nova-compute natively on the Windows virtualization platform.
 
-		Bare Metal - It is not a traditional hypervisor, rather its a driver that provisions physical hardware through pluggable sub-drivers 
+-		Bare Metal - It is not a traditional hypervisor, rather its a driver that provisions physical hardware through pluggable sub-drivers 
 		(e.g, PXE for image deployment, and IPMI for power management).
+
 OpenStack Networking (neutron) : 	provides networking service to other OpenStack components. This includes, VLANs , ip address information and routing etc.
 It provides virtual networking for Compute which allows users to create their own networks and then link them to the instances.
 
@@ -101,7 +102,10 @@ Big Data Applications\Hadoop (Sahara)	provides deployment of huge data intesive 
 
 Provisioning a new instance involves the interaction between multiple components inside OpenStack :
 
- The request flow for provisioning an Instance goes like this:
+1.1	Request Flow for Instance Provisioning
+======================================
+
+The request flow for provisioning an Instance goes like this:
 
 1.	Dashboard or CLI gets the user credential and does the REST call to Keystone for authentication.
 
