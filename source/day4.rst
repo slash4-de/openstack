@@ -232,22 +232,25 @@ Below is the cloud architecture that we want to build:
 
 Below are the pre-requisities:
 
-		Three physical / virtual machines with CentOS 6 installed. (one node with single NIC, one node with dual NICs and one node with three NICs)
+-		Three physical / virtual machines with CentOS 6 installed. (one node with single NIC, one node with dual NICs and one node with three NICs)
 
-		Hardware virtualization enabled in the host machine (where compute node will be installed)
+-		Hardware virtualization enabled in the host machine (where compute node will be installed)
 
-		Three subnets (management, private and public)
+-		Three subnets (management, private and public)
 
 So let's say we have got three servers with CentOS 6 installed as one for the controller node, one for the network node and one for the compute node. 
 Let's say we have hardware virtualization enabled in the BIOS settings of the compute node. Also we take below three subnets:
 
-		Management network 	192.168.10.0/24	(will be used for ssh from management server to compute and network serves. also horizon dashboard will be accessed on this network.
-		Tunnel Network		192.168.20.0/24	(will be used for software defined netwroking services)
-		Public Network		192.168.30.0/24	(will be used to assign floating IPs to the VMs so that they can be accessed remotely over Internet)
+-		Management network 	192.168.10.0/24	(will be used for ssh from management server to compute and network serves. also horizon dashboard will be accessed on this network.
+
+-		Tunnel Network		192.168.20.0/24	(will be used for software defined netwroking services)
+
+-		Public Network		192.168.30.0/24	(will be used to assign floating IPs to the VMs so that they can be accessed remotely over Internet)
 
 The management node will require only one NIC to connect to the management network.
 
 The network node will require total three NICs, one for the public network traffic, one for tunnel traffic and one for management traffic.
+
 The tunnel network will carry software-defined networks between the network node and the compute nodes.
 
 The compute node will require total two NICs, one for the tunnel network, and one for management network.
@@ -260,19 +263,19 @@ NIC1
 ------
 We will assgin these IP addresses on the NIC1 on three nodes:
 
-	cloud-compute	192.168.10.10
+-	cloud-compute	192.168.10.10
 
-	cloud-network	192.168.10.11
+-	cloud-network	192.168.10.11
 
-	cloud-controller	192.168.10.12
+-	cloud-controller	192.168.10.12
 
 NIC2
 ------
 Since NIC2 is required on compute and network only so we will assign them below addresses:
 	
-	cloud-compute	192.168.20.10
+-	cloud-compute	192.168.20.10
 
-	cloud-network	192.168.20.20
+-	cloud-network	192.168.20.20
 
 NIC3
 ------
@@ -284,11 +287,11 @@ Installing the Controller Node
 
 We will start with the controller node first. There are three files present under the folder named controller here:
 
-	controller.conf 		(This the configuration file containing IP address information and passwords information)
+-	controller.conf 		(This the configuration file containing IP address information and passwords information)
 	
-	controller-setup-ip.sh	( This script configures the IP address mentioned in the configuration file)
+-	controller-setup-ip.sh	( This script configures the IP address mentioned in the configuration file)
 	
-	controller-install.sh		(This script downloads the nessary packages and installs openstack controller)
+-	controller-install.sh		(This script downloads the nessary packages and installs openstack controller)
 
 Follow below steps to install the controller node:
 
@@ -317,13 +320,13 @@ Installing the Network Node
 The folder named 'network' contains four files as :
 
 
-	neutron.conf 		(This the configuration file containing IP address information and passwords information)
+-	neutron.conf 		(This the configuration file containing IP address information and passwords information)
 	
-	neutron-setup-ip.sh		( This script configures the IP address mentioned in the configuration file)
+-	neutron-setup-ip.sh		( This script configures the IP address mentioned in the configuration file)
 	
-	neutron-install.sh		(This script downloads the nessary packages and installs openstack 
+-	neutron-install.sh		(This script downloads the nessary packages and installs openstack 
 
-	neutron-create-networks.sh	( Creates neutron networks )
+-	neutron-create-networks.sh	( Creates neutron networks )
 
 
 Follow below steps to install the network node:
@@ -356,11 +359,11 @@ Installing the Compute Node
 
 The folder named 'compute' contains below files:
 
-	compute.conf 		(This the configuration file containing IP address information and passwords information)
+-	compute.conf 		(This the configuration file containing IP address information and passwords information)
 	
-	compute-setup-ip.sh		( This script configures the IP address mentioned in the configuration file)
+-	compute-setup-ip.sh		( This script configures the IP address mentioned in the configuration file)
 	
-	compute-install.sh		(This script downloads the nessary packages and installs openstack 
+-	compute-install.sh		(This script downloads the nessary packages and installs openstack 
 
 
 Follow below steps to install the network node:
