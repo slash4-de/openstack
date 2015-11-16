@@ -120,7 +120,7 @@ In this image, you can see that this volume is not attached to any instance and 
 Remember that you can attach this volume to one isntance at a time. It is just like attaching an additional hard drive to your machine. 
 You can however attach more than one volumes (hard drives) to your VM instance at the same time.
 
- Let's leave this new volume here and we will come back  laters and will attach it with one of our instances. 
+Let's leave this new volume here and we will come back  laters and will attach it with one of our instances. 
 
 2.  Create a Snapshot of a Volume
 ---------------------------------------------
