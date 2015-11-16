@@ -23,29 +23,29 @@ Below are the learning ojectives of day4:
 -----------------------------------------------------------------
 Generally an OpenStack cloud consists of following core services:
 
-	OpenStack Compute (nova)
+-	OpenStack Compute (nova)
 
-	OpenStack Networking (neutron)
+-	OpenStack Networking (neutron)
 
-	OpenStack Image service (glance)
+-	OpenStack Image service (glance)
 
-	OpenStack Identity (keystone)
+-	OpenStack Identity (keystone)
 
-	OpenStack dashboard (horizon)
+-	OpenStack dashboard (horizon)
 
-	Telemetry (ceilometer)
+-	Telemetry (ceilometer)
 
-	Orchestration Service (Heat)
+-	Orchestration Service (Heat)
 	
-	OpenStack Object Storage (swift)
+-	OpenStack Object Storage (swift)
 	
-	OpenStack Block Storage (cinder). 
+-	OpenStack Block Storage (cinder). 
 	
-	Database as a Service (Trove)
+-	Database as a Service (Trove)
 
-	Big Data Applications\Hadoop (Sahara)
+-	Big Data Applications\Hadoop (Sahara)
 	
-	OpenStack Messaging Service
+-	OpenStack Messaging Service
 
 Below diagram shows several Openstack components integrated with each other:
 
