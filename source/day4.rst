@@ -305,7 +305,7 @@ Follow below steps to install the controller node:
 
 3.	Reboot the server so that configuration changes may take affect
 
-``reboot``
+`` # reboot``
 
 4.	After the system is rebooted and is back to normal, run the script 'controller-install.sh'
 
