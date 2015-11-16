@@ -153,7 +153,7 @@ The request flow for provisioning an Instance goes like this:
 
 22.	nova-compute does the REST-call by passing auth-token to Network API to allocate and configure the network such that instance gets the IP address. 
 
-23.	quantum-server validates the auth-token with keystone.
+23.	neutron-server validates the auth-token with keystone.
 
 24.	nova-compute get the network info.
 
