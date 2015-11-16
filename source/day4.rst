@@ -338,21 +338,21 @@ Follow below steps to install the network node:
 
 2.	Run the script 'neutron-setup-ip.sh' to configure the IP management IP address
 
-``# bash neutron-setup-ip.sh
+``# bash neutron-setup-ip.sh``
 
 3.	Reboot the server so that configuration changes may take affect
 
-``# reboot
+``# reboot``
 
 4.	After the system is rebooted and is back to normal, run the script 'controller-install.sh'
 
-``# bash neutron-install.sh
+``# bash neutron-install.sh``
 
 This will take a while as it will download all necessary packages for controller node and install them.
 
 5.	Finally reboot the server once more to get the controller node up and running.
 
-``# reboot 	
+``# reboot``	
 
 We will run the scripts 'neutron-create-networks.sh' after installing compute node.
 
@@ -375,21 +375,21 @@ Follow below steps to install the network node:
 
 2.	Run the script 'compute-setup-ip.sh' to configure the IP management IP address
 
-``# bash compute-setup-ip.sh
+``# bash compute-setup-ip.sh``
 
 3.	Reboot the server so that configuration changes may take affect
 
-``# reboot
+``# reboot``
 
 4.	After the system is rebooted and is back to normal, run the script 'compute-install.sh'
 
-``# bash compute-install.sh
+``# bash compute-install.sh``
 
 This will take a while as it will download all necessary packages for controller node and install them.
 
 5.	Finally reboot the server once more to get the controller node up and running.
 
-``# reboot 	
+``# reboot`` 	
 
 
 Accessing the OpenStack Dashboard
