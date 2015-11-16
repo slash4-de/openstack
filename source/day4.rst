@@ -287,7 +287,8 @@ NIC3 is installed on network node only however it does not need to be assigned a
 3.1	Installing the Controller Node
 ==============================
 
-We will start with the controller node first. There are three files present under the folder named controller here:
+We will start with the controller node first. There are three files present under the folder named controller_ here:
+ 
 
 -	controller.conf 		(This the configuration file containing IP address information and passwords information)
 	
@@ -420,3 +421,5 @@ You can rock and roll with your own private cloud!
 .. |image12| image:: media/d4_image12.png
 .. |image13| image:: media/d4_image13.png
 .. |image14| image:: media/d4_image14.png
+
+.. _controller:https://github.com/slash4-de/openstack/tree/master/controller
