@@ -287,14 +287,13 @@ NIC3 is installed on network node only however it does not need to be assigned a
 3.1	Installing the Controller Node
 ==============================
 
-We will start with the controller node first. There are three files present under the folder named `controller <https://github.com/slash4-de/openstack/tree/master/controller/>`_ here:
- 
+We will start with the controller node first. There are three files present under the folder named `controller <https://github.com/slash4-de/openstack/tree/master/controller/>`_ :
+ 	
+-	controller-install.sh		(This script downloads the nessary packages and installs openstack controller)
+
+-	controller-setup-ip.sh	( This script configures the IP address mentioned in the configuration file)
 
 -	controller.conf 		(This the configuration file containing IP address information and passwords information)
-	
--	controller-setup-ip.sh	( This script configures the IP address mentioned in the configuration file)
-	
--	controller-install.sh		(This script downloads the nessary packages and installs openstack controller)
 
 Follow below steps to install the controller node:
 
@@ -322,7 +321,7 @@ This will take a while as it will download all necessary packages for controller
 3.2	Installing the Network Node
 ==============================
 
-The folder named 'network' contains four files as :
+The folder named `network<https://github.com/slash4-de/openstack/tree/master/network/>`_ : contains four files as :
 
 
 -	neutron.conf 		(This the configuration file containing IP address information and passwords information)
