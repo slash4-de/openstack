@@ -58,7 +58,7 @@ Below diagram shows several Openstack components integrated with each other:
 
 Let's explain each term very briefly:
 
-1.1	OpenStack Compute (nova):	It provides the hypervisor service to the cloud environment. Compute (“Nova”) retrieves virtual disks images , attach flavor and associated metadata and transforms end user API requests into running instances.
+1.1.	OpenStack Compute (nova):	It provides the hypervisor service to the cloud environment. Compute (“Nova”) retrieves virtual disks images , attach flavor and associated metadata and transforms end user API requests into running instances.
 OpenStack supports hypervisors including:
 
 -		KVM - Kernel-based Virtual Machine. In this case the virtual disk format is inherited from QEMU since it uses a modified QEMU program to launch the virtual machine. The supported disk formats include raw images, the qcow2, and VMware formats.
@@ -78,46 +78,46 @@ OpenStack supports hypervisors including:
 -		Bare Metal - It is not a traditional hypervisor, rather its a driver that provisions physical hardware through pluggable sub-drivers 
 		(e.g, PXE for image deployment, and IPMI for power management).
 
-1.2	OpenStack Networking (neutron) : 	provides networking service to other OpenStack components. This includes, VLANs , ip address information and routing etc.
+1.2.	OpenStack Networking (neutron) : 	provides networking service to other OpenStack components. This includes, VLANs , ip address information and routing etc.
 It provides virtual networking for Compute which allows users to create their own networks and then link them to the instances.
 
-1.3	OpenStack Image service (glance) :        provides services including discovering, registering, and retrieving virtual machine images. 
+1.3.	OpenStack Image service (glance) :        provides services including discovering, registering, and retrieving virtual machine images. 
 It provides a RESTful API for querying of VM image metadata as well as retrieval of the actual image.
 
-1.4	OpenStack Identity (keystone) :	provides authentication and authorization for all OpenStack services.
+1.4.	OpenStack Identity (keystone) :	provides authentication and authorization for all OpenStack services.
 
-1.5	OpenStack dashboard (horizon) :	provides the interface for all the OpenStack services.
+1.5.	OpenStack dashboard (horizon) :	provides the interface for all the OpenStack services.
 
-1.6	Telemetry (ceilometer) :		provides metering and resource metering service to the cloud environment.
+1.6.	Telemetry (ceilometer) :		provides metering and resource metering service to the cloud environment.
 
-1.7	Orchestration Service (Heat) :		provides features like automatic out scaling of cloud resources.
+1.7.	Orchestration Service (Heat) :		provides features like automatic out scaling of cloud resources.
 	
-1.8	OpenStack Object Storage (swift) :	provides an object store for keeping data as well as associated metadata.
+1.8.	OpenStack Object Storage (swift) :	provides an object store for keeping data as well as associated metadata.
 	
-1.9	OpenStack Block Storage (cinder) :	provides persistent storage volumes for Compute instances.
+1.9.	OpenStack Block Storage (cinder) :	provides persistent storage volumes for Compute instances.
 	
-1.10	Database as a Service (Trove) :	provides database as a service.
+1.10.	Database as a Service (Trove) :	provides database as a service.
 
-1.11	Message Queue(“RabbitMQ”)  : 	handles the internal communication within Openstack components such as Nova , neutron and Cinder.
+1.11.	Message Queue(“RabbitMQ”)  : 	handles the internal communication within Openstack components such as Nova , neutron and Cinder.
 
-1.12	OpenStack CLI :			command Line Interpreter for submitting commands to OpenStack Compute.
+1.12.	OpenStack CLI :			command Line Interpreter for submitting commands to OpenStack Compute.
 
-1.13	Big Data Applications\Hadoop (Sahara)	provides deployment of huge data intesive applications like hadoop.
+1.13.	Big Data Applications\Hadoop (Sahara)	provides deployment of huge data intesive applications like hadoop.
 
-1.14	Provisioning a new instance involves the interaction between multiple components inside OpenStack :
+1.14.	Provisioning a new instance involves the interaction between multiple components inside OpenStack :
 
 2	Request Flow for Instance Provisioning
 ----------------------------------------------------------------------
 
 The request flow for provisioning an Instance goes like this:
 
-1	Dashboard or CLI gets the user credential and does the REST call to Keystone for authentication.
+1.	Dashboard or CLI gets the user credential and does the REST call to Keystone for authentication.
 
-2	Keystone authenticate the credentials and generate & send back auth-token which will be used for sending request to other Components through REST-call.
+2.	Keystone authenticate the credentials and generate & send back auth-token which will be used for sending request to other Components through REST-call.
 
-3	Dashboard or CLI convert the new instance request specified in  ‘launch instance’ or ‘nova-boot’ form to REST API request and send it to nova-api.
+3.	Dashboard or CLI convert the new instance request specified in  ‘launch instance’ or ‘nova-boot’ form to REST API request and send it to nova-api.
 
-4	nova-api receive the request and sends the request for validation auth-token and access permission to keystone.
+4.	nova-api receive the request and sends the request for validation auth-token and access permission to keystone.
 
 5.	Keystone validates the token and sends updated auth headers with roles and permissions.
 
