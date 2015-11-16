@@ -185,9 +185,9 @@ d. Under Subnet Details tab, make sure that the 'Enable DHCP' option is on.
 
 -	Under 'Allocation Pools', mention the starting IP address and the ending IP address separated by a comma.  Instances will be assigned IP addresses within this range.
 
--.	Set the DNS name server addresses as 8.8.4.4 and 8.8.8.8 on two separate lines respectively and click Create.
+-	Set the DNS name server addresses as 8.8.4.4 and 8.8.8.8 on two separate lines respectively and click Create.
 
--.	Leave the 'Host routes' option as empty.
+-	Leave the 'Host routes' option as empty.
 
 -	These DNS addresses belong to google and can be used as public DNS addresses. The steps are also shown in this image:
 
@@ -241,7 +241,7 @@ We need to add key pairs in order to be able to login to our new instance after 
 
 You can import your existing public keys from your personal machine as well. If you have a linux PC then you can use the following command:
 
-``# ssh-keygen -t rsa  <YourKeyName>``    # ( Replace <YourKeyName> with your new key name)
+``# ssh-keygen -t rsa  <YourKeyName>   # ( Replace <YourKeyName> with your new key name)`` 
 
 If you are using a windows based PC, you can use the  PUTTYGEN software utility to create  a public key.
 
@@ -286,7 +286,7 @@ Click on 'Create Router' on the right as shown in the image below:
 
 This newly created needs a gateway IP so that it can forwar all the default traffic to it.
  
- Follow below steps to acheive this:
+Follow below steps to acheive this:
 
 a. Goto the router details page on the newly created router and click on 'Set Gateway'
 
