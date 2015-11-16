@@ -171,8 +171,10 @@ As explained earlier, each network must have at least one subnet associated to i
 Next, you need to mention the subnet information.
 
 c. Under Subnet tab, enter the subnet address in CIDR (Classless Inter Domain Routing) notation.
-	    The private IP addresses will be assigned to our VM instances from this subnet. In this example you will use 192.168.1.0/24 . 
-	     As this is an IPv4 address therefore we will set IP version as IPv4 and click Next
+
+The private IP addresses will be assigned to our VM instances from this subnet. In this example you will use 192.168.1.0/24 . 
+
+As this is an IPv4 address therefore we will set IP version as IPv4 and click Next
 
 A gateway IP is required so that all the instances on this network with use this IP for sending traffic that is destined towards outside world. In other words you can say this gateway IP is the IP address assigned on the router.
 |image6|
@@ -181,19 +183,18 @@ Next, you need to add some more detailed information about the subnet.
 
 d. Under Subnet Details tab, make sure that the 'Enable DHCP' option is on. 
 
-4.1.	Under 'Allocation Pools', mention the starting IP address and the ending IP address separated by a comma.  Instances will be assigned IP addresses within this range.
+-	Under 'Allocation Pools', mention the starting IP address and the ending IP address separated by a comma.  Instances will be assigned IP addresses within this range.
 
-4.2.	Set the DNS name server addresses as 8.8.4.4 and 8.8.8.8 on two separate lines respectively and click Create.
+-.	Set the DNS name server addresses as 8.8.4.4 and 8.8.8.8 on two separate lines respectively and click Create.
 
-4.3.	Leave the 'Host routes' option as empty.
+-.	Leave the 'Host routes' option as empty.
 
-4.4.	These DNS addresses belong to google and can be used as public DNS addresses. The steps are also shown in this image:
+-	These DNS addresses belong to google and can be used as public DNS addresses. The steps are also shown in this image:
 
 |image7|
 
 3.  Creating A New VM Instance Using Ubuntu Image. 
 ======================================
-
 
 So you have made great progress so far! You created a network with a private/internal subnet. This has made you able to proceed towards adding a new virtual machine instance.
 But before we act to create the instance, here is some valuable information that you need to know:
@@ -208,7 +209,7 @@ Now is the action time! Let’s go to Compute menu on the left and then select '
 
 |image8|
 
-a. A popup window will appear. Under the details section let's fill out the instance details as below:
+1. 	A popup window will appear. Under the details section let's fill out the instance details as below:
 
 -  The availability zone should be nova. This is the default setting.
 
@@ -230,13 +231,13 @@ A security group is infact a combintion of rules which are applicable to similar
 For example, you have a group of web servers and you want to allow http, https, ssh and ping traffic to these web servers from outside. You can create a security group called 'web-servers-group' and a rule for each traffic type.
 But today let's use the default security group that is already defined in OpenStack.
 
-b. Under ‘Access & Security’, select the 'default' security group. 
+2. 	Under ‘Access & Security’, select the 'default' security group. 
 We need to add key pairs in order to be able to login to our new instance after it is created. To create and add a key pair, click on the + button near to ‘Key Pair’ field.
 
 
 |image10|
 	
-c. A new popup window will appear. Enter a name for the key and paste the contents of the public key. You can create the new key according to the instructions on the right.
+3. 	A new popup window will appear. Enter a name for the key and paste the contents of the public key. You can create the new key according to the instructions on the right.
 
 You can import your existing public keys from your personal machine as well. If you have a linux PC then you can use the following command:
 
@@ -247,11 +248,11 @@ If you are using a windows based PC, you can use the  PUTTYGEN software utility 
 
 |image11|
 
-d. Upon successful import, a message like below will appear:
+4. Upon successful import, a message like below will appear:
 
 |image12|
 
-e. Next, under networking tab, select the network that we created earlier and click on launch button.Below image displays the steps:
+5. Next, under networking tab, select the network that we created earlier and click on launch button.Below image displays the steps:
 
 |image13|
 
