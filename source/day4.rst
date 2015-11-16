@@ -287,7 +287,7 @@ NIC3 is installed on network node only however it does not need to be assigned a
 3.1	Installing the Controller Node
 ==============================
 
-We will start with the controller node first. There are three files present under the folder named `controller <https://github.com/slash4-de/openstack/tree/master/controller/>`_ :
+We will start with the controller node first. There are three files present under the folder named controller `here <https://github.com/slash4-de/openstack/tree/master/controller/>`_ :
  	
 -	controller-install.sh		(This script downloads the nessary packages and installs openstack controller)
 
@@ -321,7 +321,7 @@ This will take a while as it will download all necessary packages for controller
 3.2	Installing the Network Node
 ==============================
 
-The folder named `network<https://github.com/slash4-de/openstack/tree/master/network/>`_ : contains four files as :
+The folder named nework  `here <https://github.com/slash4-de/openstack/tree/master/network/>`_  contains four files as :
 
 
 -	neutron.conf 		(This the configuration file containing IP address information and passwords information)
@@ -361,7 +361,7 @@ We will run the scripts 'neutron-create-networks.sh' after installing compute no
 3.3	Installing the Compute Node
 ==============================
 
-The folder named 'compute' contains below files:
+The folder named compute `here <https://github.com/slash4-de/openstack/tree/master/compute/>`_ contains below files:
 
 -	compute.conf 		(This the configuration file containing IP address information and passwords information)
 	
