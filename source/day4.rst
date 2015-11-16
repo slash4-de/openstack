@@ -15,9 +15,11 @@ Below are the learning ojectives of day4:
 
 1. 	 Understanding OpenStack Components
 
-2.	 OpenStack Node Types
+2.	 OpenStack Process Flow for Instance Provisioning
 
-3.	Installing OpenStack from Scratch
+3.	OpenStack Node Types
+
+4.	Installing OpenStack from Scratch
 
 
 	
@@ -56,7 +58,7 @@ Below diagram shows several Openstack components integrated with each other:
 
 Let's explain each term very briefly:
 
-OpenStack Compute (nova):	It provides the hypervisor service to the cloud environment. Compute (“Nova”) retrieves virtual disks images , attach flavor and associated metadata and transforms end user API requests into running instances.
+1.1	OpenStack Compute (nova):	It provides the hypervisor service to the cloud environment. Compute (“Nova”) retrieves virtual disks images , attach flavor and associated metadata and transforms end user API requests into running instances.
 OpenStack supports hypervisors including:
 
 -		KVM - Kernel-based Virtual Machine. In this case the virtual disk format is inherited from QEMU since it uses a modified QEMU program to launch the virtual machine. The supported disk formats include raw images, the qcow2, and VMware formats.
@@ -76,46 +78,46 @@ OpenStack supports hypervisors including:
 -		Bare Metal - It is not a traditional hypervisor, rather its a driver that provisions physical hardware through pluggable sub-drivers 
 		(e.g, PXE for image deployment, and IPMI for power management).
 
-OpenStack Networking (neutron) : 	provides networking service to other OpenStack components. This includes, VLANs , ip address information and routing etc.
+1.2	OpenStack Networking (neutron) : 	provides networking service to other OpenStack components. This includes, VLANs , ip address information and routing etc.
 It provides virtual networking for Compute which allows users to create their own networks and then link them to the instances.
 
-OpenStack Image service (glance) :        provides services including discovering, registering, and retrieving virtual machine images. 
+1.3	OpenStack Image service (glance) :        provides services including discovering, registering, and retrieving virtual machine images. 
 It provides a RESTful API for querying of VM image metadata as well as retrieval of the actual image.
 
-OpenStack Identity (keystone) :	provides authentication and authorization for all OpenStack services.
+1.4	OpenStack Identity (keystone) :	provides authentication and authorization for all OpenStack services.
 
-OpenStack dashboard (horizon) :	provides the interface for all the OpenStack services.
+1.5	OpenStack dashboard (horizon) :	provides the interface for all the OpenStack services.
 
-Telemetry (ceilometer) :		provides metering and resource metering service to the cloud environment.
+1.6	Telemetry (ceilometer) :		provides metering and resource metering service to the cloud environment.
 
-Orchestration Service (Heat) :		provides features like automatic out scaling of cloud resources.
+1.7	Orchestration Service (Heat) :		provides features like automatic out scaling of cloud resources.
 	
-OpenStack Object Storage (swift) :	provides an object store for keeping data as well as associated metadata.
+1.8	OpenStack Object Storage (swift) :	provides an object store for keeping data as well as associated metadata.
 	
-OpenStack Block Storage (cinder) :	provides persistent storage volumes for Compute instances.
+1.9	OpenStack Block Storage (cinder) :	provides persistent storage volumes for Compute instances.
 	
-Database as a Service (Trove) :	provides database as a service.
+1.10	Database as a Service (Trove) :	provides database as a service.
 
-Message Queue(“RabbitMQ”)  : 	handles the internal communication within Openstack components such as Nova , neutron and Cinder.
+1.11	Message Queue(“RabbitMQ”)  : 	handles the internal communication within Openstack components such as Nova , neutron and Cinder.
 
-OpenStack CLI :			command Line Interpreter for submitting commands to OpenStack Compute.
+1.12	OpenStack CLI :			command Line Interpreter for submitting commands to OpenStack Compute.
 
-Big Data Applications\Hadoop (Sahara)	provides deployment of huge data intesive applications like hadoop.
+1.13	Big Data Applications\Hadoop (Sahara)	provides deployment of huge data intesive applications like hadoop.
 
-Provisioning a new instance involves the interaction between multiple components inside OpenStack :
+1.14	Provisioning a new instance involves the interaction between multiple components inside OpenStack :
 
-1.1	Request Flow for Instance Provisioning
-======================================
+2	Request Flow for Instance Provisioning
+----------------------------------------------------------------------
 
 The request flow for provisioning an Instance goes like this:
 
-1.	Dashboard or CLI gets the user credential and does the REST call to Keystone for authentication.
+1	Dashboard or CLI gets the user credential and does the REST call to Keystone for authentication.
 
-2.	Keystone authenticate the credentials and generate & send back auth-token which will be used for sending request to other Components through REST-call.
+2	Keystone authenticate the credentials and generate & send back auth-token which will be used for sending request to other Components through REST-call.
 
-3.	Dashboard or CLI convert the new instance request specified in  ‘launch instance’ or ‘nova-boot’ form to REST API request and send it to nova-api.
+3	Dashboard or CLI convert the new instance request specified in  ‘launch instance’ or ‘nova-boot’ form to REST API request and send it to nova-api.
 
-4.	nova-api receive the request and sends the request for validation auth-token and access permission to keystone.
+4	nova-api receive the request and sends the request for validation auth-token and access permission to keystone.
 
 5.	Keystone validates the token and sends updated auth headers with roles and permissions.
 
@@ -171,7 +173,7 @@ The same is depicted in the image below:
 |image2|
 
 
-2.	 OpenStack Node Types
+3.	 OpenStack Node Types
 ----------------------------------------------
 
 Controller
@@ -223,7 +225,7 @@ Storage
 Storage nodes store all the data required for the environment, including disk images in the Image service library, and the persistent storage volumes created by the Block Storage service. Storage nodes use GlusterFS technology to keep the data highly available and scalable.
 
 
-3.	Building OpenStack from Scratch
+4.	Building OpenStack from Scratch
 -----------------------------------------------------------
 
 We have made available for you a few helping bash scripts for deploying an OpenStack cloud from start. 
@@ -284,7 +286,7 @@ NIC3
 NIC3 is installed on network node only however it does not need to be assigned a static IP address.
 
 
-3.1	Installing the Controller Node
+4.1	Installing the Controller Node
 ==============================
 
 We will start with the controller node first. There are three files present under the folder named controller `here <https://github.com/slash4-de/openstack/tree/master/controller/>`_ :
@@ -318,7 +320,7 @@ This will take a while as it will download all necessary packages for controller
 ``# reboot``
 
 
-3.2	Installing the Network Node
+4.2	Installing the Network Node
 ==============================
 
 The folder named nework  `here <https://github.com/slash4-de/openstack/tree/master/network/>`_  contains four files as :
@@ -358,7 +360,7 @@ This will take a while as it will download all necessary packages for controller
 We will run the scripts 'neutron-create-networks.sh' after installing compute node.
 
 
-3.3	Installing the Compute Node
+4.3	Installing the Compute Node
 ==============================
 
 The folder named compute `here <https://github.com/slash4-de/openstack/tree/master/compute/>`_ contains below files:
