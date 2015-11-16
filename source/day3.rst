@@ -9,19 +9,16 @@ In the earlier session, you worked with disk volumes and snapshots. We hope you 
 Today we will take you to another advanced level of OpenStack operations. This session will focus on :
 
 
-	1.	Working with Images
+1.	Working with Images
 
-	2.	Working with Containers
+2.	Working with Containers
 
-	3.	Tightening your Security
+3.	Tightening your Security
 
-	4.	Working with Databases
-
-	
-
+4.	Working with Databases
 
 1.	Working with Images
------------------------------------------
+---------------------------------------------
 
 Talking in context of OpenStack, an image or otherwise a virtual machine image is nothing but a virtual disk file containing a bootable operating system. 
 OpenStack uses an image as a source to create a new virtual machine instance. As a cloud adminstrator or a user you may need to upload and maintain VM images for your cloud.
@@ -51,13 +48,13 @@ qcow2
 
 QCOW2 stands for QEMU copy-on-write version 2. KVM hypervisor uses this format very commonly. There are some enhanced features provided by qcow2 over raw format which are:
 
-	a.	It uses sparse representation which results into a smaller image size.
+-	It uses sparse representation which results into a smaller image size.
 
-	b.	It supports creating disk snapshots
+-	It supports creating disk snapshots
 
-	c.	Due to being smaller in size, it takes less time to upload.
+-	Due to being smaller in size, it takes less time to upload.
 
-	d. 	OpenStack will automatically convert a raw image into qcow2 as it supports snapshots. (which is not the case with raw images)
+- 	OpenStack will automatically convert a raw image into qcow2 as it supports snapshots. (which is not the case with raw images)
 	
 
 AMI/AKI/ARI
@@ -65,13 +62,11 @@ AMI/AKI/ARI
 
 It was the first format that was supported by Amazon Elastic Compute Cloud (Amazon EC2). The three files are:
 
-	a.	AMI (Amazon Machine Image) is the image in raw format.
+a.	AMI (Amazon Machine Image) is the image in raw format.
 	
-	b.	AKI (Amazon Kernel Image) it is the kernel ( vmlinuz) file which is laoded by the linux kernel for booting.
+b.	AKI (Amazon Kernel Image) it is the kernel ( vmlinuz) file which is laoded by the linux kernel for booting.
 	
-	c.	ARI (Amazon Ramdisk Image) is the ramdisk (initrd) file optionally mounted at boot time. 
-
-
+c.	ARI (Amazon Ramdisk Image) is the ramdisk (initrd) file optionally mounted at boot time. 
 
 UEC tarball
 ========
@@ -89,7 +84,6 @@ VDI
 ====
 
 Virtual Disk Image is a format used by VirtualBox. OpenStack Compute hypervisors do not support it straight forward. You need to convert it to qcow2 or raw to be able to use it with OpenStack.
-
 
 VHD
 ====
@@ -112,11 +106,10 @@ ISO
 
 It is the image file format most commonly used for CDs and DVDs. But since an ISO contains a bootable filesystem along with an operating system, it can be used as a virtual machine image.
 
-
 Now let's get back to practical work and upload an image to our OpenStack cloud.
 
 1.1	Upload An Image
--------------------------------------
+=====================
 
 Follow this procedure to upload an image to a project:
 
@@ -135,15 +128,13 @@ The 'Create An Image' dialog box appears.
 
 Enter the following values:
 
-	a.	Name		A meaningful name for the image
+-	Name		A meaningful name for the image
 
-	b.	Description	Enter a brief description of the image.
+-	Description	Enter a brief description of the image.
 
-	c.	Image Source	Choose an image source. This could be "Image Location"  or "Image File". . 
-		
-				If  you are downloading from Internet then select Image location otherwise if you are loading it from local disk then select image file.
+-	Image Source	Choose an image source. This could be "Image Location"  or "Image File". If  you are downloading from Internet then select Image location otherwise if you are loading it from local disk then select image file.
 	
-	e.	Format		This is the image format either qcow2 or raw..
+-	Format		This is the image format either qcow2 or raw..
 
 Below screenshot depicts the steps:
 
@@ -151,16 +142,15 @@ Below screenshot depicts the steps:
 
 
 
-	f.	Architecture			:	This can be for example  i386 for a 32-bit architecture or x86_64 for a 64-bit architecture.
+-	Architecture			:	This can be for example  i386 for a 32-bit architecture or x86_64 for a 64-bit architecture.
 	
-	g.	Minimum Disk (GB) and Minimum RAM (MB) :	You may leave it as empty.
+-	Minimum Disk (GB) and Minimum RAM (MB) :	You may leave it as empty.
 	
-	h.	Copy Data			:	If enabled, it will copy image data to the Image service.
+-	Copy Data			:	If enabled, it will copy image data to the Image service.
 	
-	i.	Public				:	If enabled, it will make the image public to all users with access to the current project.
+-	Public				:	If enabled, it will make the image public to all users with access to the current project.
 	
-	j.	Protected		 		:	If enabled, it will ensure that only users with permissions can delete the image.
-
+-	Protected		 		:	If enabled, it will ensure that only users with permissions can delete the image.
 
 Click Create Image.
 
@@ -171,26 +161,25 @@ The steps are also depicted in the screenshot  below:
 You have put this image in queue waiting to be uploaded. After some time it will change it status from 'Queued' to 'Active'.
 
 1.2	Delete an Image
-------------------------------------
+=====================
 
 Remember that this action is permanent and it will delete the image from your cloud. It can not be reversed. Also deletion needs appropriate permissions.
 
-	a.	Log in to the dashboard or skip if you have already logged in.
+a.	Log in to the dashboard or skip if you have already logged in.
 
-	b.	Under the project tab, go to compute and click on images..
+b.	Under the project tab, go to compute and click on images..
 
-	c.	This will display the images page.
+c.	This will display the images page.
 
-	d.	Select one or more images that you want to delete.
+d.	Select one or more images that you want to delete.
 
-	e.	Click Delete Images.
+e.	Click Delete Images.
 
 The steps are shown in the below screenshot as well
 
 |image4|
 
 In the 'Confirm Delete Images' dialog box, click 'Delete Images' to confirm the deletion.
-
 
 2.	Working With Containers
 ---------------------------------------------------------
@@ -204,41 +193,38 @@ Let's jump into it and create a container.
 Create a container
 =============
 
-	a.	Goto the 'Containers' option under 'Object Store' on the left.
+a.	Goto the 'Containers' option under 'Object Store' on the left.
 
-	b.	Click Create Container.
-
-
+b.	Click Create Container.
 
 Same procedure is shown in the below screenshot :
  
 |image5|
 
-	c.	In the Create Container dialog box, enter a name for the container, and set access as 'public'
+c.	In the Create Container dialog box, enter a name for the container, and set access as 'public'
 
-	d.	Click Create Container.
+d.	Click Create Container.
 
 You have successfully created a container.
 
 Let's upload an object to the container now:
 
-
 Upload an object
 ============
 
-	a.	Goto the 'Containers' option under 'Object Store' on the left.
+a.	Goto the 'Containers' option under 'Object Store' on the left.
 
-	b.	Select the container in which you want to store your object.
+b.	Select the container in which you want to store your object.
 
-	c.	Click Upload Object.
+c.	Click Upload Object.
 
-	d.	The Upload Object To Container: <name> dialog box appears. ``<name>`` is the name of the container to which you are uploading the object.
+d.	The Upload Object To Container: <name> dialog box appears. ``<name>`` is the name of the container to which you are uploading the object.
 
-	e.	Enter a name for the object.
+e.	Enter a name for the object.
 
-	f.	Browse to and select the file that you want to upload.
+f.	Browse to and select the file that you want to upload.
 
-	g.	Click Upload Object.
+g.	Click Upload Object.
 
 You have successfully uploaded an object to the container.
 
@@ -247,17 +233,17 @@ Now let's update a container with new fiiles:
 Edit an object
 ==========
 
-	a.	Goto the 'Containers' option under 'Object Store' on the left.
+a.	Goto the 'Containers' option under 'Object Store' on the left.
 
-	b.	Select the container that you want to edit.
+b.	Select the container that you want to edit.
 
-	c.	Click 'More' and choose 'Edit' from the dropdown list.
+c.	Click 'More' and choose 'Edit' from the dropdown list.
 
-	d.	The 'Edit Object' dialog box is displayed.
+d.	The 'Edit Object' dialog box is displayed.
 
-	e.	Browse to and select the file that you want to upload.
+e.	Browse to and select the file that you want to upload.
 
-	f.	Click Update Object.
+f.	Click Update Object.
 
 Let's have some more fun with containers. This time we will copy an object from one container to another. 
 
@@ -267,25 +253,25 @@ Copy an Object from one container to another
 ==================================
 Once you have ceated two or more containers, you can use the below procedure:
 
-	a.	Goto the 'Containers' option under 'Object Store' on the left.
+a.	Goto the 'Containers' option under 'Object Store' on the left.
 
-	b.	Select the container that contains your source object.
+b.	Select the container that contains your source object.
 
-	c.	Click More and choose Copy from the dropdown list.
+c.	Click More and choose Copy from the dropdown list.
 
 The same procedure is depicted in the image below:
 
 |image6|
 
-	d.	In the Copy Object launch dialog box, enter the following values:
+d.	In the Copy Object launch dialog box, enter the following values:
 
-	e.	Destination Container: Choose the destination container from the list.
+e.	Destination Container: Choose the destination container from the list.
 
-	f.	Path: Specify a path in which the new copy should be stored inside of the selected container.
+f.	Path: Specify a path in which the new copy should be stored inside of the selected container.
 
-	g.	Destination object name: Enter a name for the object in the new container.
+g.	Destination object name: Enter a name for the object in the new container.
 
-	h.	Click Copy Object.
+h.	Click Copy Object.
 
 Thats it! you copied objects between containers.  Now let's talk about securing the VM instances:
 
@@ -344,37 +330,33 @@ Create a database instance
 Note: Please remember that before you create a databae, you need to configure a default datastore. In this case since you are using the trystack environmnent, it has already configured the default datastore for you.
 
 
-	1.	Log in to the dashboard.
+1.	Log in to the dashboard.
 
-	2.	Under project tab, go to the 'Database' tab and lick on 'Instances'
+2.	Under project tab, go to the 'Database' tab and lick on 'Instances'
 
-	3. 	You will see if there are any pre existing instances.
+3. 	You will see if there are any pre existing instances.
 
-	4.	Click on 'Launch Instance'
-
+4.	Click on 'Launch Instance'
 
 In the new popup window enter the details about your new database instance:
 
-	Database Name: Specify a name for the database instance.
+- Database Name: Specify a name for the database instance.
 
-	Flavor: Select an appropriate flavor for the instance.
+- Flavor: Select an appropriate flavor for the instance.
 
-	Volume Size: Select a volume size. Volume size is expressed in GB.
+- Volume Size: Select a volume size. Volume size is expressed in GB.
 
-	Initialize Databases: Initial Database
+- Initialize Databases: Initial Database
 
-	Optionally provide a comma separated list of databases to create, for example:
+- Optionally provide a comma separated list of databases to create, for example: database1, database2, database3
 
-	database1, database2, database3
+- Initial Admin User: Create an initial admin user. This user will have access to all the databases you create.
 
-	Initial Admin User: Create an initial admin user. This user will have access to all the databases you create.
+- Password: Specify a password associated with the initial admin user you just named.
 
-	Password: Specify a password associated with the initial admin user you just named.
-
-	Host: Optionally, allow the user to connect only from this host. If you do not specify a host, this user will be allowed to connect from anywhere.
+- Host: Optionally, allow the user to connect only from this host. If you do not specify a host, this user will be allowed to connect from anywhere.
 
 Click the Launch button. The new database instance appears in the databases list.
-
 
 Backup and restore a database
 =========================
@@ -387,38 +369,36 @@ This example shows you how to back up and restore a MySQL database.
 
 To backup the database instance
 
-	1	.Log in to the dashboard.
+1.	Log in to the dashboard.
 
-	2.	On the Project tab, open the Database tab and click Instances category. This displays the existing instances in your system.
+2.	On the Project tab, open the Database tab and click Instances category. This displays the existing instances in your system.
 
-	3.	Click Create Backup.
+3.	Click Create Backup.
 
 In the Backup Database dialog box, specify the following values:
 
-	Name 			Specify a name for the backup.
+- Name 			Specify a name for the backup.
 
-	Database Instance		Select the instance you want to back up.
+- Database Instance		Select the instance you want to back up.
 
-	Click Backup. 		The new backup appears in the backup list.
-
-
+- Click Backup. 		The new backup appears in the backup list.
 
 Now assume that your original database instance is damaged and you need to restore it. You do the restore by using your backup to create a new database instance.
 
 Restore a database instance
 =====================
 
-	1.	Log in to the dashboard.
+1.	Log in to the dashboard.
 
-	2.	On the Project tab, open the Database tab and click Backups category. This lists the available backups.
+2.	On the Project tab, open the Database tab and click Backups category. This lists the available backups.
 
-	3.	Check the backup you want to use and click Restore Backup.
+3.	Check the backup you want to use and click Restore Backup.
 
-	4.	In the Launch Database dialog box, specify the values you want for the new database instance.
+4.	In the Launch Database dialog box, specify the values you want for the new database instance.
 
-	5.	Click the Restore From Database tab and make sure that this new instance is based on the correct backup.
+5.	Click the Restore From Database tab and make sure that this new instance is based on the correct backup.
 
-	6.	Click Launch.
+6.	Click Launch.
 
 The new instance appears in the database instances list.
 
@@ -427,31 +407,28 @@ You can change various characteristics of a database instance, such as its volum
 Change the volume size of an instance
 =============================
 
-	1.	Log in to the dashboard.
+1.	Log in to the dashboard.
 .
-	2.	On the Project tab, open the Database tab and click Instances category. This displays the existing instances in your system.
+2.	On the Project tab, open the Database tab and click Instances category. This displays the existing instances in your system.
 
-	3.	Check the instance you want to work with. In the Actions column, expand the drop down menu and select Resize Volume.
+3.	Check the instance you want to work with. In the Actions column, expand the drop down menu and select Resize Volume.
 
-	4.	In the Resize Database Volume dialog box, fill in the New Size field with an integer indicating the new size you want for the instance. Express the size in GB, and note that the new size must be larger than the current size.
+4.	In the Resize Database Volume dialog box, fill in the New Size field with an integer indicating the new size you want for the instance. Express the size in GB, and note that the new size must be larger than the current size.
 
 Click Resize Database Volume.
-
 
 To change the flavor of an instance
 ==========================
 
-	1.	Log in to the dashboard.
+1.	Log in to the dashboard.
 
-	2.	On the Project tab, open the Database tab and click Instances category. This displays the existing instances in your system.
+2.	On the Project tab, open the Database tab and click Instances category. This displays the existing instances in your system.
 
-	3.	Check the instance you want to work with. In the Actions column, expand the drop down menu and select Resize Instance.
+3.	Check the instance you want to work with. In the Actions column, expand the drop down menu and select Resize Instance.
 
-	4.	In the Resize Database Instance dialog box, expand the drop down menu in the New Flavor field. Select the new flavor you want for the instance.
+4.	In the Resize Database Instance dialog box, expand the drop down menu in the New Flavor field. Select the new flavor you want for the instance.
 
-	5.	Click Resize Database Instance.
-
-
+5.	Click Resize Database Instance.
 
 
 .. |image1| image:: media/d3_image1.png
