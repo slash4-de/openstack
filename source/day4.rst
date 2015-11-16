@@ -54,7 +54,7 @@ Generally an OpenStack cloud consists of following core services:
 Below diagram shows several Openstack components integrated with each other:
 
 |image1|
-
+source:http://docs.openstack.org/kilo/install-guide/install/apt/content/figures/1/a/common/figures/openstack_kilo_conceptual_arch.png
 
 Let's explain each term very briefly:
 
