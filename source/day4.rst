@@ -301,7 +301,7 @@ Follow below steps to install the controller node:
 
 2.	Run the script 'controller-setup-ip.sh' to configure the IP management IP address
 
-``bash controller-setup-ip.sh``
+``#bash controller-setup-ip.sh``
 
 3.	Reboot the server so that configuration changes may take affect
 
